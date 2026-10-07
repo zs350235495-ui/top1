@@ -1207,6 +1207,21 @@ const buildBlogArticleContent = (item) => {
 const generateBlogArticles = () => {
     const list = [
         {
+            id: "2026-yiyuan-airport-selection-guide",
+            title: "2026 一元机场选购与避坑指南：廉价机场评测、跑路风险分析与高性价比专线推荐",
+            desc: "2026 最新一元机场与廉价机场深度测评。拆解一元机场超卖机制、晚高峰拥堵丢包原因及跑路风险，提供理性选购建议与高性价比稳定专线替代方案。",
+            description: "2026 最新一元机场与廉价机场深度测评。拆解一元机场超卖机制、晚高峰拥堵丢包原因及跑路风险，提供理性选购建议与高性价比稳定专线替代方案。",
+            summary: "围绕一元机场超卖机制、晚高峰拥堵丢包原因及跑路风险，深度拆解廉价机场体验，并提供理性选购建议与高性价比稳定专线替代方案。",
+            category: "2026年机场推荐",
+            url: "posts/2026-yiyuan-airport-selection-guide.html",
+            date: "2026-10-07",
+            author: "机场 TOP1",
+            tag: ["一元机场", "廉价机场", "避坑指南", "性价比机场", "IEPL专线"],
+            tags: ["一元机场", "廉价机场", "避坑指南", "性价比机场", "IEPL专线"],
+            views: 9240,
+            isHuanQiuFeatured: true
+        },
+        {
             id: "2026-airport-node-recommendation-selection-guide",
             title: "2026 稳定机场与高速节点选购指南：机场节点推荐、订阅服务对比与避坑建议",
             desc: "围绕机场节点推荐、稳定机场、高速节点与订阅服务推荐，深度解析传输稳定性、晚高峰速率、多设备兼容性与资费透明度。",
