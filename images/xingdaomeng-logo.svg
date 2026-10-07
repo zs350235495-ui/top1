@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050515" />
+      <stop offset="50%" stop-color="#121033" />
+      <stop offset="100%" stop-color="#2a1b54" />
+    </linearGradient>
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a8ff78" />
+      <stop offset="100%" stop-color="#78ffd6" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="40" fill="url(#bg)" />
+  
+  <!-- Twinkling stars in background -->
+  <circle cx="40" cy="45" r="2" fill="#ffffff" opacity="0.9" />
+  <circle cx="160" cy="40" r="2.5" fill="#78ffd6" opacity="0.8" />
+  <circle cx="170" cy="110" r="1.5" fill="#ffffff" opacity="0.7" />
+  <circle cx="30" cy="120" r="2" fill="#78ffd6" opacity="0.9" />
+
+  <!-- Dream Island & Cloud Orbit -->
+  <!-- Orbit ring -->
+  <ellipse cx="100" cy="95" rx="65" ry="22" fill="none" stroke="#78ffd6" stroke-width="2" stroke-dasharray="4 4" opacity="0.6" transform="rotate(-15 100 95)" />
+
+  <!-- Floating Island Cloud -->
+  <path d="M 55 110 
+           A 18 18 0 0 1 50 78 
+           A 24 24 0 0 1 92 62 
+           A 28 28 0 0 1 148 80 
+           A 18 18 0 0 1 145 110 Z" 
+        fill="url(#starGrad)" filter="url(#glow)" />
+        
+  <!-- Star on island -->
+  <polygon points="100,68 103,77 112,77 104,82 107,91 100,85 93,91 96,82 88,77 97,77" fill="#ffffff" />
+
+  <!-- Text -->
+  <text x="100" y="165" font-family="'PingFang SC', 'Microsoft YaHei', sans-serif" font-weight="900" font-size="22" fill="#78ffd6" text-anchor="middle" letter-spacing="2">星岛梦</text>
+</svg>

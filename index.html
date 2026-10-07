@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机场 TOP1 - 实用机场测速推荐与防坑指南</title>
+    <meta name="description" content="机场 TOP1 分享真实的机场测速、优惠码、性价比SS/V2Ray/Clash机场推荐与跑路避坑指南。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" href="/css/styles.css?v=20261005_v3">
+</head>
+<body>
+    <!-- Top Warning Marquee for Exit Scams -->
+    <div class="top-alert-bar" id="topAlertBar">
+        <div class="alert-content">
+            <span class="alert-badge"><i class="fa-solid fa-triangle-exclamation"></i> 避坑提醒</span>
+            <span class="alert-text">近期部分低价机场频现拔线跑路，建议博友们按月/季续费，备一份不限时按量包更稳妥。</span>
+            <button class="alert-close" onclick="closeTopAlert()">&times;</button>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
+              <img src="/images/logo-horizontal.png" alt="机场 TOP1" style="height: 38px; width: auto; max-width: 220px; object-fit: contain; vertical-align: middle;">
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item active" data-tab="home" onclick="switchTab('home')">首页</li>
+                    <li class="nav-item" data-tab="recommend" onclick="switchTab('recommend')">机场推荐</li>
+                    <li class="nav-item" data-tab="directory" onclick="switchTab('directory')">机场导航</li>
+                    <li class="nav-item" data-tab="reviews" onclick="switchTab('reviews')">机场评测</li>
+                    <li class="nav-item" data-tab="blog" onclick="switchTab('blog')">博客</li>
+                    <li class="nav-item" data-tab="compare" onclick="switchTab('compare')">性价比机场</li>
+                    <li class="nav-item" data-tab="protocols" onclick="switchTab('protocols')">协议知识</li>
+                    <li class="nav-item text-danger" data-tab="blackholes" onclick="switchTab('blackholes')">跑路预警</li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="globalSearch" placeholder="搜索..." oninput="handleSearch(this.value)">
+                </div>
+                <a href="https://t.me/huanqiuti8899" target="_blank" rel="noopener noreferrer" class="nav-link-subtle" title="TG 频道">
+                    TG 频道
+                </a>
+                <button class="mobile-menu-btn" onclick="toggleMobileNav()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNav">
+        <ul class="mobile-nav-list">
+            <li onclick="switchTab('home'); toggleMobileNav();">首页</li>
+            <li onclick="switchTab('recommend'); toggleMobileNav();">机场推荐</li>
+            <li onclick="switchTab('directory'); toggleMobileNav();">机场导航</li>
+            <li onclick="switchTab('reviews'); toggleMobileNav();">机场评测</li>
+            <li onclick="switchTab('blog'); toggleMobileNav();">博客</li>
+            <li onclick="switchTab('compare'); toggleMobileNav();">性价比机场</li>
+            <li onclick="switchTab('protocols'); toggleMobileNav();">协议知识</li>
+            <li onclick="switchTab('blackholes'); toggleMobileNav();">跑路预警</li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- 1. Home View -->
+        <section id="view-home" class="view-section active">
+            <!-- Hero Banner -->
+            <div class="hero-banner">
+                <div class="hero-body">
+                    <span class="hero-badge">独立技术博客 · 资料目录</span>
+                    <h1 class="hero-title">好用不贵的 SS/V2Ray/Clash 机场推荐</h1>
+                    <p class="hero-subtitle">记录晚高峰真实跑分、4K/8K解锁情况与独家 7 折优惠码。建议理性消费，优先按月订阅或准备不限时备用包。</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-num" id="statAirportCount">6</span>
+                            <span class="stat-label">测速精选机场</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">IEPL/IPLC</span>
+                            <span class="stat-label">专线线路为主</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">4K/8K</span>
+                            <span class="stat-label">晚高峰实测</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num" id="statBlackCount">8</span>
+                            <span class="stat-label">预警黑名单</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flagship Main Recommendation: HuanQiuTi Spotlight -->
+            <div class="flagship-spotlight-card">
+                <div class="spotlight-badge-ribbon">
+                    置顶主推专线机场
+                </div>
+                <div class="spotlight-content">
+                    <div class="spotlight-left">
+                        <div class="spotlight-logo-wrapper">
+                            <img src="images/huanqiuti-logo.jpg" alt="环球梯 Logo" class="spotlight-logo">
+                        </div>
+                        <div class="spotlight-info">
+                            <h2 class="spotlight-title">
+                                环球梯 (HuanQiuTi) 
+                                <span class="spotlight-tag cyan">全 IEPL 专线</span>
+                            </h2>
+                            <p class="spotlight-subtitle">广深 / 沪日 IEPL 专线 + BGP 多入口 | 完美解锁 ChatGPT、Claude、Netflix、Disney+ 与 TikTok</p>
+                            <div class="spotlight-highlights">
+                                <span>测速得分：<strong>99 / 100</strong></span>
+                                <span>丢包率：<strong>0% 晚高峰过墙</strong></span>
+                                <span>节点数：<strong>120+ 全专线</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spotlight-right">
+                        <div class="spotlight-price-box">
+                            <div class="price-label">独家 7 折优惠低至</div>
+                            <div class="price-val">
+                                <span class="currency">￥</span><span class="amount">15.40</span><span class="unit">/ 月起</span>
+                            </div>
+                        </div>
+                        <div class="spotlight-coupon-box" onclick="copyDiscountCode('HQ66')" title="点击复制 7 折优惠码">
+                            <span class="coupon-label">7 折独家优惠码</span>
+                            <span class="coupon-code">HQ66 <i class="fa-regular fa-copy"></i></span>
+                        </div>
+                        <div class="spotlight-actions">
+                            <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+                                直达官网注册
+                            </a>
+                            <button class="btn btn-glass btn-lg" onclick="openPlansModal('ap-huanqiuti')">
+                                套餐资费
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Access / Categories Cards -->
+            <div class="quick-categories">
+                <div class="category-card" onclick="filterCategory('iepl')">
+                    <div class="card-icon cyan"><i class="fa-solid fa-network-wired"></i></div>
+                    <h3>IEPL/IPLC 专线</h3>
+                    <p>延迟低丢包少，晚高峰看视频、打游戏更稳</p>
+                </div>
+                <div class="category-card" onclick="filterCategory('streaming')">
+                    <div class="card-icon purple"><i class="fa-solid fa-play"></i></div>
+                    <h3>4K/8K 与 AI 解锁</h3>
+                    <p>原生 IP 支持，顺畅看 Netflix、Disney+ 与 ChatGPT</p>
+                </div>
+                <div class="category-card" onclick="filterCategory('budget')">
+                    <div class="card-icon green"><i class="fa-solid fa-piggy-bank"></i></div>
+                    <h3>高性价比套餐</h3>
+                    <p>月付十几元起，轻度日常查资料、看视频省心</p>
+                </div>
+                <div class="category-card" onclick="filterCategory('backup')">
+                    <div class="card-icon orange"><i class="fa-solid fa-life-ring"></i></div>
+                    <h3>不限时按量备用包</h3>
+                    <p>流量不过期，主机场临时抽风时的备用救星</p>
+                </div>
+            </div>
+
+            <!-- Editor's Picks & Latest Speedtests -->
+            <div class="section-block">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-award text-accent"></i> 机场 TOP1 实测推荐</h2>
+                    <span class="section-link" onclick="switchTab('recommend')">查看全部 <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+                <div class="airport-grid" id="homeRecommendedGrid">
+                    <!-- Dynamic rendering -->
+                </div>
+            </div>
+
+            <!-- Latest Reviews Section -->
+            <div class="section-block">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-file-waveform text-accent"></i> 测速与使用笔记</h2>
+                    <span class="section-link" onclick="switchTab('reviews')">更多评测 <i class="fa-solid fa-chevron-right"></i></span>
+                </div>
+                <div class="reviews-grid" id="homeReviewsGrid">
+                    <!-- Dynamic rendering -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Recommend View -->
+        <section id="view-recommend" class="view-section">
+            <div class="page-title-box">
+                <h1><i class="fa-solid fa-fire text-accent"></i> 常用优质机场推荐</h1>
+                <p>根据晚高峰测速、稳定性与实际体验整理的列表。本站强力主推第一名：<strong>环球梯 (HuanQiuTi)</strong>。</p>
+            </div>
+
+            <!-- Flagship Spotlight in Recommend View -->
+            <div class="flagship-spotlight-card">
+                <div class="spotlight-badge-ribbon">
+                    <i class="fa-solid fa-crown"></i> 👑 站长主力推荐 · 环球梯专属通道
+                </div>
+                <div class="spotlight-content">
+                    <div class="spotlight-left">
+                        <div class="spotlight-logo-wrapper">
+                            <img src="images/huanqiuti-logo.jpg" alt="环球梯 Logo" class="spotlight-logo">
+                            <span class="spotlight-rank">NO.1</span>
+                        </div>
+                        <div class="spotlight-info">
+                            <h2 class="spotlight-title">
+                                环球梯 (HuanQiuTi) 
+                                <span class="spotlight-tag gold">全 IEPL 专线</span>
+                                <span class="spotlight-tag">8K秒开 / 无视晚高峰</span>
+                            </h2>
+                            <p class="spotlight-subtitle">广深 / 沪日 IEPL 专线 + BGP 多入口 | 完美解锁 ChatGPT、Claude、Netflix、Disney+ 与 TikTok</p>
+                            <div class="spotlight-highlights">
+                                <span><i class="fa-solid fa-bolt-lightning text-accent"></i> 测速得分：<strong>99 / 100</strong></span>
+                                <span><i class="fa-solid fa-shield-check text-green"></i> 稳定性：<strong>100% 零丢包</strong></span>
+                                <span><i class="fa-solid fa-gift text-gold"></i> 优惠码：<strong style="color:#ffe600;">HQ66 (7折)</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spotlight-right">
+                        <div class="spotlight-price-box">
+                            <div class="price-label">7 折独家优惠价</div>
+                            <div class="price-val">
+                                <span class="currency">￥</span><span class="amount">15.40</span><span class="unit">/ 月起</span>
+                                <span class="price-original">原价 ￥22.00</span>
+                            </div>
+                        </div>
+                        <div class="spotlight-actions">
+                            <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg spotlight-btn-glow">
+                                <i class="fa-solid fa-rocket"></i> 直达环球梯官网注册
+                            </a>
+                            <button class="btn btn-gold btn-lg" onclick="copyDiscountCode('HQ66')">
+                                <i class="fa-regular fa-copy"></i> 复制优惠码 HQ66
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters Toolbar -->
+            <div class="filter-toolbar">
+                <div class="filter-group">
+                    <span class="filter-label">线路类型：</span>
+                    <button class="filter-chip active" onclick="setFilter('type', 'all', this)">全部</button>
+                    <button class="filter-chip" onclick="setFilter('type', 'iepl', this)">IEPL/IPLC专线</button>
+                    <button class="filter-chip" onclick="setFilter('type', 'relay', this)">公网中转</button>
+                    <button class="filter-chip" onclick="setFilter('type', 'direct', this)">直连/BGP</button>
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">需求偏好：</span>
+                    <button class="filter-chip" onclick="setFilter('feature', 'streaming', this)">解锁Netflix/Disney+</button>
+                    <button class="filter-chip" onclick="setFilter('feature', 'chatgpt', this)">原生支持ChatGPT</button>
+                    <button class="filter-chip" onclick="setFilter('feature', 'paybydata', this)">不限时按量包</button>
+                </div>
+            </div>
+
+            <div class="airport-grid" id="recommendGrid">
+                <!-- Dynamic rendering -->
+            </div>
+        </section>
+
+        <!-- 3. Directory View -->
+        <section id="view-directory" class="view-section">
+            <div class="page-title-box">
+                <h1><i class="fa-solid fa-compass text-accent"></i> 机场速查导航</h1>
+                <p>快速查看各大机场线路、优惠码与官网直达通道。</p>
+            </div>
+
+            <div class="directory-table-wrapper">
+                <table class="directory-table">
+                    <thead>
+                        <tr>
+                            <th>机场名称</th>
+                            <th>榜单定位</th>
+                            <th>主要协议</th>
+                            <th>7折后起始价</th>
+                            <th>解锁情况</th>
+                            <th>独家优惠码</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="directoryTableBody">
+                        <!-- Dynamic rendering -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. Reviews View -->
+        <section id="view-reviews" class="view-section">
+            <div class="page-title-box">
+                <h1><i class="fa-solid fa-square-poll-vertical text-accent"></i> 测速与选购笔记</h1>
+                <p>记录晚高峰实际体验、协议兼容性与使用建议。</p>
+            </div>
+
+            <div class="reviews-layout">
+                <div class="reviews-main" id="reviewsList">
+                    <!-- Dynamic rendering of reviews -->
+                </div>
+                <aside class="reviews-sidebar">
+                    <div class="sidebar-box">
+                        <h3><i class="fa-solid fa-chart-simple"></i> 站长测速关注点</h3>
+                        <ul class="criteria-list">
+                            <li><strong>晚高峰速率：</strong> 20:00-23:00 4K/8K 缓冲流畅度。</li>
+                            <li><strong>节点稳定性：</strong> 是否频繁超时掉线。</li>
+                            <li><strong>流媒体解锁：</strong> 奈飞非自制剧与 ChatGPT 访问。</li>
+                            <li><strong>售后响应：</strong> TG群或工单回复速度。</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Blog View (30篇 SEO 文章专区) -->
+        <section id="view-blog" class="view-section">
+            <div class="page-title-box">
+                <h1><i class="fa-solid fa-blog text-accent"></i> 科学上网与 AI 加速 SEO 博客干货</h1>
+                <p>涵盖 2026年机场推荐、高速梯子推荐、AI上网、科学上网与技术上网进阶解析。</p>
+            </div>
+
+            <!-- Blog Category Filter Toolbar -->
+            <div class="filter-toolbar">
+                <div class="filter-group">
+                    <span class="filter-label">文章主题：</span>
+                    <button class="filter-chip active" onclick="filterBlogCategory('all', this)">全部 (33篇)</button>
+                    <button class="filter-chip" onclick="filterBlogCategory('技术评测', this)">技术评测</button>
+                    <button class="filter-chip" onclick="filterBlogCategory('2026年机场推荐', this)">2026年机场推荐</button>
+                    <button class="filter-chip" onclick="filterBlogCategory('高速梯子推荐', this)">高速梯子推荐</button>
+                    <button class="filter-chip" onclick="filterBlogCategory('AI上网', this)">AI上网专题</button>
+                    <button class="filter-chip" onclick="filterBlogCategory('科学上网', this)">科学上网指南</button>
+                    <button class="filter-chip" onclick="filterBlogCategory('技术上网', this)">技术上网进阶</button>
+                    <button class="filter-chip" onclick="filterBlogCategory('环球梯专题', this)">👑 环球梯专题</button>
+                </div>
+            </div>
+
+            <div class="reviews-layout">
+                <div class="reviews-main" id="blogArticlesList">
+                    <!-- SEO Static Links Fallback -->
+                    <noscript>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 16px;">
+                                <a href="posts/2026-airport-node-recommendation-selection-guide.html" style="font-size: 1.1rem; font-weight: bold; color: var(--primary-cyan);">2026 稳定机场与高速节点选购指南：机场节点推荐、订阅服务对比与避坑建议</a>
+                                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">2026 最新稳定机场与高速节点选购指南。围绕传输稳定性、晚高峰速率、线路覆盖、多设备订阅兼容性及价格透明度，提供系统化选购对比与避坑建议。</p>
+                            </li>
+                            <li style="margin-bottom: 16px;">
+                                <a href="posts/2026-network-connection-service-selection-guide.html" style="font-size: 1.1rem; font-weight: bold; color: var(--primary-cyan);">2026 网络连接服务选择指南：稳定性、多平台兼容与用户支持全解析</a>
+                                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">2026 最新网络连接服务选购指南。从线路架构稳定性、跨平台客户端兼容度到售后客服响应三个维度深度解析。</p>
+                            </li>
+                            <li style="margin-bottom: 16px;">
+                                <a href="posts/2026-airport-recommendation-guide.html" style="font-size: 1.1rem; font-weight: bold; color: var(--primary-cyan);">2026 机场推荐与选购指南：高性价比、IEPL专线与最稳定机场导航</a>
+                                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">2026 最新机场推荐与导航评测。盘点环球梯、大兜云、壹界线等主流高性价比与IEPL专线稳定机场。</p>
+                            </li>
+                        </ul>
+                    </noscript>
+                </div>
+                <aside class="reviews-sidebar">
+                    <div class="sidebar-box" style="border: 1px solid #ffe600; background: linear-gradient(145deg, rgba(20,26,42,0.95), rgba(10,14,26,0.98));">
+                        <h3 style="color: #ffe600;"><i class="fa-solid fa-crown"></i> 👑 站长第一主推</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin: 8px 0 12px;">全专线 IEPL 架构，黄金晚高峰看 8K 不卡，解锁 ChatGPT 与 Netflix。</p>
+                        <div class="coupon-highlight-bar" onclick="copyDiscountCode('HQ66')" style="margin-bottom: 12px;" title="点击复制 7 折优惠码">
+                            <span class="coupon-tag-badge">7折独家</span>
+                            <span class="coupon-code-val">HQ66 <i class="fa-regular fa-copy"></i></span>
+                        </div>
+                        <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block" style="text-decoration: none; font-weight: 800;">
+                            直达环球梯官网首页 <i class="fa-solid fa-arrow-right-long"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="sidebar-box">
+                        <h3><i class="fa-solid fa-tags"></i> 热门 SEO 标签</h3>
+                        <div class="ap-tags" style="gap: 8px;">
+                            <span class="tag-chip cyan" onclick="filterBlogCategory('2026年机场推荐', null)">#2026年机场推荐</span>
+                            <span class="tag-chip purple" onclick="filterBlogCategory('高速梯子推荐', null)">#高速梯子推荐</span>
+                            <span class="tag-chip green" onclick="filterBlogCategory('AI上网', null)">#AI上网</span>
+                            <span class="tag-chip orange" onclick="filterBlogCategory('科学上网', null)">#科学上网</span>
+                            <span class="tag-chip" onclick="filterBlogCategory('技术上网', null)">#技术上网</span>
+                            <span class="tag-chip gold" onclick="filterBlogCategory('环球梯专题', null)">#HQ66 7折码</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- 5. Cost-Effective / Budget View (性价比机场) -->
+        <section id="view-compare" class="view-section">
+            <div class="page-title-box">
+                <h1><i class="fa-solid fa-piggy-bank text-accent"></i> 2026 高性价比机场推荐与资费精算</h1>
+                <p>结合独家 7 折优惠码，精算各大专线服务商折后到手价、每日使用成本与套餐配置。</p>
+            </div>
+
+            <!-- Value Guides Cards Grid -->
+            <div class="quick-categories" style="margin-bottom: 28px;">
+                <div class="category-card" onclick="switchTab('recommend')">
+                    <div class="card-icon green"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>学生党 / 平价首选</h3>
+                    <p>月均成本仅 ￥5.6 ~ ￥8 元/月起，平价体验全专线中转</p>
+                </div>
+                <div class="category-card" onclick="switchTab('recommend')">
+                    <div class="card-icon purple"><i class="fa-solid fa-film"></i></div>
+                    <h3>4K/8K 影音与多设备</h3>
+                    <p>月付 ￥15.4 ~ ￥27.3 元/月，全 IEPL 专线晚高峰秒开 8K</p>
+                </div>
+                <div class="category-card" onclick="switchTab('recommend')">
+                    <div class="card-icon orange"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+                    <h3>不限时按量随心包</h3>
+                    <p>￥69.3 元/终身有效，流量不过期，主机场备用救星</p>
+                </div>
+            </div>
+
+            <!-- Budget Airports Comparison Matrix -->
+            <div class="section-block" style="margin-top: 0;">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-calculator text-accent"></i> 5 大性价比机场 7 折优惠资费精算表</h2>
+                    <span style="font-size: 0.85rem; color: var(--text-dim);">点击优惠码即可一键复制</span>
+                </div>
+                <div class="compare-table-container" id="compareContainer">
+                    <!-- Dynamic rendering of cost-effective table -->
+                </div>
+            </div>
+
+            <!-- How to judge true cost-effectiveness card -->
+            <div class="sidebar-box" style="margin-top: 36px; padding: 28px; background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+                <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 16px;">
+                    怎样判断“便宜”是不是真的划算？
+                </h3>
+                <p style="font-size: 0.98rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 14px;">
+                    不要只比较月费。先把套餐流量乘以节点倍率，算出自己的实际可用流量，再检查设备数量、重置周期、线路等级和退款条件。月费相差一两元时，如果较贵方案在晚高峰更稳定、倍率更低，长期使用成本反而可能更少。
+                </p>
+                <p style="font-size: 0.98rem; color: var(--text-muted); line-height: 1.85;">
+                    第一次购买建议先选月付，在自己的运营商、城市和常用设备上测试一个完整周期。异常低价、长期预付折扣过大、客服长期不回复或突然频繁更换域名，都应视为风险信号。
+                </p>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="section-block" style="margin-top: 48px; text-align: center;">
+                <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 24px; justify-content: center;">
+                    性价比机场常见问题
+                </h2>
+                <div style="max-width: 900px; margin: 0 auto; text-align: left; display: flex; flex-direction: column; gap: 14px;">
+                    <details class="faq-item" style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px 22px; cursor: pointer; transition: var(--transition);">
+                        <summary style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); outline: none; list-style: none; display: flex; align-items: center; gap: 8px;">
+                            <span style="color: #c85a32; font-size: 0.85rem;">▶</span> 价格最低的机场一定最值得买吗？
+                        </summary>
+                        <p style="margin-top: 12px; font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; padding-top: 12px; border-top: 1px solid #f2eeea;">
+                            不一定。异常廉价的机场往往伴随着高倍率扣量、公网中转晚高峰拥堵、甚至极高的拔线跑路风险。综合考虑线路稳定性、实际可用流量（折算倍率后）与设备连接数，价格稍高但全专线过墙的服务商实际性价比反而更高。
+                        </p>
+                    </details>
+
+                    <details class="faq-item" style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px 22px; cursor: pointer; transition: var(--transition);">
+                        <summary style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); outline: none; list-style: none; display: flex; align-items: center; gap: 8px;">
+                            <span style="color: #c85a32; font-size: 0.85rem;">▶</span> 第一次购买应该选择月付还是年付？
+                        </summary>
+                        <p style="margin-top: 12px; font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; padding-top: 12px; border-top: 1px solid #f2eeea;">
+                            强烈建议第一次购买优先选择月付。不同城市的网络运营商（电信、联通、移动）跨国出口差异较大，先通过月付测试一个完整月度（包含黄金晚高峰），确认符合预期后再考虑季付或年付。
+                        </p>
+                    </details>
+
+                    <details class="faq-item" style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px 22px; cursor: pointer; transition: var(--transition);">
+                        <summary style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); outline: none; list-style: none; display: flex; align-items: center; gap: 8px;">
+                            <span style="color: #c85a32; font-size: 0.85rem;">▶</span> 参考速度为什么和自己的测速不同？
+                        </summary>
+                        <p style="margin-top: 12px; font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; padding-top: 12px; border-top: 1px solid #f2eeea;">
+                            测速结果受多种因素影响，包括您本地的宽带速率、使用的客户端软件、DNS设置、所选节点位置以及当前测试的时段。白天非高峰期测试速度通常较快，建议以黄金晚高峰（20:00-23:00）的实际视频播放体验为准。
+                        </p>
+                    </details>
+
+                    <details class="faq-item" style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px 22px; cursor: pointer; transition: var(--transition);">
+                        <summary style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); outline: none; list-style: none; display: flex; align-items: center; gap: 8px;">
+                            <span style="color: #c85a32; font-size: 0.85rem;">▶</span> 月费接近时应该优先比较什么？
+                        </summary>
+                        <p style="margin-top: 12px; font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; padding-top: 12px; border-top: 1px solid #f2eeea;">
+                            月费相近时，优先比较：1. 是否为 IEPL/IPLC 专线；2. 节点扣量倍率（优先选 1.0x 倍率）；3. 流媒体与 AI 原生 IP 解锁能力；4. 是否限制同时在线的客户端设备数。
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Protocols View -->
+        <section id="view-protocols" class="view-section">
+            <!-- 1. 页面头部 -->
+            <div class="page-title-box" style="margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border-color);">
+                <h1 style="font-size: 1.6rem; font-weight: 700; color: var(--text-heading); margin-bottom: 6px;">协议与软件指引</h1>
+                <p style="font-size: 0.92rem; color: var(--text-muted);">汇总主流代理传输协议特性与全平台常用客户端配置指南。</p>
+            </div>
+
+            <!-- 2. 协议快速导航 -->
+            <div class="proto-quick-nav">
+                <button class="proto-nav-btn active" onclick="scrollToProtoAnchor('proto-vless', this)">VMess / VLESS</button>
+                <button class="proto-nav-btn" onclick="scrollToProtoAnchor('proto-trojan', this)">Trojan</button>
+                <button class="proto-nav-btn" onclick="scrollToProtoAnchor('proto-hy2', this)">Hysteria 2</button>
+                <button class="proto-nav-btn" onclick="scrollToProtoAnchor('proto-ss', this)">SS / SSR</button>
+                <button class="proto-nav-btn" onclick="scrollToProtoAnchor('section-clients', this)">客户端推荐</button>
+            </div>
+
+            <!-- 3. 协议知识区 -->
+            <div class="section-block" style="margin-bottom: 40px;">
+                <div class="section-header" style="margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+                    <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-heading);">常见协议</h2>
+                </div>
+                <div class="protocol-cards-grid" id="protocolGrid">
+                    <!-- Dynamic rendering -->
+                </div>
+            </div>
+
+            <!-- 4. 协议选择建议 -->
+            <div class="section-block" style="margin-bottom: 44px;">
+                <div class="section-header" style="margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+                    <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-heading);">如何选择</h2>
+                </div>
+                <div class="proto-choice-grid">
+                    <div class="proto-choice-card">
+                        <h3>日常使用</h3>
+                        <p>追求广泛兼容性与成熟规则分流，优先选择主流协议。</p>
+                        <div class="choice-tag">对应协议：VMess / VLESS</div>
+                    </div>
+                    <div class="proto-choice-card">
+                        <h3>网络环境较复杂</h3>
+                        <p>跨国端口封锁频繁，需要高强度标准 TLS 网页伪装。</p>
+                        <div class="choice-tag">对应协议：Trojan / VLESS-REALITY</div>
+                    </div>
+                    <div class="proto-choice-card">
+                        <h3>移动网络 / 高延迟环境</h3>
+                        <p>丢包率较高或处于校园网/移动宽带晚高峰高峰期。</p>
+                        <div class="choice-tag">对应协议：Hysteria 2</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. 客户端推荐区 -->
+            <div class="section-block" id="section-clients" style="margin-bottom: 44px;">
+                <div class="section-header" style="margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+                    <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-heading);">全平台常用软件推荐</h2>
+                </div>
+                <div class="client-grid-4col">
+                    <div class="client-card-std">
+                        <div>
+                            <div class="client-card-header">
+                                <i class="fa-brands fa-windows client-platform-icon"></i>
+                                <h3>Windows</h3>
+                            </div>
+                            <div class="client-apps-list">
+                                <strong>推荐：</strong>Clash Verge Rev / Sing-Box / v2rayN
+                            </div>
+                            <p class="client-desc">上手快速，支持图形化规则分流与开机自启。</p>
+                        </div>
+                        <a href="#" onclick="switchTab('blog')" class="client-link">查看配置教程 &rarr;</a>
+                    </div>
+
+                    <div class="client-card-std">
+                        <div>
+                            <div class="client-card-header">
+                                <i class="fa-brands fa-apple client-platform-icon"></i>
+                                <h3>macOS</h3>
+                            </div>
+                            <div class="client-apps-list">
+                                <strong>推荐：</strong>Clash Verge Rev / Clash Party / Sing-Box
+                            </div>
+                            <p class="client-desc">界面优雅，完美适配 Apple Silicon 芯片与系统代理。</p>
+                        </div>
+                        <a href="#" onclick="switchTab('blog')" class="client-link">查看配置教程 &rarr;</a>
+                    </div>
+
+                    <div class="client-card-std">
+                        <div>
+                            <div class="client-card-header">
+                                <i class="fa-brands fa-android client-platform-icon"></i>
+                                <h3>Android</h3>
+                            </div>
+                            <div class="client-apps-list">
+                                <strong>推荐：</strong>Surfboard / v2rayNG / Sing-Box
+                            </div>
+                            <p class="client-desc">省电稳定，支持按应用分流与后台持续守护。</p>
+                        </div>
+                        <a href="#" onclick="switchTab('blog')" class="client-link">查看配置教程 &rarr;</a>
+                    </div>
+
+                    <div class="client-card-std">
+                        <div>
+                            <div class="client-card-header">
+                                <i class="fa-brands fa-apple client-platform-icon"></i>
+                                <h3>iOS / iPadOS</h3>
+                            </div>
+                            <div class="client-apps-list">
+                                <strong>推荐：</strong>Shadowrocket / Quantumult X / Stash
+                            </div>
+                            <p class="client-desc">扫码导入订阅，支持按域名分流与多协议适配。</p>
+                        </div>
+                        <a href="#" onclick="switchTab('blog')" class="client-link">查看配置教程 &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. 页面底部提示模块 -->
+            <div class="notice-footer-block">
+                <h3>使用前说明</h3>
+                <p>1. 本站所提及软件与协议信息仅供网络技术学习与学术研究参考，请遵循当地法律法规合法合规使用。</p>
+                <p>2. 各代理客户端版本迭代较快，如遇配置无法生效或节点超时，请先检查客户端核心版本与电脑/系统时间同步状态。</p>
+                <p>3. 修改重要路由策略或更新订阅前，建议备份当前的配置文件或保留备用连接节点。</p>
+            </div>
+        </section>
+
+        <!-- 7. Blackholes View (Banned/Scam) -->
+        <section id="view-blackholes" class="view-section">
+            <div class="page-title-box border-red">
+                <h1 class="text-danger"><i class="fa-solid fa-skull-crossbones"></i> 跑路机场与避坑记录</h1>
+                <p>整理已跑路或经常失联的机场，防患于未然。</p>
+            </div>
+
+            <div class="blackholes-warning-card">
+                <div class="warning-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                <div class="warning-text">
+                    <h3>机场 TOP1 的四条避坑小建议：</h3>
+                    <ol>
+                        <li><strong>尽量按月/季续费：</strong> 就算优惠再诱人，也尽量不要一次性买多年。</li>
+                        <li><strong>警惕超低价“无限流量”：</strong> 带宽都是有成本的，低价无限量风险较高。</li>
+                        <li><strong>关注 TG 群消息：</strong> 群里如果长期禁言或者客服不理人，多留个心眼。</li>
+                        <li><strong>准备一个按量包备用：</strong> 随身放一个不限时按量包，主机场出问题时应急。</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="blackholes-grid" id="blackholesGrid">
+                <!-- Dynamic rendering -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Article / Detail View -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-body" id="modalContent">
+                <!-- Content inserted dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo-text" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="/images/logo-horizontal.png" alt="机场 TOP1" style="height: 32px; width: auto; max-width: 180px; object-fit: contain; vertical-align: middle;">
+                </div>
+                <p>分享真实的机场使用体验与网络加速心得。本站仅作技术交流，请遵守相关法律法规。</p>
+            </div>
+            <div class="footer-links">
+                <h4>快速导航</h4>
+                <ul>
+                    <li onclick="switchTab('recommend')">机场推荐</li>
+                    <li onclick="switchTab('directory')">机场速查</li>
+                    <li onclick="switchTab('reviews')">测速笔记</li>
+                    <li onclick="switchTab('compare')">机场对比</li>
+                    <li onclick="switchTab('protocols')">协议指引</li>
+                    <li onclick="switchTab('blackholes')">避坑记录</li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>交流与联系</h4>
+                <p><i class="fa-brands fa-telegram"></i> TG频道: <a href="https://t.me/huanqiuti8899" target="_blank" rel="noopener noreferrer" style="color: var(--primary-cyan); text-decoration: none;">点击跳转</a></p>
+                <p><i class="fa-solid fa-envelope"></i> 商务/联系: <a href="mailto:huanqiuti1@gmail.com" style="color: var(--primary-cyan); text-decoration: none;">点击跳转</a></p>
+                <p class="copyright">© 2026 机场 TOP1. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Persistent Floating Spotlight Bar for HuanQiuTi -->
+    <div class="floating-huanqiu-bar" id="floatingHuanqiuBar">
+        <div class="fh-content">
+            <span class="fh-badge"><i class="fa-solid fa-crown"></i> 本站主推</span>
+            <span class="fh-text">🚀 <strong>环球梯 (HuanQiuTi)</strong>：全 IEPL 专线，晚高峰看 8K 不卡！使用优惠码 <strong class="code-glow" onclick="copyDiscountCode('HQ66')">HQ66</strong> 享 7 折（折后低至 ￥15.40/月）</span>
+        </div>
+        <div class="fh-actions">
+            <button class="btn btn-sm btn-gold" onclick="copyDiscountCode('HQ66')"><i class="fa-regular fa-copy"></i> 复制优惠码 HQ66</button>
+            <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">直达官网</a>
+            <button class="fh-close" onclick="document.getElementById('floatingHuanqiuBar').style.display='none'">&times;</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/data.js?v=20261005_v5"></script>
+    <script src="/js/app.js?v=20261005_v5"></script>
+</body>
+</html>

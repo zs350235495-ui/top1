@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090a0f" />
+      <stop offset="50%" stop-color="#1b1e2b" />
+      <stop offset="100%" stop-color="#2c2c3c" />
+    </linearGradient>
+    <linearGradient id="beam" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#f7971e" />
+      <stop offset="100%" stop-color="#ffd200" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="40" fill="url(#bg)" />
+  
+  <!-- Cosmic Light Beam & Ladder Step Lines -->
+  <polygon points="70,125 130,125 115,55 85,55" fill="url(#beam)" opacity="0.3" filter="url(#glow)" />
+  <line x1="88" y1="105" x2="112" y2="105" stroke="#ffd200" stroke-width="3" stroke-linecap="round" />
+  <line x1="90" y1="90" x2="110" y2="90" stroke="#ffd200" stroke-width="3" stroke-linecap="round" />
+  <line x1="92" y1="75" x2="108" y2="75" stroke="#ffd200" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Cloud at top of ladder -->
+  <path d="M 55 75 
+           A 16 16 0 0 1 50 48 
+           A 22 22 0 0 1 90 35 
+           A 26 26 0 0 1 145 50 
+           A 16 16 0 0 1 142 75 Z" 
+        fill="url(#beam)" filter="url(#glow)" />
+
+  <!-- Text -->
+  <text x="100" y="165" font-family="'PingFang SC', 'Microsoft YaHei', sans-serif" font-weight="900" font-size="22" fill="#ffd200" text-anchor="middle" letter-spacing="2">光年梯</text>
+</svg>

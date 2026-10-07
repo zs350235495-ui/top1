@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3a1c71" />
+      <stop offset="50%" stop-color="#d76d77" />
+      <stop offset="100%" stop-color="#ffaf7b" />
+    </linearGradient>
+    <linearGradient id="wind" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#fff3e0" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="40" fill="url(#bg)" />
+  
+  <!-- Speed wind lines -->
+  <path d="M 30 75 H 60 M 20 95 H 55 M 35 115 H 65" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.8" />
+
+  <!-- Fast Cloud with lightning -->
+  <path d="M 70 120 
+           A 20 20 0 0 1 65 82 
+           A 26 26 0 0 1 108 66 
+           A 30 30 0 0 1 162 85 
+           A 20 20 0 0 1 158 120 Z" 
+        fill="url(#wind)" filter="url(#glow)" />
+        
+  <!-- Lightning Bolt -->
+  <polygon points="112,75 95,97 107,97 98,122 120,95 106,95" fill="#ff4e50" />
+
+  <!-- Text -->
+  <text x="100" y="165" font-family="'PingFang SC', 'Microsoft YaHei', sans-serif" font-weight="900" font-size="22" fill="#ffffff" text-anchor="middle" letter-spacing="2">疾风云</text>
+</svg>

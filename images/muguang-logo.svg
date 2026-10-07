@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0c29" />
+      <stop offset="50%" stop-color="#302b63" />
+      <stop offset="100%" stop-color="#24243e" />
+    </linearGradient>
+    <linearGradient id="twilight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f80759" />
+      <stop offset="50%" stop-color="#bc4e9c" />
+      <stop offset="100%" stop-color="#f80759" />
+    </linearGradient>
+    <linearGradient id="cloudGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#52e5e7" />
+      <stop offset="100%" stop-color="#130cb7" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="40" fill="url(#bg)" />
+  
+  <!-- Twilight horizon line -->
+  <path d="M 20 135 C 60 125, 140 145, 180 135" fill="none" stroke="url(#twilight)" stroke-width="3" opacity="0.8" />
+
+  <!-- Cloud Icon -->
+  <path d="M 50 115 
+           A 20 20 0 0 1 45 77 
+           A 26 26 0 0 1 90 60 
+           A 32 32 0 0 1 150 78 
+           A 20 20 0 0 1 145 115 Z" 
+        fill="url(#cloudGlow)" filter="url(#glow)" />
+        
+  <!-- Twilight Sun / Star accent -->
+  <circle cx="135" cy="65" r="8" fill="#f80759" filter="url(#glow)" />
+
+  <!-- Text -->
+  <text x="100" y="165" font-family="'PingFang SC', 'Microsoft YaHei', sans-serif" font-weight="900" font-size="22" fill="#52e5e7" text-anchor="middle" letter-spacing="2">暮光加速</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2027" />
+      <stop offset="50%" stop-color="#203a43" />
+      <stop offset="100%" stop-color="#2c5364" />
+    </linearGradient>
+    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00c6ff" />
+      <stop offset="100%" stop-color="#0072ff" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="40" fill="url(#bg)" />
+  
+  <!-- Cool Cloud with Sunglasses -->
+  <path d="M 50 120 
+           A 22 22 0 0 1 45 78 
+           A 28 28 0 0 1 90 62 
+           A 32 32 0 0 1 150 82 
+           A 22 22 0 0 1 145 120 Z" 
+        fill="url(#neon)" filter="url(#glow)" />
+        
+  <!-- Sunglasses -->
+  <polygon points="65,82 92,82 88,98 68,98" fill="#051329" />
+  <polygon points="98,82 125,82 121,98 101,98" fill="#051329" />
+  <line x1="92" y1="86" x2="98" y2="86" stroke="#051329" stroke-width="4" />
+  <!-- Glass Reflections -->
+  <line x1="70" y1="85" x2="78" y2="95" stroke="#00c6ff" stroke-width="2" />
+  <line x1="103" y1="85" x2="111" y2="95" stroke="#00c6ff" stroke-width="2" />
+  
+  <!-- Cool Smile -->
+  <path d="M 85 106 Q 95 114 105 106" stroke="#051329" stroke-width="3.5" fill="none" stroke-linecap="round" />
+
+  <!-- Text -->
+  <text x="100" y="165" font-family="'PingFang SC', 'Microsoft YaHei', sans-serif" font-weight="900" font-size="22" fill="#00c6ff" text-anchor="middle" letter-spacing="2">酷酷云</text>
+</svg>
