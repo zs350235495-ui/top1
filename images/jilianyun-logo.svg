@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0d17" />
+      <stop offset="50%" stop-color="#161b2e" />
+      <stop offset="100%" stop-color="#1a2035" />
+    </linearGradient>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" />
+      <stop offset="100%" stop-color="#4FACFE" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="42" fill="url(#bg)" stroke="rgba(255,255,255,0.08)" stroke-width="2" />
+  
+  
+      <!-- Linked Nodes & Pulse -->
+      <circle cx="70" cy="90" r="12" fill="url(#brandGrad)" filter="url(#glow)" />
+      <circle cx="130" cy="90" r="12" fill="url(#brandGrad)" filter="url(#glow)" />
+      <circle cx="100" cy="65" r="10" fill="#00F2FE" filter="url(#glow)" />
+      <line x1="70" y1="90" x2="100" y2="65" stroke="#00F2FE" stroke-width="4" />
+      <line x1="130" y1="90" x2="100" y2="65" stroke="#00F2FE" stroke-width="4" />
+      <line x1="70" y1="90" x2="130" y2="90" stroke="#4FACFE" stroke-width="4" stroke-dasharray="4 4" />
+    
+
+  <text x="100" y="166" font-family="'PingFang SC', 'Microsoft YaHei', 'Outfit', sans-serif" font-weight="800" font-size="20" fill="url(#brandGrad)" text-anchor="middle" letter-spacing="1.5" filter="url(#glow)">极连云</text>
+</svg>
