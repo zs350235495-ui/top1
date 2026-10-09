@@ -274,7 +274,7 @@ function openBlogModal(blogId) {
             <span><i class="fa-solid fa-folder"></i> ${article.category}</span>
             <span><i class="fa-solid fa-eye"></i> ${article.views} 次阅读</span>
         </div>
-        <h1 style="font-family: var(--font-heading); font-size: 1.75rem; margin-bottom: 16px; line-height: 1.35; color: #fff;">${article.title}</h1>
+        <h2 style="font-family: var(--font-heading); font-size: 1.75rem; margin-bottom: 16px; line-height: 1.35; color: #fff;">${article.title}</h2>
         
         <div class="coupon-highlight-bar" style="padding: 12px 18px; margin-bottom: 24px;" onclick="copyDiscountCode('HQ66')">
             <div>

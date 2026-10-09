@@ -375,7 +375,8 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-.page-title-box h1 {
+.page-title-box h1,
+.page-title-box h2 {
     font-family: var(--font-heading);
     font-size: 1.6rem;
     font-weight: 600;
@@ -385,7 +386,8 @@ body {
     gap: 10px;
 }
 
-.page-title-box h1 i {
+.page-title-box h1 i,
+.page-title-box h2 i {
     display: none; /* 移除大图标 */
 }
 
