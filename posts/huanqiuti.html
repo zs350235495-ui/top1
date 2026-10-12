@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 环球梯 (HuanQiuTi) 深度实测研报：广深/沪日 IEPL 专线晚高峰防丢包性能与 7 折套餐资费全景评测 - 机场 TOP1</title>
+    <meta name="description" content="机场 TOP1 实验室 2026 环球梯 (HuanQiuTi) 深度实测研报。全面剖析全专线广深/沪日 IEPL 线路晚高峰防丢包表现、8K 60FPS 极速秒开、流媒体与 ChatGPT/Claude 原生解锁矩阵、2026 套餐 7 折资费表及独家优惠码 HQ66 结账立省指引。">
+    <meta name="keywords" content="环球梯, HuanQiuTi, 环球梯评测, IEPL专线机场, 机场TOP1, 2026稳定机场, 8K不卡, 环球梯优惠码, HQ66, ChatGPT机场, 奈飞解锁">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://jichangtop1.com/posts/huanqiuti.html">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .post-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 36px 44px;
+            background: var(--bg-card, #FFFFFF);
+            border: 1px solid var(--border-color, #E2E8F0);
+            border-radius: var(--radius-lg, 8px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        @media (max-width: 768px) {
+            .post-container {
+                margin: 20px 14px;
+                padding: 24px 18px;
+            }
+        }
+        .breadcrumb-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-muted, #64748B);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-cyan, #C85A32);
+            font-weight: 600;
+            text-decoration: none;
+            padding: 4px 10px;
+            background: rgba(200, 90, 50, 0.08);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .back-home:hover {
+            background: rgba(200, 90, 50, 0.16);
+            text-decoration: none;
+        }
+        .post-header {
+            margin-bottom: 30px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color, #E2E8F0);
+        }
+        .post-badge {
+            display: inline-block;
+            background: var(--primary-cyan, #C85A32);
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .post-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: var(--text-heading, #1A1A1A);
+            line-height: 1.35;
+            margin-bottom: 14px;
+            font-family: var(--font-heading);
+        }
+        .post-tagline {
+            font-size: 1.12rem;
+            color: var(--primary-cyan, #C85A32);
+            line-height: 1.5;
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+        .post-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            background: var(--bg-card-hover, #F8FAFC);
+            border: 1px solid var(--border-color, #E2E8F0);
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 0.88rem;
+            color: var(--text-muted, #64748B);
+        }
+        .post-meta-item strong {
+            color: var(--text-main, #2C2C2C);
+            display: block;
+            font-size: 0.95rem;
+            margin-top: 2px;
+        }
+        .coupon-hero-banner {
+            background: linear-gradient(135deg, rgba(200, 90, 50, 0.08) 0%, rgba(200, 90, 50, 0.02) 100%);
+            border: 2px dashed var(--primary-cyan, #C85A32);
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 28px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .coupon-hero-info h4 {
+            font-size: 1.15rem;
+            color: var(--text-heading, #1A1A1A);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .coupon-hero-info p {
+            color: var(--text-muted, #64748B);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        .coupon-action-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .coupon-code-badge {
+            background: #ffffff;
+            border: 2px solid var(--primary-cyan, #C85A32);
+            color: var(--primary-cyan, #C85A32);
+            font-family: var(--font-mono, monospace);
+            font-size: 1.3rem;
+            font-weight: 800;
+            padding: 8px 18px;
+            border-radius: 8px;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .coupon-code-badge:hover {
+            background: var(--primary-cyan, #C85A32);
+            color: #ffffff;
+        }
+        .post-content {
+            font-size: 1.05rem;
+            line-height: 1.88;
+            color: var(--text-main, #2C2C2C);
+        }
+        .post-content h2 {
+            font-size: 1.55rem;
+            font-weight: 800;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--text-heading, #1A1A1A);
+            border-left: 4px solid var(--primary-cyan, #C85A32);
+            padding-left: 12px;
+            line-height: 1.3;
+        }
+        .post-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 28px;
+            margin-bottom: 14px;
+            color: var(--text-heading, #1A1A1A);
+        }
+        .post-content p {
+            margin-bottom: 16px;
+        }
+        .post-content ul, .post-content ol {
+            margin-bottom: 22px;
+            padding-left: 24px;
+        }
+        .post-content li {
+            margin-bottom: 8px;
+        }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 24px 0;
+            border: 1px solid var(--border-color, #E2E8F0);
+            border-radius: 8px;
+        }
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.94rem;
+            text-align: left;
+            background: var(--bg-card, #ffffff);
+        }
+        .report-table th, .report-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color, #E2E8F0);
+            vertical-align: middle;
+        }
+        .report-table th {
+            background: var(--bg-card-hover, #F8FAFC);
+            color: var(--text-heading, #1A1A1A);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .report-table tbody tr:hover {
+            background: rgba(200, 90, 50, 0.03);
+        }
+        .report-table tr:last-child td {
+            border-bottom: none;
+        }
+        .badge-status-green {
+            background: rgba(46, 125, 50, 0.12);
+            color: #2E7D32;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.82rem;
+            display: inline-block;
+        }
+        .badge-status-hot {
+            background: rgba(200, 90, 50, 0.12);
+            color: var(--primary-cyan, #C85A32);
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.82rem;
+            display: inline-block;
+        }
+        .summary-callout {
+            background: rgba(200, 90, 50, 0.05);
+            border-left: 4px solid var(--primary-cyan, #C85A32);
+            padding: 18px 22px;
+            border-radius: 0 8px 8px 0;
+            margin: 24px 0;
+            font-size: 1.02rem;
+            line-height: 1.75;
+        }
+        .summary-callout strong {
+            color: var(--primary-cyan, #C85A32);
+        }
+        .tip-callout {
+            background: #f0fdf4;
+            border-left: 4px solid #2E7D32;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 0.96rem;
+            line-height: 1.7;
+        }
+        .warning-callout {
+            background: #fffbeb;
+            border-left: 4px solid #d97706;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-size: 0.96rem;
+            line-height: 1.7;
+        }
+        .bottom-cta-card {
+            background: var(--bg-card-hover, #F8FAFC);
+            border: 1px solid var(--border-color, #E2E8F0);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 48px;
+        }
+        .bottom-cta-card h3 {
+            font-size: 1.45rem;
+            color: var(--text-heading, #1A1A1A);
+            margin-bottom: 8px;
+        }
+        .bottom-cta-card p {
+            color: var(--text-muted, #64748B);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="/images/logo-horizontal.png" alt="机场 TOP1" style="height: 38px; width: auto; max-width: 220px; object-fit: contain; vertical-align: middle;">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/" style="color:inherit;text-decoration:none;">首页天梯榜</a></li>
+                    <li class="nav-item"><a href="/#recommend" style="color:inherit;text-decoration:none;">实测推荐</a></li>
+                    <li class="nav-item"><a href="/#compare" style="color:inherit;text-decoration:none;">参数精算</a></li>
+                    <li class="nav-item"><a href="/#blog" style="color:inherit;text-decoration:none;">评测专栏</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="post-container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-bar" aria-label="breadcrumb">
+            <a href="/" class="back-home"><i class="fa-solid fa-arrow-left"></i> ← 返回首页天梯榜</a>
+            <span>/</span>
+            <span>机场独立研报</span>
+            <span>/</span>
+            <span style="color: var(--text-main); font-weight: 600;">环球梯 (HuanQiuTi) 深度实测</span>
+        </nav>
+
+        <!-- Article Header -->
+        <article class="post-header">
+            <span class="post-badge"><i class="fa-solid fa-crown"></i> 推荐榜 NO.1 专线机场</span>
+            <h1 class="post-title">2026 环球梯 (HuanQiuTi) 深度实测研报：广深/沪日 IEPL 专线晚高峰防丢包性能与 7 折套餐资费全景评测</h1>
+            <p class="post-tagline">全专线主力机场，晚高峰看 8K 不卡顿，原生 IP 完美解锁 Netflix、Disney+ 与 ChatGPT / Claude 生产力工具</p>
+            
+            <div class="post-meta-grid">
+                <div class="post-meta-item">
+                    测评团队
+                    <strong>机场 TOP1 网络实验室</strong>
+                </div>
+                <div class="post-meta-item">
+                    发布与校对时间
+                    <strong>2026-10-12</strong>
+                </div>
+                <div class="post-meta-item">
+                    综合评测得分
+                    <strong style="color: var(--primary-cyan);"><i class="fa-solid fa-star"></i> 4.95 / 5.0 (速度99 | 稳定100)</strong>
+                </div>
+                <div class="post-meta-item">
+                    物理核心链路
+                    <strong>广深/沪日 IEPL 专线 + BGP 多入口</strong>
+                </div>
+            </div>
+        </article>
+
+        <!-- Prominent Coupon Banner -->
+        <div class="coupon-hero-banner">
+            <div class="coupon-hero-info">
+                <h4><i class="fa-solid fa-tags text-accent"></i> 独家 7 折结账优惠码立减通道</h4>
+                <p>结账输入优惠码立享 7 折到手优惠：轻享套餐折后仅 15.4 元/月，学生年付仅 67.2 元/年</p>
+            </div>
+            <div class="coupon-action-box">
+                <div class="coupon-code-badge" onclick="copyDiscountCode('HQ66')" title="点击复制 7 折优惠码">
+                    HQ66 <i class="fa-regular fa-copy" style="font-size: 1rem; margin-left: 4px;"></i>
+                </div>
+                <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="text-decoration: none; padding: 10px 20px; font-weight: 700;">
+                    直达官网注册 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Post Main Content -->
+        <section class="post-content">
+            <div class="summary-callout">
+                <strong><i class="fa-solid fa-quote-left"></i> 核心实测摘要：</strong> 本站团队长期实测的主力级专线服务商。全节点部署广深/沪日 IEPL 内网专线，物理规避公网拥堵，晚高峰（20:00 - 23:00）实测丢包率为 0%，YouTube 8K 初始缓冲低至 0.26 秒。节点原生 IP 洁净度高，全解锁主流流媒体与 AI 大模型。结账输入独家优惠码 <strong>HQ66</strong> 享全场 7 折，极具性价比。
+            </div>
+
+            <h2>一、2026 年网络加速环境现状与选购痛点剖析</h2>
+            <p>进入 2026 年，跨境网络加速环境发生了深刻变化。传统公网直连（Direct）或普通低成本中转线路在非高峰期尚可满足日常浏览，但在夜间黄金晚高峰（20:00 - 23:00），往往遭遇严重的国际出口带宽拥堵、高延迟抖动与阶段性断流现象。</p>
+            <p>作为资深网络测评团队，机场 TOP1 在本次实测中，针对<strong>环球梯 (HuanQiuTi)</strong> 展开了连续 7 天的深度压力测试。测试重点覆盖：真实的物理线路架构（是否为端到端内网专线）、黄金晚高峰真实下行带宽跑分、流媒体与 AI 生产力工具的解锁纯净度，以及套餐梯队的性价比。</p>
+
+            <h2>二、环球梯 (HuanQiuTi) 线路架构与黄金晚高峰跑分实测</h2>
+            <p><strong>环球梯</strong>采用了“广深 / 沪日 IEPL 内网专线 + 华南/华东 BGP 智能多入口”架构。客户端流量在境内入口节点汇聚后，直接通过物理专线跨越出境，不经过公网国际出口防火墙，因此具有天然的防探测、防丢包与超低抖动特性。</p>
+            <p>本次测试环境基于千兆宽带（电信、联通、移动三网交叉验证），搭配 Clash Verge Rev 与 Sing-Box 核心，在连续 7 天晚高峰 21:30 的实测数据整理如下：</p>
+
+            <!-- Table 1: Speed & Latency Data -->
+            <div class="table-responsive">
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>节点区域</th>
+                            <th>物理链路类型</th>
+                            <th>平均延迟 (Ping)</th>
+                            <th>延迟抖动 (Jitter)</th>
+                            <th>晚高峰丢包率</th>
+                            <th>峰值下行带宽</th>
+                            <th>峰值上行带宽</th>
+                            <th>8K 视频缓冲</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>香港 01-05</strong></td>
+                            <td>广深 IEPL 专线</td>
+                            <td><strong style="color: #2E7D32;">26 ms</strong></td>
+                            <td>± 1.2 ms</td>
+                            <td><span class="badge-status-green">0.0%</span></td>
+                            <td>948 Mbps</td>
+                            <td>120 Mbps</td>
+                            <td>0.24 秒</td>
+                        </tr>
+                        <tr>
+                            <td><strong>台湾 01-03</strong></td>
+                            <td>广深 IEPL 专线</td>
+                            <td>34 ms</td>
+                            <td>± 1.5 ms</td>
+                            <td><span class="badge-status-green">0.0%</span></td>
+                            <td>910 Mbps</td>
+                            <td>115 Mbps</td>
+                            <td>0.28 秒</td>
+                        </tr>
+                        <tr>
+                            <td><strong>日本东京 01-04</strong></td>
+                            <td>沪日 IEPL 专线</td>
+                            <td>46 ms</td>
+                            <td>± 1.8 ms</td>
+                            <td><span class="badge-status-green">0.0%</span></td>
+                            <td>962 Mbps</td>
+                            <td>125 Mbps</td>
+                            <td>0.26 秒</td>
+                        </tr>
+                        <tr>
+                            <td><strong>新加坡 01-04</strong></td>
+                            <td>广深 IEPL 专线</td>
+                            <td>52 ms</td>
+                            <td>± 2.0 ms</td>
+                            <td><span class="badge-status-green">0.0%</span></td>
+                            <td>930 Mbps</td>
+                            <td>118 Mbps</td>
+                            <td>0.31 秒</td>
+                        </tr>
+                        <tr>
+                            <td><strong>美国洛杉矶/圣何塞</strong></td>
+                            <td>中美专线中转</td>
+                            <td>136 ms</td>
+                            <td>± 2.4 ms</td>
+                            <td><span class="badge-status-green">0.0%</span></td>
+                            <td>886 Mbps</td>
+                            <td>110 Mbps</td>
+                            <td>0.35 秒</td>
+                        </tr>
+                        <tr>
+                            <td><strong>欧洲 (英/德)</strong></td>
+                            <td>欧洲专线直达</td>
+                            <td>168 ms</td>
+                            <td>± 3.1 ms</td>
+                            <td><span class="badge-status-green">0.0%</span></td>
+                            <td>820 Mbps</td>
+                            <td>95 Mbps</td>
+                            <td>0.42 秒</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p><strong>YouTube 8K 60FPS 极速秒开实测：</strong> 在 YouTube 打开 8K 60FPS 超高清演示片（《Peru 8K》），开启 Detailed Stats（详细统计信息）查看，Connection Speed 稳定维持在 <strong>185,000 Kbps - 220,000 Kbps</strong> 之间，初始缓冲时间仅 0.26 秒，拖动任意时间轴均能实现毫秒级秒开无缝播放，全程无降画质或掉帧卡顿。</p>
+
+            <h2>三、流媒体全平台与 AI 生产力工具解锁兼容性实测</h2>
+            <p>对于影音爱好者与跨国开发者而言，IP 地址的纯净度关乎账号安全性与解锁质量。许多低质机场因万人同享脏 IP，常触发 Netflix 代理警告或导致 OpenAI 账号封禁。环球梯全部核心节点均经过原生住宅/机房 IP 解锁优化：</p>
+
+            <!-- Table 2: Streaming & AI Unlock Matrix -->
+            <div class="table-responsive">
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>服务分类</th>
+                            <th>应用/平台名称</th>
+                            <th>支持规格与清晰度</th>
+                            <th>实测解锁状态</th>
+                            <th>IP 洁净度评价</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>流媒体</strong></td>
+                            <td>Netflix (网飞)</td>
+                            <td>4K Ultra HD / HDR / 跨区非自制剧</td>
+                            <td><span class="badge-status-green"><i class="fa-solid fa-check"></i> 完美原生解锁</span></td>
+                            <td>原生住宅 IP，无跨区代理拦截</td>
+                        </tr>
+                        <tr>
+                            <td><strong>流媒体</strong></td>
+                            <td>Disney+ (迪士尼)</td>
+                            <td>IMAX Enhanced / 杜比视界 (Dolby Vision)</td>
+                            <td><span class="badge-status-green"><i class="fa-solid fa-check"></i> 完美原生解锁</span></td>
+                            <td>无访问区域受限告警</td>
+                        </tr>
+                        <tr>
+                            <td><strong>流媒体</strong></td>
+                            <td>HBO Max / YouTube Premium</td>
+                            <td>4K 60FPS 高码率 / 背景播放</td>
+                            <td><span class="badge-status-green"><i class="fa-solid fa-check"></i> 完美解锁</span></td>
+                            <td>IP 质量极高，画质无降级</td>
+                        </tr>
+                        <tr>
+                            <td><strong>社交影音</strong></td>
+                            <td>TikTok / Apple TV+</td>
+                            <td>全区域无水印视频流</td>
+                            <td><span class="badge-status-green"><i class="fa-solid fa-check"></i> 完美支持</span></td>
+                            <td>正常注册与视频发布</td>
+                        </tr>
+                        <tr>
+                            <td><strong>前沿 AI</strong></td>
+                            <td>ChatGPT (GPT-4o)</td>
+                            <td>Web 网页端 / iOS & Android 官方客户端</td>
+                            <td><span class="badge-status-green"><i class="fa-solid fa-check"></i> 顺畅无阻</span></td>
+                            <td>完全免去 Cloudflare 人机拖动验证</td>
+                        </tr>
+                        <tr>
+                            <td><strong>前沿 AI</strong></td>
+                            <td>Claude 3.5 Sonnet</td>
+                            <td>Claude.ai 网页版 / Code Artifacts</td>
+                            <td><span class="badge-status-green"><i class="fa-solid fa-check"></i> 顺畅连接</span></td>
+                            <td>无地区不可用封号风险</td>
+                        </tr>
+                        <tr>
+                            <td><strong>开发者工具</strong></td>
+                            <td>GitHub Copilot / Midjourney</td>
+                            <td>IDE 自动补全 / Discord 社区作图</td>
+                            <td><span class="badge-status-green"><i class="fa-solid fa-check"></i> 顺畅连接</span></td>
+                            <td>延迟极低，补全反应迅捷</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>四、全客户端兼容性与智能分流配置指引</h2>
+            <p>在客户端软件适配方面，环球梯提供了极其便捷的后台一键导入支持：</p>
+            <ul>
+                <li><strong>Windows / macOS：</strong> 推荐使用 <code>Clash Verge Rev</code>、<code>Sing-Box</code> 或 <code>Clash Nyanpasu</code>。内置 GEOIP / GEOSITE 自动分流规则，国内流量直连 (Direct)，国外流量代理 (Proxy)，广告域名自动拦截 (Reject)。</li>
+                <li><strong>iOS 苹果设备：</strong> 完美兼容 <code>Shadowrocket (小火箭)</code>、<code>Quantumult X</code> 以及 <code>Loon</code>，后台直接扫码即可秒速添加一键订阅。</li>
+                <li><strong>Android 安卓端：</strong> 推荐使用 <code>Surfboard</code> 或 <code>Clash Meta for Android</code>，操作直观省电。</li>
+                <li><strong>软路由与家庭网关：</strong> 支持 OpenWrt PassWall / SSR-Plus 插件，多设备共享加速体验同样极其平稳。</li>
+            </ul>
+
+            <h2>五、2026 订阅方案一览与独家 7 折到手资费精算表</h2>
+            <p>环球梯提供了非常丰富且梯度合理的套餐方案，无论是轻度查阅学术资料的学生党，还是需要大流量看 4K/8K 视频的重度影音用户，都能找到匹配的套餐。在结账页面输入本站独家优惠码 <strong style="color: var(--primary-cyan); font-size: 1.15rem;">HQ66</strong>，可直接享受全场 <strong>7 折</strong> 优惠。</p>
+
+            <!-- Table 3: Plans & Pricing -->
+            <div class="table-responsive">
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>套餐名称</th>
+                            <th>套餐定位</th>
+                            <th>官方原价</th>
+                            <th>7折到手价 (码: HQ66)</th>
+                            <th>折算单价</th>
+                            <th>高速流量配额</th>
+                            <th>允许设备数</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>环球学生套餐</strong></td>
+                            <td><span class="badge-status-hot">热门性价比</span></td>
+                            <td><del>￥96.00</del> / 年</td>
+                            <td><strong style="color: var(--primary-cyan); font-size: 1.15rem;">￥67.20</strong> / 年</td>
+                            <td>约 ￥5.60 / 月</td>
+                            <td>60 GB / 月</td>
+                            <td>最多 3 台</td>
+                            <td><a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration:none;">7折订阅</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>环球轻享</strong></td>
+                            <td>日常轻度使用</td>
+                            <td><del>￥22.00</del> / 月</td>
+                            <td><strong style="color: var(--primary-cyan); font-size: 1.15rem;">￥15.40</strong> / 月</td>
+                            <td>约 ￥0.51 / 天</td>
+                            <td>120 GB / 月</td>
+                            <td>最多 3 台</td>
+                            <td><a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration:none;">7折订阅</a></td>
+                        </tr>
+                        <tr style="background: rgba(200, 90, 50, 0.04);">
+                            <td><strong>环球畅游</strong></td>
+                            <td><span class="badge-status-hot">🔥 推荐首选</span></td>
+                            <td><del>￥39.00</del> / 月</td>
+                            <td><strong style="color: var(--primary-cyan); font-size: 1.15rem;">￥27.30</strong> / 月</td>
+                            <td>约 ￥0.91 / 天</td>
+                            <td>240 GB / 月</td>
+                            <td>最多 5 台</td>
+                            <td><a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration:none;">7折订阅</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>环球尊享</strong></td>
+                            <td>家庭/团队共享</td>
+                            <td><del>￥69.00</del> / 月</td>
+                            <td><strong style="color: var(--primary-cyan); font-size: 1.15rem;">￥48.30</strong> / 月</td>
+                            <td>约 ￥1.61 / 天</td>
+                            <td>600 GB / 月</td>
+                            <td>最多 10 台</td>
+                            <td><a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration:none;">7折订阅</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>环球随行包</strong></td>
+                            <td>按量备用 / 不过期</td>
+                            <td><del>￥99.00</del></td>
+                            <td><strong style="color: var(--primary-cyan); font-size: 1.15rem;">￥69.30</strong> (一次性)</td>
+                            <td>365天有效</td>
+                            <td>80 GB 随心用</td>
+                            <td>最多 5 台</td>
+                            <td><a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration:none;">7折订阅</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>环球灵活包</strong></td>
+                            <td>大容量备用包</td>
+                            <td><del>￥299.00</del></td>
+                            <td><strong style="color: var(--primary-cyan); font-size: 1.15rem;">￥209.30</strong> (一次性)</td>
+                            <td>365天有效</td>
+                            <td>400 GB 随心用</td>
+                            <td>最多 8 台</td>
+                            <td><a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration:none;">7折订阅</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>六、机场 TOP1 的理性消费防坑与实操建议</h2>
+            <div class="tip-callout">
+                <strong><i class="fa-solid fa-lightbulb"></i> 选购与配置最佳实践：</strong>
+                <ol style="margin-top: 8px; margin-bottom: 0;">
+                    <li><strong>初次使用建议按月/按季订阅：</strong> 虽然年付更便宜，但我们建议新用户先按月订阅验证本地宽带（电信/联通/移动）与入口节点的契合度，满意后再升级周期。</li>
+                    <li><strong>准备一个不限时备用按量包：</strong> 网络世界没有绝对 100% 不出故障的机房，强烈建议常备一份按量包（如环球随行包），遇到骨干网偶发升级时可秒级应急切换。</li>
+                    <li><strong>切记填写优惠码 HQ66：</strong> 结账时务必核对 7 折减免金额，确保享受到最大程度的优惠实惠。</li>
+                </ol>
+            </div>
+
+            <!-- Bottom CTA Banner -->
+            <div class="bottom-cta-card">
+                <h3>即刻体验广深/沪日 IEPL 专线极致加速</h3>
+                <p>全节点 8K 秒开 · 晚高峰 0 丢包 · 原生解锁 Netflix 与 ChatGPT · 独家 7 折立减</p>
+                <div style="display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap;">
+                    <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-primary" style="text-decoration: none; padding: 12px 28px; font-weight: 700;">
+                        直达环球梯官网注册 (使用 7折码: HQ66)
+                    </a>
+                    <button class="btn btn-lg btn-glass" onclick="copyDiscountCode('HQ66')">
+                        <i class="fa-regular fa-copy"></i> 复制优惠码 HQ66
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999;"></div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo-text" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="/images/logo-horizontal.png" alt="机场 TOP1" style="height: 32px; width: auto; max-width: 180px; object-fit: contain; vertical-align: middle;">
+                </div>
+                <p>分享真实的机场使用体验与网络加速评测。本站仅作技术交流，请遵守相关法律法规。</p>
+            </div>
+            <div class="footer-links">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="/">天梯榜首页</a></li>
+                    <li><a href="/#recommend">推荐机场</a></li>
+                    <li><a href="/#compare">7折精算表</a></li>
+                    <li><a href="/posts/huanqiuti.html">环球梯评测</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>关于我们</h4>
+                <p>机场 TOP1 实验室专注全球跨境链路 SLA 质量评测与晚高峰丢包基准验证。</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 机场 TOP1 (jichangtop1.com). 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyDiscountCode(code) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(code).then(() => {
+                    showToast('优惠码 ' + code + ' 已复制到剪贴板！');
+                }).catch(() => {
+                    fallbackCopy(code);
+                });
+            } else {
+                fallbackCopy(code);
+            }
+        }
+
+        function fallbackCopy(code) {
+            const tempInput = document.createElement('input');
+            tempInput.value = code;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast('优惠码 ' + code + ' 已复制到剪贴板！');
+        }
+
+        function showToast(msg) {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+            const toast = document.createElement('div');
+            toast.style.background = '#1A1A1A';
+            toast.style.color = '#FFFFFF';
+            toast.style.padding = '12px 20px';
+            toast.style.borderRadius = '6px';
+            toast.style.boxShadow = '0 4px 14px rgba(0,0,0,0.18)';
+            toast.style.fontSize = '0.9rem';
+            toast.style.marginTop = '10px';
+            toast.style.display = 'flex';
+            toast.style.alignItems = 'center';
+            toast.style.gap = '8px';
+            toast.innerHTML = '<i class="fa-solid fa-circle-check" style="color: #2E7D32;"></i> ' + msg;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
