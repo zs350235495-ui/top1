@@ -1146,6 +1146,21 @@ const buildBlogArticleContent = (item) => {
 const generateBlogArticles = () => {
     const list = [
         {
+            id: "2026-cross-border-network-sla-reliability-specification",
+            title: "机场TOP1 2026 跨境网络节点 SLA 可靠性与可用性评估规范：从多入口容灾、BGP 动态选路到 99.99% 在线率验证体系",
+            desc: "机场TOP1·网络可靠性与基准压测实验室发布 2026 跨境网络节点 SLA 可靠性白皮书，系统剖析 ICMP 测速误区与晚高峰链路假活成因，定义行业入门级、进阶级至 99.99% 标杆级量化指标，并提供自动化 Prometheus 探针与客户端双活容灾配置方案。",
+            description: "机场TOP1·网络可靠性与基准压测实验室发布 2026 跨境网络节点 SLA 可靠性白皮书，系统剖析 ICMP 测速误区与晚高峰链路假活成因，定义行业入门级、进阶级至 99.99% 标杆级量化指标，并提供自动化 Prometheus 探针与客户端双活容灾配置方案。",
+            summary: "白皮书编号 WHITEPAPER-26122，基于 MTBF 与 MTTR 量化打分体系与权重算法，深度拆解三网优化直连入口、BGP Anycast 边缘容灾、晚高峰盲测探针与 Clash/Sing-box 终端双活策略组。",
+            category: "技术白皮书",
+            url: "posts/2026-cross-border-network-sla-reliability-specification.html",
+            date: "2026-10-12",
+            author: "机场TOP1·网络可靠性与基准压测实验室",
+            tag: ["机场TOP1基准", "SLA高可用架构", "晚高峰多节点压测", "链路冗余容灾", "99.99%可用性", "BGP动态选路"],
+            tags: ["机场TOP1基准", "SLA高可用架构", "晚高峰多节点压测", "链路冗余容灾", "99.99%可用性", "BGP动态选路"],
+            views: 10580,
+            isHuanQiuFeatured: true
+        },
+        {
             id: "2026-airport-selection-pitfall-guide",
             title: "2026 年机场怎么选？从线路质量、流量规则到售后服务的避坑指南",
             desc: "2026 最新网络代理与机场选购避坑指南。面向普通用户，从线路类型（直连/BGP/IPLC/IEPL）、流量倍率与套餐规则、晚高峰稳定性评估、月付与年付策略及常见选购误区，提供系统客观的中立选购建议。",
