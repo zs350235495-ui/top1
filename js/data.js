@@ -14,9 +14,9 @@ const AIRPORTS_DATA = [
         rating: 4.95,
         speedScore: 99,
         stabilityScore: 100,
-        priceMin: "15.40",
-        priceOriginal: "22.00",
-        priceUnit: "月 (轻享包 120G 7折价)",
+        priceMin: "14.70",
+        priceOriginal: "21.00",
+        priceUnit: "月 (轻享包 140G 7折价)",
         discountCode: "HQ66",
         discountPercent: "7折独家优惠",
         features: ["streaming", "chatgpt", "iepl", "paybydata"],
@@ -27,12 +27,12 @@ const AIRPORTS_DATA = [
         streamingUnlock: "解锁 Netflix, Disney+, ChatGPT, Claude, TikTok",
         desc: "本站个人一直在用的主力机场之一。全节点 IEPL 专线，晚高峰看 4K/8K 视频表现很稳定。套餐搭配比较丰富：学生党选年付，日常用选轻享或畅游很划算。结账使用优惠码 HQ66 可以打 7 折。",
         plans: [
-            { name: "环球学生套餐", badge: "热门", priceDiscount: "￥67.20", priceOriginal: "￥96.00", cycle: "每年计费 (7折后)", traffic: "每月 60GB 高速流量", devices: "最多 3 台设备", feature: "适合个人日常轻度查资料，用码 HQ66 7折后仅 67.2 元/年" },
-            { name: "环球轻享", badge: "轻享", priceDiscount: "￥15.40", priceOriginal: "￥22.00", cycle: "每月计费 (7折后)", traffic: "每月 120GB 高速流量", devices: "最多 3 台设备", feature: "适合个人日常刷视频看网页，用码 HQ66 7折后仅 15.4 元/月" },
-            { name: "环球畅游", badge: "🔥 热门推荐", priceDiscount: "￥27.30", priceOriginal: "￥39.00", cycle: "每月计费 (7折后)", traffic: "每月 240GB 高速流量", devices: "最多 5 台设备", feature: "适合看高清视频与多设备办公，晚高峰优化好，用码 HQ66 7折后仅 27.3 元/月" },
-            { name: "环球尊享", badge: "尊享", priceDiscount: "￥48.30", priceOriginal: "￥69.00", cycle: "每月计费 (7折后)", traffic: "每月 600GB 高速流量", devices: "最多 10 台设备", feature: "大流量需求或多人/家庭共享，用码 HQ66 7折后仅 48.3 元/月" },
-            { name: "环球随行包", badge: "按量包", priceDiscount: "￥69.30", priceOriginal: "￥99.00", cycle: "365天有效 (7折后)", traffic: "80GB 不限时流量", devices: "最多 5 台设备", feature: "流量不过期，买一次用一年，用码 HQ66 7折后仅 69.3 元" },
-            { name: "环球灵活包", badge: "按量包", priceDiscount: "￥209.30", priceOriginal: "￥299.00", cycle: "365天有效 (7折后)", traffic: "400GB 不限时流量", devices: "最多 8 台设备", feature: "流量不过期，大容量备用，用码 HQ66 7折后仅 209.3 元" }
+            { name: "环球学生套餐", badge: "热门", priceDiscount: "￥67.20", priceOriginal: "￥96.00", cycle: "每年计费 (7折后)", traffic: "每月 60GB 高速流量", devices: "最多 3 台设备", feature: "适合个人轻度使用，全节点不限速，重置包仅 ¥10/次，用码 HQ66 7折后仅 67.2 元/年" },
+            { name: "环球轻享", badge: "轻享", priceDiscount: "￥14.70", priceOriginal: "￥21.00", cycle: "每月计费 (7折后)", traffic: "每月 140GB 高速流量", devices: "最多 3 台设备", feature: "适合个人日常刷视频看网页，重置包 ¥21/次，用码 HQ66 7折后仅 14.7 元/月" },
+            { name: "环球畅游", badge: "🔥 热门推荐", priceDiscount: "￥27.30", priceOriginal: "￥39.00", cycle: "每月计费 (7折后)", traffic: "每月 280GB 高速流量", devices: "最多 5 台设备", feature: "适合日常高清视频与多设备办公，重置包 ¥36/次，晚高峰优化好，用码 HQ66 7折后仅 27.3 元/月" },
+            { name: "环球尊享", badge: "尊享", priceDiscount: "￥48.30", priceOriginal: "￥69.00", cycle: "每月计费 (7折后)", traffic: "每月 600GB 高速流量", devices: "最多 10 台设备", feature: "大流量需求或多人/家庭共享，重置包 ¥63/次，用码 HQ66 7折后仅 48.3 元/月" },
+            { name: "环球随行包", badge: "按量包", priceDiscount: "￥69.30", priceOriginal: "￥99.00", cycle: "365天有效 (7折后)", traffic: "80GB 不限时流量", devices: "最多 5 台设备", feature: "流量不过期，自购买之日起365天有效，用码 HQ66 7折后仅 69.3 元" },
+            { name: "环球灵活包", badge: "按量包", priceDiscount: "￥209.30", priceOriginal: "￥299.00", cycle: "365天有效 (7折后)", traffic: "400GB 不限时流量", devices: "最多 8 台设备", feature: "大容量备用，自购买之日起365天有效，用码 HQ66 7折后仅 209.3 元" }
         ],
         affUrl: "https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0",
         recommendReason: "全专线稳定性好，套餐梯度实用，晚高峰看8K不卡，用码 HQ66 打 7 折。"
@@ -455,14 +455,14 @@ const generateArticles = () => {
             date: "2026-10-03",
             views: 4120,
             tags: ["2026最稳定的机场", "IEPL专线", "环球梯", "7折优惠"],
-            summary: "寻找2026最稳定的机场？本篇测试基于千兆电信宽带，在黄金晚高峰实测环球梯的IEPL专线，包含延迟抖动与防丢包对比，结账用码 HQ66 享 7 折到手价 15.4 元/月。",
+            summary: "寻找2026最稳定的机场？本篇测试基于千兆电信宽带，在黄金晚高峰实测环球梯的IEPL专线，包含延迟抖动与防丢包对比，结账用码 HQ66 享 7 折到手价 14.7 元/月。",
             content: `
                 <h3>一、 什么是 2026 最稳定的机场？</h3>
                 <p>挑选 2026 最稳定的机场时，线路架构是决定体验的核心因素。真正的专线（如广深/沪日 IEPL）不过公网防火墙，不经过大黑洞污染，因此即使在黄金晚高峰（20:00 - 23:00）也能维持极低延迟与零丢包。</p>
                 <h3>二、 环球梯晚高峰跑分实测</h3>
                 <p>作为 2026 最稳定的机场代表之一，环球梯全节点采用 IEPL 专线。实测香港节点 Ping 值仅 28ms，下行拉满 920 Mbps，看 YouTube 8K 视频毫无缓冲卡顿。</p>
                 <h3>三、 优惠码与选购建议</h3>
-                <p>结账时在优惠码框填写 <strong style="color:#ffe600;">HQ66</strong> 即可享受 7 折最终优惠价。轻享包折后仅 15.4 元/月，是兼顾稳定与性价比的优秀选择。</p>
+                <p>结账时在优惠码框填写 <strong style="color:#ffe600;">HQ66</strong> 即可享受 7 折最终优惠价。轻享包折后仅 14.7 元/月，是兼顾稳定与性价比的优秀选择。</p>
             `
         },
         {
@@ -604,15 +604,15 @@ const generateArticles = () => {
         {
             id: "rev-seo-11",
             airportId: "ap-huanqiuti",
-            title: "2026 高性价比机场推荐：月付 15 元起享千兆 IEPL 专线",
+            title: "2026 高性价比机场推荐：月付 14.7 元起享千兆 IEPL 专线",
             author: "机场 TOP1",
             date: "2026-09-25",
             views: 4520,
             tags: ["性价比机场", "机场推荐", "环球梯", "7折优惠"],
-            summary: "寻找每月十几元的高性价比机场？环球梯轻享包用码 HQ66 打 7 折后只需 15.4 元/月，享受全专线 8K 秒开体验。",
+            summary: "寻找每月十几元的高性价比机场？环球梯轻享包用码 HQ66 打 7 折后只需 14.7 元/月，享受全专线 8K 秒开体验。",
             content: `
                 <h3>一、 什么是真正的高性价比机场？</h3>
-                <p>高性价比机场并不是一味追求低价，而是“价格亲民、线路是真专线、晚高峰不掉线”。环球梯打 7 折后 15.4 元/月，是高性价比机场的典型案例。</p>
+                <p>高性价比机场并不是一味追求低价，而是“价格亲民、线路是真专线、晚高峰不掉线”。环球梯打 7 折后 14.7 元/月，是高性价比机场的典型案例。</p>
             `
         },
         {
@@ -793,7 +793,7 @@ const generateArticles = () => {
             date: "2026-09-12",
             views: 3410,
             tags: ["机场推荐", "商务办公", "环球梯", "7折优惠"],
-            summary: "适合跨国邮件、GitHub 与外贸办公的机场推荐。环球梯稳定性高，用码 HQ66 7折到手 15.4 元/月。",
+            summary: "适合跨国邮件、GitHub 与外贸办公的机场推荐。环球梯稳定性高，用码 HQ66 7折到手 14.7 元/月。",
             content: `
                 <h3>一、 办公场景看重稳定性</h3>
                 <p>环球梯 IEPL 专线保证工作连接不断线，收发邮件与代码提交顺畅。</p>
@@ -909,7 +909,7 @@ const generateArticles = () => {
             date: "2026-09-04",
             views: 4150,
             tags: ["机场代理", "协议解析", "环球梯", "7折优惠"],
-            summary: "科普机场代理常见协议的优缺点。环球梯全面支持主流协议，用码 HQ66 享 7 折到手 15.4 元/月。",
+            summary: "科普机场代理常见协议的优缺点。环球梯全面支持主流协议，用码 HQ66 享 7 折到手 14.7 元/月。",
             content: `
                 <h3>一、 各大机场代理协议对比</h3>
                 <p>Shadowsocks 延迟低，Trojan 伪装好，Hysteria 2 适合弱网提速。</p>
@@ -1138,7 +1138,7 @@ const buildBlogArticleContent = (item) => {
 
             <h3>五、 环球梯官网首页通道、独家优惠码与选购建议</h3>
             <p>综合实测跑分与综合对比，<strong>环球梯 (HuanQiuTi)</strong> 凭借扎实的专线品质与可靠的服务稳定性，在本站推荐列表中名列前茅。</p>
-            <p>博友们在订阅结账时，可输入 7 折独家优惠码 <strong style="color:var(--primary-cyan); font-size: 1.05rem;">HQ66</strong>（折后轻享包约 15.4 元/月）。欢迎访问 <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页注册通道</a> 了解详情。同时也可参考本站的 <a href="#" onclick="switchTab('compare')" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">2026高性价比机场精算表</a> 进行多维比较。建议大家坚持理性消费，优先按月续费或准备一份不限时按量包应急。</p>
+            <p>博友们在订阅结账时，可输入 7 折独家优惠码 <strong style="color:var(--primary-cyan); font-size: 1.05rem;">HQ66</strong>（折后轻享包约 14.7 元/月）。欢迎访问 <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页注册通道</a> 了解详情。同时也可参考本站的 <a href="#" onclick="switchTab('compare')" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">2026高性价比机场精算表</a> 进行多维比较。建议大家坚持理性消费，优先按月续费或准备一份不限时按量包应急。</p>
         </div>
     `;
 };
