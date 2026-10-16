@@ -22,26 +22,6 @@ let urls = [
     { loc: `${baseUrl}/#blackholes`, priority: '0.7', changefreq: 'weekly' }
 ];
 
-// Add airport entries
-AIRPORTS_DATA.forEach(ap => {
-    urls.push({
-        loc: `${baseUrl}/#airport-${ap.id}`,
-        priority: '0.8',
-        changefreq: 'weekly'
-    });
-});
-
-// Add 35 review articles
-if (typeof REVIEWS_DATA !== 'undefined' && Array.isArray(REVIEWS_DATA)) {
-    REVIEWS_DATA.forEach(rev => {
-        urls.push({
-            loc: `${baseUrl}/#article-${rev.id}`,
-            priority: '0.7',
-            changefreq: 'monthly'
-        });
-    });
-}
-
 // Add standalone HTML posts from posts/ directory
 if (fs.existsSync('./posts')) {
     const postFiles = fs.readdirSync('./posts').filter(f => f.endsWith('.html'));

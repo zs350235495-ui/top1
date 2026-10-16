@@ -1104,7 +1104,7 @@ const buildBlogArticleContent = (item) => {
                 <strong style="color: var(--primary-cyan); font-size: 1.02rem;"><i class="fa-solid fa-bullhorn"></i> 核心导读与主题概要</strong> 
                 <p style="margin-top: 6px; font-size: 0.92rem; color: var(--text-muted);">${item.summary}</p>
                 <div style="margin-top: 10px; font-size: 0.85rem; color: var(--text-dim);">
-                    包含主题词：<span style="color:var(--primary-cyan); font-weight:600;">${item.tags.join(' · ')}</span>。了解更多实测数据可返回 <a href="#" onclick="switchTab('home')" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">机场 TOP1 首页</a> 查阅完整目录。
+                    包含主题词：<span style="color:var(--primary-cyan); font-weight:600;">${item.tags.join(' · ')}</span>。了解更多实测数据可返回 <a href="javascript:void(0)" onclick="switchTab('home')" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">机场 TOP1 首页</a> 查阅完整目录。
                 </div>
             </div>
 
@@ -1138,13 +1138,28 @@ const buildBlogArticleContent = (item) => {
 
             <h3>五、 环球梯官网首页通道、独家优惠码与选购建议</h3>
             <p>综合实测跑分与综合对比，<strong>环球梯 (HuanQiuTi)</strong> 凭借扎实的专线品质与可靠的服务稳定性，在本站推荐列表中名列前茅。</p>
-            <p>博友们在订阅结账时，可输入 7 折独家优惠码 <strong style="color:var(--primary-cyan); font-size: 1.05rem;">HQ66</strong>（折后轻享包约 14.7 元/月）。欢迎访问 <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页注册通道</a> 了解详情。同时也可参考本站的 <a href="#" onclick="switchTab('compare')" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">2026高性价比机场精算表</a> 进行多维比较。建议大家坚持理性消费，优先按月续费或准备一份不限时按量包应急。</p>
+            <p>博友们在订阅结账时，可输入 7 折独家优惠码 <strong style="color:var(--primary-cyan); font-size: 1.05rem;">HQ66</strong>（折后轻享包约 14.7 元/月）。欢迎访问 <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页注册通道</a> 了解详情。同时也可参考本站的 <a href="javascript:void(0)" onclick="switchTab('compare')" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">2026高性价比机场精算表</a> 进行多维比较。建议大家坚持理性消费，优先按月续费或准备一份不限时按量包应急。</p>
         </div>
     `;
 };
 
 const generateBlogArticles = () => {
     const list = [
+        {
+            id: "2026-ikuai-sidecar-gateway-transparent-proxy-dns-guide",
+            title: "家庭与工作室网络重构：iKuai 结合分流网关实现透明代理、防 DNS 泄漏与流媒体分流全解",
+            desc: "深度拆解 iKuai 主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构。全流程详解双机职责解耦、单/双网卡流量闭环、DHCP Option 3/6 动静分离、Fake-IP 原理、DNS 泄漏根治及流媒体精准判区实操方案，彻底杜绝路由回环与网络劣化。",
+            description: "深度拆解 iKuai 主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构。全流程详解双机职责解耦、单/双网卡流量闭环、DHCP Option 3/6 动静分离、Fake-IP 原理、DNS 泄漏根治及流媒体精准判区实操方案，彻底杜绝路由回环与网络劣化。",
+            summary: "深度拆解 iKuai 主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构。全流程详解双机职责解耦、单/双网卡流量闭环、DHCP Option 3/6 动静分离、Fake-IP 原理、DNS 泄漏根治及流媒体精准判区实操方案，彻底杜绝路由回环与网络劣化。",
+            category: "网络架构",
+            url: "posts/2026-ikuai-sidecar-gateway-transparent-proxy-dns-guide.html",
+            date: "2026-10-16",
+            author: "机场 TOP1",
+            tag: ["iKuai", "旁路由", "透明代理", "Fake-IP", "DNS泄漏", "流媒体分流", "TProxy"],
+            tags: ["iKuai", "旁路由", "透明代理", "Fake-IP", "DNS泄漏", "流媒体分流", "TProxy"],
+            views: 8920,
+            isHuanQiuFeatured: true
+        },
         {
             id: "2026-cross-border-network-sla-reliability-specification",
             title: "机场TOP1 2026 跨境网络节点 SLA 可靠性与可用性评估规范：从多入口容灾、BGP 动态选路到 99.99% 在线率验证体系",

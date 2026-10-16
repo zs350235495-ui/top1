@@ -225,7 +225,7 @@ function createBlogCardHTML(item) {
     const targetUrl = item.url ? item.url : (isHuanQiu ? 'posts/huanqiuti.html' : 'posts/2026-airport-recommendation-guide.html');
 
     return `
-        <a href="${targetUrl}" onclick="window.location.href='${targetUrl}'" class="review-card ${isHuanQiu ? 'card-featured-accent' : ''}" style="display: block; text-decoration: none; color: inherit; position: relative; cursor: pointer;">
+        <a href="${targetUrl}" class="review-card ${isHuanQiu ? 'card-featured-accent' : ''}" style="display: block; text-decoration: none; color: inherit; position: relative; cursor: pointer;">
             <div class="rev-header">
                 <div>
                     <h3 class="rev-title" style="font-size: 1.15rem; margin-bottom: 6px;">
@@ -408,7 +408,7 @@ function createAirportCardHTML(ap) {
 function createReviewCardHTML(rev, isFull = false) {
     const targetUrl = rev.airportId === 'ap-huanqiuti' ? 'posts/huanqiuti.html' : (rev.url || 'posts/huanqiuti.html');
     return `
-        <a href="${targetUrl}" onclick="window.location.href='${targetUrl}'" class="review-card" style="display: block; text-decoration: none; color: inherit; cursor: pointer;">
+        <a href="${targetUrl}" class="review-card" style="display: block; text-decoration: none; color: inherit; cursor: pointer;">
             <div class="review-meta">
                 <span><i class="fa-solid fa-user"></i> ${rev.author}</span>
                 <span><i class="fa-solid fa-calendar"></i> ${rev.date}</span>
@@ -586,16 +586,16 @@ function handleSearch(query) {
    Backwards Compatibility & Fallback Navigators for Cached Browsers
    ========================================================================== */
 window.openReviewModal = function(reviewId) {
-    window.location.href = 'posts/huanqiuti.html';
+    window.location.href = '/posts/huanqiuti.html';
 };
 window.openAirportDetail = function(airportId) {
-    window.location.href = 'posts/huanqiuti.html';
+    window.location.href = '/posts/huanqiuti.html';
 };
 window.openPlansModal = function(airportId) {
-    window.location.href = 'posts/huanqiuti.html';
+    window.location.href = '/posts/huanqiuti.html';
 };
 window.openBlogModal = function(blogId) {
-    window.location.href = 'posts/huanqiuti.html';
+    window.location.href = '/posts/huanqiuti.html';
 };
 window.openProtoDetailModal = function(protoId) {};
 window.closeModal = function() {};
