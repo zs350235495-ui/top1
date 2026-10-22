@@ -1,16 +1,18 @@
 const fs = require('fs');
 const path = require('path');
 
-// Execute data.js in VM/eval context to get AIRPORTS_DATA and REVIEWS_DATA
+// Execute data.js in VM/eval context to get AIRPORTS_DATA and BLOG_ARTICLES_DATA
 const dataJsContent = fs.readFileSync('./js/data.js', 'utf8')
     .replace('const AIRPORTS_DATA =', 'global.AIRPORTS_DATA =')
     .replace('const BLOG_ARTICLES_DATA =', 'global.BLOG_ARTICLES_DATA =')
     .replace('const REVIEWS_DATA =', 'global.REVIEWS_DATA =');
 eval(dataJsContent);
 
-const baseUrl = 'https://jichangtop1.com'; // Standard base URL for sitemap
+const baseUrl = 'https://jichangtop1.com';
 const now = new Date().toISOString().split('T')[0];
+const rfc822Date = new Date().toUTCString();
 
+// 1. 生成 Sitemap URLs
 let urls = [
     { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'daily' },
     { loc: `${baseUrl}/compare.html`, priority: '0.9', changefreq: 'daily' },
@@ -50,16 +52,61 @@ urls.forEach(item => {
 sitemapXml += `</urlset>
 `;
 
-// Write sitemap.xml
 fs.writeFileSync('./sitemap.xml', sitemapXml, 'utf8');
-console.log(`Successfully generated sitemap.xml with ${urls.length} URLs!`);
+console.log(`[成功] 生成 sitemap.xml，共收录 ${urls.length} 个独立 URL！`);
 
-// Generate robots.txt content
+// 2. 生成专业级 robots.txt
 let robotsTxt = `User-agent: *
 Allow: /
+Disallow: /scripts/
+Disallow: /scratch/
+Disallow: /content/
+Disallow: /.github/
 
 Sitemap: ${baseUrl}/sitemap.xml
 `;
 
 fs.writeFileSync('./robots.txt', robotsTxt, 'utf8');
-console.log('Successfully generated robots.txt!');
+console.log('[成功] 生成专业级 robots.txt，阻断内部目录抓取预算浪费！');
+
+// 3. 生成符合 RSS 2.0 规范的 feed.xml
+let articles = [];
+if (typeof BLOG_ARTICLES_DATA !== 'undefined' && Array.isArray(BLOG_ARTICLES_DATA)) {
+    articles = BLOG_ARTICLES_DATA;
+} else if (typeof generateBlogArticles === 'function') {
+    articles = generateBlogArticles();
+}
+
+let feedXml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>机场 TOP1 - 2026 稳定节点评测推荐与跑路避坑预警</title>
+    <link>${baseUrl}/</link>
+    <description>专业的跨境网络节点性能压测、独家7折优惠码与客户端规则分流知识库</description>
+    <language>zh-CN</language>
+    <lastBuildDate>${rfc822Date}</lastBuildDate>
+    <atom:link href="${baseUrl}/feed.xml" rel="self" type="application/rss+xml"/>
+`;
+
+articles.slice(0, 15).forEach(art => {
+    const rawUrl = art.url || (art.id ? `posts/${art.id}.html` : '');
+    if (!rawUrl) return;
+    const pubDate = art.date ? new Date(art.date).toUTCString() : rfc822Date;
+    const postUrl = rawUrl.startsWith('http') ? rawUrl : `${baseUrl}/${rawUrl.replace(/^\/+/, '')}`;
+    feedXml += `    <item>
+      <title><![CDATA[${art.title}]]></title>
+      <link>${postUrl}</link>
+      <guid>${postUrl}</guid>
+      <pubDate>${pubDate}</pubDate>
+      <description><![CDATA[${art.desc || art.summary || art.title}]]></description>
+      <author>${art.author || '机场 TOP1'}</author>
+    </item>
+`;
+});
+
+feedXml += `  </channel>
+</rss>
+`;
+
+fs.writeFileSync('./feed.xml', feedXml, 'utf8');
+console.log(`[成功] 生成标准 RSS 2.0 feed.xml，共输出 ${articles.length} 篇最新技术文章！`);

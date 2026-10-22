@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /scripts/
+Disallow: /scratch/
+Disallow: /content/
+Disallow: /.github/
 
 Sitemap: https://jichangtop1.com/sitemap.xml
