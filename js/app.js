@@ -144,7 +144,7 @@ function renderDirectory() {
 
     tbody.innerHTML = AIRPORTS_DATA.map(ap => {
         const inCompare = state.compareList.includes(ap.id);
-        const logoHtml = ap.logo ? `<img src="${ap.logo}" alt="${ap.name}" style="width: 28px; height: 28px; border-radius: 6px; vertical-align: middle; margin-right: 8px;">` : '';
+        const logoHtml = ap.logo ? `<img src="${ap.logo}" alt="${ap.name}" width="28" height="28" loading="lazy" decoding="async" style="width: 28px; height: 28px; border-radius: 6px; vertical-align: middle; margin-right: 8px;">` : '';
         const affUrl = ap.affUrl && ap.affUrl !== '#' ? ap.affUrl : '#';
 
         return `
@@ -323,7 +323,7 @@ function renderBlackholes() {
 
 function createAirportCardHTML(ap) {
     const inCompare = state.compareList.includes(ap.id);
-    const logoImg = ap.logo ? `<img src="${ap.logo}" alt="${ap.name} Logo" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--border-color); margin-right: 12px; vertical-align: middle;">` : '';
+    const logoImg = ap.logo ? `<img src="${ap.logo}" alt="${ap.name} Logo" width="44" height="44" loading="lazy" decoding="async" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--border-color); margin-right: 12px; vertical-align: middle;">` : '';
     const affUrl = ap.affUrl && ap.affUrl !== '#' ? ap.affUrl : '#';
 
     const couponBarHtml = ap.discountCode ? `

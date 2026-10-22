@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主流网络加速协议深度横评：Shadowsocks、Trojan、VLESS-REALITY 与 Hysteria 2 - 机场 TOP1</title>
+    <meta name="description" content="2026 最新网络传输与代理协议技术全景解析。深入对比 Shadowsocks、VMess、Trojan、VLESS-REALITY 与 基于 UDP 的 Hysteria 2 / TUIC 在晚高峰抗封锁、延迟握手开销、弱网抗丢包与客户端功耗上的技术差异。">
+    <meta name="keywords" content="Shadowsocks, VLESS REALITY, Hysteria 2, Trojan, 协议对比, 科学上网协议, TUIC, 代理协议测速">
+    <link rel="canonical" href="https://jichangtop1.com/protocols.html">
+
+    <!-- Open Graph / Telegram -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="机场 TOP1">
+    <meta property="og:title" content="主流网络加速协议深度横评：Shadowsocks、Trojan、VLESS-REALITY 与 Hysteria 2">
+    <meta property="og:description" content="深入对比主流传输与代理协议在抗封锁、首包延迟、弱网表现与资源消耗上的架构差异。">
+    <meta property="og:url" content="https://jichangtop1.com/protocols.html">
+    <meta property="og:image" content="https://jichangtop1.com/images/logo-horizontal.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="主流网络加速协议深度横评：Shadowsocks、Trojan、VLESS-REALITY 与 Hysteria 2">
+    <meta name="twitter:description" content="深入对比主流传输与代理协议在抗封锁、首包延迟、弱网表现与资源消耗上的架构差异。">
+    <meta name="twitter:image" content="https://jichangtop1.com/images/logo-horizontal.png">
+
+    <!-- PWA & Mobile Web App Meta -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0284C7">
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">机场 TOP1</span>
+            </a>
+            <nav class="nav-links">
+                <a href="/"><i class="fa-solid fa-home"></i> 首页</a>
+                <a href="/#recommend"><i class="fa-solid fa-fire"></i> 推荐榜</a>
+                <a href="/compare.html"><i class="fa-solid fa-scale-balanced"></i> 7折精算表</a>
+                <a href="/reviews.html"><i class="fa-solid fa-vial-virus"></i> 晚高峰测速</a>
+                <a href="/blackholes.html"><i class="fa-solid fa-triangle-exclamation"></i> 跑路预警</a>
+                <a href="/about.html"><i class="fa-solid fa-circle-info"></i> 评测标准</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="max-width: 1000px; margin: 36px auto; padding: 0 20px;">
+        <div style="font-size:0.9rem; color:var(--text-muted); margin-bottom:20px;">
+            <a href="/" style="color:var(--primary-cyan); text-decoration:none;"><i class="fa-solid fa-home"></i> 首页</a>
+            <i class="fa-solid fa-angle-right" style="margin: 0 8px;"></i>
+            <span>主流网络加速协议深度横评</span>
+        </div>
+
+        <section class="section-header" style="text-align:center; margin-bottom: 32px;">
+            <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px;">
+                主流网络加速协议深度技术横评
+            </h1>
+            <p style="font-size: 1.05rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; line-height: 1.7;">
+                从对称加密到伪装 TLS，再到基于 UDP 的拥塞控制改造。深入拆解 Shadowsocks、Trojan、VLESS 与 Hysteria 2 的传输机理。
+            </p>
+        </section>
+
+        <!-- 对比表格 -->
+        <div style="overflow-x:auto; background:var(--bg-card); border-radius:12px; border:1px solid var(--border-color); padding:24px; margin-bottom:30px;">
+            <table class="data-table" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background: var(--bg-hover);">
+                        <th style="padding: 12px; border: 1px solid var(--border-color);">协议类别</th>
+                        <th style="padding: 12px; border: 1px solid var(--border-color);">底层传输</th>
+                        <th style="padding: 12px; border: 1px solid var(--border-color);">握手延迟</th>
+                        <th style="padding: 12px; border: 1px solid var(--border-color);">抗封锁特征</th>
+                        <th style="padding: 12px; border: 1px solid var(--border-color);">最适配场景</th>
+                    </tr>
+                </thead>
+                <tbody style="line-height:1.7;">
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);"><strong>Shadowsocks (AEAD)</strong></td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">TCP / UDP</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">极低 (0-RTT)</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">无伪装，依赖纯内网</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);"><strong>IPLC/IEPL 纯专线</strong> 首选协议，性能损耗最小</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);"><strong>Trojan / Trojan-Go</strong></td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">TCP + TLS 1.3</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">标准 TLS (1-RTT)</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">伪装标准 HTTPS 网站</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">公网中继、自建节点与跨境免备案站点</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);"><strong>VLESS + REALITY</strong></td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">TCP + 目标证书借用</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">优选 (1-RTT)</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">借用大厂真实 TLS 证书</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">公网直连抗嗅探最强方案，无需自备域名</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);"><strong>Hysteria 2 / TUIC</strong></td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">自定义 UDP / QUIC</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">极快 (0-RTT)</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);">端口跳跃 + 伪装</td>
+                        <td style="padding: 12px; border: 1px solid var(--border-color);"><strong>恶劣弱网环境抢带宽</strong>，高丢包移动网络救星</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <article style="background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:28px;">
+            <h2 style="font-size:1.4rem; color:var(--primary-cyan); margin-bottom:14px;">
+                💡 协议选择终极法则
+            </h2>
+            <p style="color:var(--text-main); line-height:1.9;">
+                很多新手存在误区，盲目认为“越新越复杂的协议就一定越快”。实际上：<br>
+                - 如果使用的是 <strong>IEPL / IPLC 物理专线</strong>（如环球梯、大佬云），数据在入境后直接进入私有光缆传输，<strong>Shadowsocks 是性能开销最小、握手最快、发热最低的黄金协议</strong>；<br>
+                - 只有在普通的公网直连服务器上，才需要引入 VLESS-REALITY 或 Hysteria 2 来对抗 GFW 的流量整形与主动探测。
+            </p>
+        </article>
+    </main>
+
+    <footer style="text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 60px;">
+        <p>© 2026 机场 TOP1 (jichangtop1.com) - 专业的跨境网络节点与技术评测知识库</p>
+        <p style="margin-top: 6px;"><a href="/sitemap.xml" style="color: inherit; text-decoration: underline;">Sitemap</a> | <a href="/robots.txt" style="color: inherit; text-decoration: underline;">Robots.txt</a> | <a href="/about.html" style="color: inherit; text-decoration: underline;">关于我们与测试标准</a></p>
+    </footer>
+
+    <script src="/js/data.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

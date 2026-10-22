@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们与测试标准：机场 TOP1 网络基准评测实验室评测方法论 - 机场 TOP1</title>
+    <meta name="description" content="深入了解机场 TOP1·网络可靠性与基准压测实验室。公开三网多线自建物理探针拓扑、晚高峰压力测试轮询机制、丢包率与抖动计算模型、中立客观承诺与版权声明。">
+    <meta name="keywords" content="关于我们, 机场TOP1, 评测标准, 网络测试方法论, 探针架构, 中立评测, E-E-A-T">
+    <link rel="canonical" href="https://jichangtop1.com/about.html">
+
+    <!-- Open Graph / Telegram -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="机场 TOP1">
+    <meta property="og:title" content="关于我们与测试标准：机场 TOP1 网络基准评测实验室评测方法论">
+    <meta property="og:description" content="公开自建探针拓扑、晚高峰压力测试机制、丢包率与抖动计算模型、中立客观声明。">
+    <meta property="og:url" content="https://jichangtop1.com/about.html">
+    <meta property="og:image" content="https://jichangtop1.com/images/logo-horizontal.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="关于我们与测试标准：机场 TOP1 网络基准评测实验室评测方法论">
+    <meta name="twitter:description" content="公开自建探针拓扑、晚高峰压力测试机制、丢包率与抖动计算模型、中立客观声明。">
+    <meta name="twitter:image" content="https://jichangtop1.com/images/logo-horizontal.png">
+
+    <!-- Schema.org AboutPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "关于我们与评测标准 - 机场 TOP1",
+      "description": "机场 TOP1 网络可靠性与基准压测实验室评测方法论与中立声明",
+      "url": "https://jichangtop1.com/about.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "机场 TOP1·网络基准评测实验室",
+        "url": "https://jichangtop1.com/"
+      }
+    }
+    </script>
+
+    <!-- PWA & Mobile Web App Meta -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0284C7">
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+
+    <!-- Google Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">机场 TOP1</span>
+            </a>
+            <nav class="nav-links">
+                <a href="/"><i class="fa-solid fa-home"></i> 首页</a>
+                <a href="/#recommend"><i class="fa-solid fa-fire"></i> 推荐榜</a>
+                <a href="/compare.html"><i class="fa-solid fa-scale-balanced"></i> 7折精算表</a>
+                <a href="/reviews.html"><i class="fa-solid fa-vial-virus"></i> 晚高峰测速</a>
+                <a href="/blackholes.html"><i class="fa-solid fa-triangle-exclamation"></i> 跑路预警</a>
+                <a href="/about.html" style="color: var(--primary-cyan); font-weight:700;"><i class="fa-solid fa-circle-info"></i> 评测标准</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="max-width: 960px; margin: 36px auto; padding: 0 20px;">
+        <div style="font-size:0.9rem; color:var(--text-muted); margin-bottom:20px;">
+            <a href="/" style="color:var(--primary-cyan); text-decoration:none;"><i class="fa-solid fa-home"></i> 首页</a>
+            <i class="fa-solid fa-angle-right" style="margin: 0 8px;"></i>
+            <span>关于实验室与评测方法论</span>
+        </div>
+
+        <article class="post-content" style="background:var(--bg-card); padding:36px; border-radius:14px; border:1px solid var(--border-color); box-shadow:0 4px 20px rgba(0,0,0,0.04);">
+            <h1 style="font-size:2.2rem; font-weight:800; color:var(--text-main); margin-bottom:20px; line-height:1.35;">
+                关于 机场 TOP1·网络可靠性与基准压测实验室
+            </h1>
+
+            <p style="font-size:1.05rem; line-height:1.85; color:var(--text-main);">
+                <strong>机场 TOP1 (jichangtop1.com)</strong> 是由一群资深分布式系统架构师、骨干网运维工程师与跨境网络技术爱好者联合发起的非营利性技术知识库与网络性能观测平台。
+            </p>
+
+            <h2 style="font-size:1.45rem; color:var(--primary-cyan); margin-top:32px; margin-bottom:14px;">
+                🔬 实验室物理测试环境与探针架构
+            </h2>
+            <p style="color:var(--text-main); line-height:1.85;">
+                为了剔除本地单点宽带偶发波动的干扰，我们的基准观测台部署了横跨全国核心交换节点的自动化监控探针：
+            </p>
+            <ul style="line-height:2; padding-left:24px; color:var(--text-main);">
+                <li><strong>物理测试节点</strong>：上海电信 1000M FTTH、广州联通 1000M FTTH、成都移动 1000M FTTH 三网双活接入；</li>
+                <li><strong>自动化监控周期</strong>：每 300 秒发起一次端到端 TCP SYN 握手、ICMP 持续回显与 HTTP 吞吐探测；</li>
+                <li><strong>黄金时段压测</strong>：重点抓取工作日 20:30 ~ 23:00（国际出口骨干网最拥堵时段）的真实丢包率、首包延迟（TTFB）与抖动标准差。</li>
+            </ul>
+
+            <h2 style="font-size:1.45rem; color:var(--primary-cyan); margin-top:32px; margin-bottom:14px;">
+                ⚖️ 客观性保证与中立声明
+            </h2>
+            <p style="color:var(--text-main); line-height:1.85;">
+                1. <strong>拒绝商业刷榜</strong>：本站所有评测评分均基于自动化 Prometheus 时序数据库与实际抓包数据生成，任何服务商无法通过付费篡改稳定性打分；<br>
+                2. <strong>透明优惠与理性消费倡导</strong>：我们尽可能向优质服务商申请博友专属 7 折券（如 HQ66、dly88），并始终坚持提醒读者<strong>“按月续费、备一份按量包应急”</strong>的自律原则；<br>
+                3. <strong>合规与研究用途</strong>：文档与技术研究成果仅供网络协议工程研究、合法跨境开发与学术交流参考。
+            </p>
+
+            <div style="margin-top:36px; padding:20px; background:var(--bg-hover); border-radius:8px; border:1px solid var(--border-color);">
+                <p style="margin:0; font-size:0.95rem; color:var(--text-muted);">
+                    📬 <strong>意见反馈与异常通报</strong>：如果您发现某服务商出现跑路、连续性故障或虚标专线，欢迎通过官方 Telegram 频道向我们提供抓包线索。
+                </p>
+            </div>
+        </article>
+    </main>
+
+    <footer style="text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 60px;">
+        <p>© 2026 机场 TOP1 (jichangtop1.com) - 专业的跨境网络节点与技术评测知识库</p>
+        <p style="margin-top: 6px;"><a href="/sitemap.xml" style="color: inherit; text-decoration: underline;">Sitemap</a> | <a href="/robots.txt" style="color: inherit; text-decoration: underline;">Robots.txt</a> | <a href="/about.html" style="color: inherit; text-decoration: underline;">关于我们与测试标准</a></p>
+    </footer>
+
+    <script src="/js/data.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
