@@ -1146,6 +1146,21 @@ const buildBlogArticleContent = (item) => {
 const generateBlogArticles = () => {
     const list = [
         {
+            id: "2026-routing-rules-fake-ip-dns-streaming-guide",
+            title: "跨平台网络分流规则与策略组调优实战：Fake-IP 机制、DNS 防污染与流媒体解锁完整方案",
+            desc: "深入解析客户端智能分流的底层工程实现，详细对比 Fake-IP 与 Redir-Host 模式在首包延迟与防泄漏上的技术差异；构建基于境内外分轨的 DoH/DoT 双轨防污染 DNS 架构；提供 Netflix 原生解锁、AI 服务防风控与 IPLC 专线策略组编排示例，系统化解决 403 阻断与规则冲突等网络排错难题。",
+            description: "深入解析客户端智能分流的底层工程实现，详细对比 Fake-IP 与 Redir-Host 模式在首包延迟与防泄漏上的技术差异；构建基于境内外分轨的 DoH/DoT 双轨防污染 DNS 架构；提供 Netflix 原生解锁、AI 服务防风控与 IPLC 专线策略组编排示例，系统化解决 403 阻断与规则冲突等网络排错难题。",
+            summary: "深入解析客户端智能分流的底层工程实现，详细对比 Fake-IP 与 Redir-Host 模式在首包延迟与防泄漏上的技术差异；构建基于境内外分轨的 DoH/DoT 双轨防污染 DNS 架构；提供 Netflix 原生解锁、AI 服务防风控与 IPLC 专线策略组编排示例，系统化解决 403 阻断与规则冲突等网络排错难题。",
+            category: "网络架构",
+            url: "posts/2026-routing-rules-fake-ip-dns-streaming-guide.html",
+            date: "2026-10-22",
+            author: "机场 TOP1·网络架构实验室",
+            tag: ["规则分流", "Fake-IP", "DNS防污染", "流媒体解锁", "IPLC专线", "策略组调优"],
+            tags: ["规则分流", "Fake-IP", "DNS防污染", "流媒体解锁", "IPLC专线", "策略组调优"],
+            views: 11240,
+            isHuanQiuFeatured: true
+        },
+        {
             id: "2026-top1-high-speed-stable-nodes-evaluation",
             title: "2026 年度高速稳定网络节点 TOP1 实测推荐：晚高峰真 4K/8K 流媒体与低延迟专线深度横评",
             desc: "2026年如何选择真正高速稳定的网络节点？评测博客「机场top1」带来深度实测指南：揭秘晚高峰骨干网QoS拥堵与虚标真相，横向对比公网直连、中转隧道与IPLC/IEPL专线性能数据，提供流媒体解锁与客户端规则分流全指南。",

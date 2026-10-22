@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨平台网络分流规则与策略组调优实战：Fake-IP 机制、DNS 防污染与流媒体解锁完整方案 - 机场 TOP1</title>
+    <meta name="description" content="本文深入解析客户端智能分流的底层工程实现，详细对比 Fake-IP 与 Redir-Host 模式在首包延迟与防泄漏上的技术差异；构建基于境内外分轨的 DoH/DoT 双轨防污染 DNS 架构；提供 Netflix 原生解锁、AI 服务防风控与 IPLC 专线策略组编排示例，系统化解决 403 阻断与规则冲突等网络排错难题。">
+    <meta name="keywords" content="规则分流, 策略组调优, Fake-IP 原理与优缺点, DoH/DoT 加密 DNS, DNS 污染防范, 流媒体地域解锁, IPLC 专线路由, 403 阻断规避, 旁路网关, 客户端路由">
+    <link rel="canonical" href="https://jichangtop1.com/posts/2026-routing-rules-fake-ip-dns-streaming-guide.html">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .post-container {
+            max-width: 920px;
+            margin: 40px auto;
+            padding: 36px;
+            background: var(--bg-card, #FFFFFF);
+            border: 1px solid var(--border-color, #E2E8F0);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .post-header {
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color, #E2E8F0);
+        }
+        .post-title {
+            font-size: 2.05rem;
+            font-weight: 800;
+            color: var(--text-main, #1A202C);
+            line-height: 1.38;
+            margin-bottom: 16px;
+        }
+        .post-meta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--text-muted, #64748B);
+            align-items: center;
+        }
+        .post-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .post-content {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text-main, #334155);
+        }
+        .post-content h2 {
+            font-size: 1.48rem;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--primary-cyan, #0284C7);
+            border-bottom: 2px solid rgba(2, 132, 199, 0.15);
+            padding-bottom: 8px;
+        }
+        .post-content h3 {
+            font-size: 1.22rem;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: var(--text-main, #1E293B);
+        }
+        .post-content p {
+            margin-bottom: 16px;
+        }
+        .post-content ul, .post-content ol {
+            margin-bottom: 18px;
+            padding-left: 24px;
+        }
+        .post-content li {
+            margin-bottom: 8px;
+        }
+        .post-content pre {
+            background: #0F172A;
+            color: #E2E8F0;
+            padding: 16px 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 18px 0;
+            border: 1px solid #1E293B;
+        }
+        .post-content code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(2, 132, 199, 0.08);
+            color: var(--primary-cyan, #0284C7);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .post-content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+        .post-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 0.96rem;
+        }
+        .post-content th, .post-content td {
+            border: 1px solid var(--border-color, #E2E8F0);
+            padding: 12px 16px;
+            text-align: left;
+        }
+        .post-content th {
+            background: var(--bg-hover, #F8FAFC);
+            font-weight: 600;
+            color: var(--text-main, #1E293B);
+        }
+        .post-content blockquote {
+            border-left: 4px solid var(--primary-cyan, #0284C7);
+            padding: 12px 20px;
+            margin: 20px 0;
+            background: rgba(2, 132, 199, 0.04);
+            border-radius: 0 8px 8px 0;
+            color: var(--text-muted, #475569);
+        }
+        .toc-box {
+            background: var(--bg-hover, #F8FAFC);
+            border: 1px solid var(--border-color, #E2E8F0);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+        }
+        .toc-box h4 {
+            margin: 0 0 12px 0;
+            color: var(--text-main, #1E293B);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toc-box ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .toc-box li {
+            margin-bottom: 6px;
+        }
+        .toc-box a {
+            color: var(--text-muted, #475569);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .toc-box a:hover {
+            color: var(--primary-cyan, #0284C7);
+        }
+        .coupon-tag {
+            background: #FEF3C7;
+            color: #92400E;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            border: 1px dashed #F59E0B;
+        }
+        .nav-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted, #64748B);
+            margin-bottom: 20px;
+        }
+        .nav-breadcrumb a {
+            color: var(--primary-cyan, #0284C7);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🚀</span>
+                <span class="logo-text">机场 TOP1</span>
+            </a>
+            <nav class="nav-links">
+                <a href="/"><i class="fa-solid fa-home"></i> 首页</a>
+                <a href="/#recommend"><i class="fa-solid fa-fire"></i> 推荐榜</a>
+                <a href="/#directory"><i class="fa-solid fa-list-check"></i> 全部测评</a>
+                <a href="/#compare"><i class="fa-solid fa-scale-balanced"></i> 7折精算表</a>
+                <a href="/#blog"><i class="fa-solid fa-book"></i> 知识库</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="post-container">
+        <!-- 面包屑 -->
+        <div class="nav-breadcrumb">
+            <a href="/"><i class="fa-solid fa-home"></i> 首页</a>
+            <i class="fa-solid fa-angle-right"></i>
+            <a href="/#blog">技术知识库</a>
+            <i class="fa-solid fa-angle-right"></i>
+            <span>跨平台网络分流规则与策略组调优实战</span>
+        </div>
+
+        <article class="post-header">
+            <h1 class="post-title">跨平台网络分流规则与策略组调优实战：Fake-IP 机制、DNS 防污染与流媒体解锁完整方案</h1>
+            <div class="post-meta">
+                <span><i class="fa-regular fa-calendar"></i> 2026-10-22</span>
+                <span><i class="fa-regular fa-user"></i> 机场 TOP1·网络架构实验室</span>
+                <span><i class="fa-solid fa-tag"></i> 规则分流 / Fake-IP / DNS防污染 / 流媒体解锁</span>
+                <span><i class="fa-regular fa-clock"></i> 约 16 分钟阅读</span>
+            </div>
+        </article>
+
+        <!-- 目录 -->
+        <div class="toc-box">
+            <h4><i class="fa-solid fa-list-ol"></i> 目录导航（Table of Contents）</h4>
+            <ul>
+                <li><a href="#intro">导言：全局代理的工程缺陷与智能规则分流架构</a></li>
+                <li><a href="#ch1">第一章 底层路由机制解析：Fake-IP vs Redir-Host</a></li>
+                <li><a href="#ch2">第二章 DNS 防污染与防泄漏架构搭建</a></li>
+                <li><a href="#ch3">第三章 精细化策略组构建实战</a></li>
+                <li><a href="#ch4">第四章 连接异常与分流冲突排错指南</a></li>
+                <li><a href="#summary">结语：构建确定性与高韧性的分流体系准则</a></li>
+                <li><a href="#recommendations">🔗 站长精选推荐与内部导航</a></li>
+            </ul>
+        </div>
+
+        <section class="post-content">
+            <h2 id="intro">导言：全局代理的工程缺陷与智能规则分流架构</h2>
+            <p>在跨境软件工程、异地多活数据同步以及跨区域内容消费等复杂网络环境下，许多运维人员与工程师最初往往倾向于使用简单的“全局代理（Global Proxy）”模式。然而，从现代计算机网络拓扑与资源调度视角来看，全局代理是一种极其粗放且充满缺陷的妥协方案。</p>
+
+            <h3>全局代理的典型瓶颈</h3>
+            <ol>
+                <li><strong>流量回环与非必要带宽损耗</strong>：将内网通信（如局域网 NAS、SMB 挂载、内部私有云 API）、境内主流公网业务全部强行导入远程代理节点，会导致内网带宽被虚拟网卡（TUN）与加密隧道双重封装严重削减，同时消耗高成本的外网代理节点带宽配额。</li>
+                <li><strong>CDN 边缘节点严重失准</strong>：境内服务（如高德地图、网易云音乐、流媒体 CDN）依赖客户端发起的 Local DNS 解析，根据本地运营商的真实出口分配最近的边缘缓存节点。一旦全局代理生效，这些流量将被解析至境外中转节点附近的机房，导致延迟从原本的 5~15ms 暴增至 150~300ms，引发高码率串流缓冲与严重丢包。</li>
+                <li><strong>跨境业务访问风控与多端拦截</strong>：由于许多境内政企、金融银行系统具备严格的跨境 IP 准入规则，全局代理的异地 IP 接入极易触发二次人脸识别、账号临时冻结甚至接口 403 阻断。</li>
+            </ol>
+
+            <h3>现代客户端的多维分流分层模型</h3>
+            <p>为了在同一套操作系统环境中兼顾本地传输的线速吞吐（Line-rate Throughput）与跨境链路的高可靠直达，现代智能分流核心（如 Mihomo/Sing-box）构建了自底向上的四层决策流水线：</p>
+            <pre><code>+-------------------------------------------------------------+
+| 1. 网络接入层 (Packet Ingress): TUN / System Proxy / TProxy  |
++-------------------------------------------------------------+
+                              |
+                              v
++-------------------------------------------------------------+
+| 2. 域名/地址预判层 (DNS & Fake-IP Engine): 解析/劫持/映射      |
++-------------------------------------------------------------+
+                              |
+                              v
++-------------------------------------------------------------+
+| 3. 规则路由匹配层 (Rule Engine): 域名/IP-CIDR/进程名/端口      |
++-------------------------------------------------------------+
+                              |
+                              v
++-------------------------------------------------------------+
+| 4. 出站策略调度层 (Outbound Policy): DIRECT/REJECT/Proxy/IPLC|
++-------------------------------------------------------------+</code></pre>
+
+            <h2 id="ch1">第一章 底层路由机制解析：Fake-IP vs Redir-Host</h2>
+            <p>在客户端截获网络流量时，DNS 解析的处理方式是决定网络吞吐延迟与分流精度的核心基础。目前行业主要存在两种核心工作模式：<strong>Redir-Host</strong>（重定向真实主机解析）与 <strong>Fake-IP</strong>（虚假保留 IP 池映射）。</p>
+
+            <h3>Redir-Host（传统重定向模式）的解析循环与延迟开销</h3>
+            <p>在 <code>Redir-Host</code> 模式下，系统在发起 TCP/UDP 连接前必须先拿到真实的远端 IP。应用程序发起 DNS 查询后，代理引擎必须向上游等待远程真实 IP 返回，随后截获 TCP SYN 握手，根据该 IP 倒查域名或执行 IP-CIDR 匹配。每一次发起新连接，都不可避免地引入了至少一个完整的 DNS 往返时延（RTT）。在不可靠网络环境下，境内对境外 DNS 查询的拦截和丢包会导致整个建连过程出现持续数秒的“假死”现象。</p>
+
+            <h3>Fake-IP 机制的设计哲学与状态映射表</h3>
+            <p><code>Fake-IP</code>（RFC 3089 与 RFC 1918 扩展思想）颠覆了“先解析、后路由”的传统逻辑，将 DNS 解析与实际网络通信彻底解耦：</p>
+            <pre><code>[应用程序]               [本地代理核心 (Fake-IP Engine)]           [远端代理节点 / 目标网站]
+    |                                   |                                     |
+    |---- 1. 查询 api.github.com ------>|                                     |
+    |                                   | (分配保留 IP，如 198.18.0.12)       |
+    |<--- 2. 立即返回 198.18.0.12 ------| (内存登记: 198.18.0.12 <=> 域名)     |
+    |                                   |                                     |
+    |---- 3. 连接 198.18.0.12:443 ----->|                                     |
+    |                                   |-- 4. 提取域名并依据规则命中代理组 ->|
+    |                                   |   通过 SOCKS5/Trojan 发送域名请求   |---- 5. 目标节点建连</code></pre>
+
+            <ol>
+                <li><strong>瞬时响应</strong>：客户端发起 DNS 解析请求时，本地 Fake-IP 引擎直接从预留地址池（通常分配 <code>198.18.0.0/15</code>）中抓取一个未占用的保留 IP，并在毫秒级内返回。</li>
+                <li><strong>状态映射维护</strong>：内核在本地内存构建双向映射表：<code>198.18.0.12 <=> api.github.com</code>。</li>
+                <li><strong>域名保留穿透</strong>：应用连接 <code>198.18.0.12</code> 被 TUN 捕获后，代理引擎立即反查出原始域名 <code>api.github.com</code>，并将域名与报文直接封装进代理协议。真正的目标服务器 IP 解析交由境外落地节点在本地完成。</li>
+            </ol>
+
+            <h3>底层解析模式技术矩阵对比</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>评测维度</th>
+                        <th>Redir-Host 模式</th>
+                        <th>Fake-IP 模式</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>首包解析延迟 (DNS RTT)</strong></td>
+                        <td>高（取决于最慢的上游 DNS，通常 50~300ms）</td>
+                        <td>极低（本地内存池分配，< 1ms）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DNS 泄漏概率</strong></td>
+                        <td>极高（需向境外或境内发送真实域名查询）</td>
+                        <td>极低（被代理流量无本地 DNS 上行）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>规则匹配粒度</strong></td>
+                        <td>依赖 IP-CIDR 时准确，域名匹配依赖反查</td>
+                        <td>原生支持完备的 DOMAIN-SUFFIX / DOMAIN 匹配</td>
+                    </tr>
+                    <tr>
+                        <td><strong>P2P/游戏原生网络兼容性</strong></td>
+                        <td>极佳（应用拿到的均为真实网络 IP）</td>
+                        <td>一般（需要调优 fake-ip-filter 规避名单）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>跨平台虚拟网卡接管表现</strong></td>
+                        <td>容易受到系统顽固 DNS 缓存干扰</td>
+                        <td>稳定可靠，天然支持 TUN/TAP 接管模式</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="ch2">第二章 DNS 防污染与防泄漏架构搭建</h2>
+            <h3>DNS 污染机理：基于旁路伪造与 UDP 阻断</h3>
+            <p>在传统公网传输中，基于明文 UDP 传输的 DNS 查询极度脆弱。当客户端向境外公共 DNS 发送请求时，境内运营商骨干网的旁路监测节点（IDS/IPS）会利用深度报文检测（DPI）嗅探敏感域名，并通过抢答式伪造注入错误 IP（如 127.0.0.1 或黑洞 IP）。由于操作系统 DNS 遵循“先到先得”原则，真实数据包被丢弃，导致目标站点不可达。</p>
+
+            <h3>双轨分流解析模型设计（境内外分轨）</h3>
+            <p>生产级网络架构必须部署<strong>双轨分流解析机制</strong>：</p>
+            <ul>
+                <li><strong>境内解析轨（Domestic Track）</strong>：通过 <code>geosite:cn</code> 匹配境内直连域名，向上游阿里/腾讯 DNS 发起高并发低延迟查询，确保境内业务命中本地运营商的最近边缘节点。</li>
+                <li><strong>境外解析轨（Remote Encrypted Track）</strong>：境外域名通过 DoH（RFC 8484）或 DoT（RFC 7858）加密请求，并且该解析流量本身强制通过代理节点转发，彻底隔绝旁路监测。</li>
+            </ul>
+
+            <h3>生产级 DNS 编排配置规范（YAML 示例）</h3>
+            <pre><code>dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  ipv6: false                     # 生产网络中建议关闭 IPv6，防止 IPv6 路由泄漏
+  enhanced-mode: fake-ip          # 核心开启 Fake-IP 模式
+  fake-ip-range: 198.18.0.0/15   # 符合 RFC 规范的预留基址
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - "localhost.ptlogin2.qq.com"
+    - "dns.msftncsi.com"
+    - "www.msftncsi.com"
+    - "*.msftconnecttest.com"
+    - "stun.*"
+    - "*.stun.*.*"
+    - "*.xboxlive.com"
+    - "*.battlenet.com.cn"
+  
+  nameserver-policy:
+    "geosite:cn,private":
+      - https://223.5.0.5/dns-query#h3=true
+      - https://1.12.12.12/dns-query
+    "geosite:geolocation-!cn":
+      - https://1.1.1.1/dns-query
+      - https://8.8.8.8/dns-query
+
+  default-nameserver:
+    - 223.5.0.5
+    - 119.29.29.29
+
+  nameserver:
+    - https://223.5.0.5/dns-query
+    - https://doh.pub/dns-query</code></pre>
+
+            <h2 id="ch3">第三章 精细化策略组构建实战</h2>
+            <h3>策略组分层拓扑模型</h3>
+            <p>构建高鲁棒性的分流系统，必须确立“三层拓扑分层”：</p>
+            <ul>
+                <li><strong>基础节点池（Atomic Node Layer）</strong>：订阅的基础节点（香港 01、日本 02、新加坡 03 等）。</li>
+                <li><strong>场景策略层（Scenario Routing Layer）</strong>：按业务分类，“国际流媒体”、“AI 办公”、“技术开发”、“兜底流量”。</li>
+                <li><strong>顶层入口控制（Master Entry Layer）</strong>：提供手动开关、全局策略接管或紧急状态直连。</li>
+            </ul>
+
+            <h3>业务专属策略组调优要点</h3>
+            <ul>
+                <li><strong>流媒体（Netflix / Disney+）</strong>：绑定具备原生 ISP 属性的住宅宽带节点，通过 <code>geosite:netflix</code> 独立导流，避免与高并发普通下载混跑拉低 IP 信誉分。</li>
+                <li><strong>生成式 AI（OpenAI / Claude）</strong>：严禁使用随机轮询（load-balance），必须采用 <code>fallback</code> 容灾或手动指定，首选 <strong>IPLC 专线</strong> 并锁定美国/新加坡原生住宅 IP。</li>
+                <li><strong>跨境开发（GitHub / CDN）</strong>：挂载至高突发带宽节点，确保 <code>objects.githubusercontent.com</code> 满速传输。</li>
+            </ul>
+
+            <h3>策略组与分流规则链配置代码</h3>
+            <pre><code>proxy-groups:
+  - name: "PROXIES"
+    type: select
+    proxies:
+      - "AUTO-FASTEST"
+      - "HK-IPLC-Group"
+      - "SG-Residential"
+      - "US-Dedicated"
+
+  - name: "AUTO-FASTEST"
+    type: url-test
+    url: "http://cp.cloudflare.com/generate_204"
+    interval: 300
+    tolerance: 50
+    proxies:
+      - "HK-IPLC-01"
+      - "JP-BGP-01"
+      - "SG-BGP-01"
+
+  - name: "AI-Services"
+    type: fallback
+    url: "https://api.openai.com/v1/models"
+    interval: 600
+    proxies:
+      - "US-Dedicated"
+      - "SG-Residential"
+
+  - name: "Streaming-Media"
+    type: select
+    proxies:
+      - "SG-Residential"
+      - "JP-BGP-01"
+      - "HK-IPLC-Group"
+
+  - name: "DOMESTIC-DIRECT"
+    type: select
+    proxies:
+      - DIRECT
+
+rules:
+  - GEOIP,private,DOMESTIC-DIRECT,no-resolve
+  - GEOSITE,openai,AI-Services
+  - GEOSITE,anthropic,AI-Services
+  - GEOSITE,netflix,Streaming-Media
+  - GEOSITE,disney,Streaming-Media
+  - GEOSITE,youtube,PROXIES
+  - GEOSITE,cn,DOMESTIC-DIRECT
+  - GEOIP,cn,DOMESTIC-DIRECT
+  - MATCH,PROXIES</code></pre>
+
+            <h2 id="ch4">第四章 连接异常与分流冲突排错指南</h2>
+            <h3>规则自上而下匹配的判定截断问题</h3>
+            <p>分流引擎严格遵循 <strong>“自上而下匹配，一旦命中立即终止（First-match-wins）”</strong>。切勿将宽泛的 <code>GEOIP,CN</code> 放在具体流媒体或开发域名之前，否则境外 Anycast 节点的 IP 若偶尔归属境内段，就会发生误流直连。</p>
+
+            <h3>UDP 回环与 403 Forbidden 快速排错</h3>
+            <p>在 TUN 模式下，针对 STUN / WebRTC 端口需显式指定放行，防止音视频通话中断。而在访问境外网站报错 <code>403 Forbidden</code> 时，多半是由于本地 DNS 拿到了境内 CDN 节点 IP，随后通过境外代理发起请求触发了 CDN 证书与地域校验机制。在规则中添加 <code>no-resolve</code> 指令可有效杜绝该问题。</p>
+
+            <h2 id="summary">结语：构建确定性与高韧性的分流体系准则</h2>
+            <p>构建一套高效、确定且低延迟的分流体系，本质上是<strong>在安全信任边界、解析开销与物理链路传输极限之间寻求最优平衡</strong>。坚持最小暴露原则消灭 DNS 泄漏，坚持按业务形态严格分群，保持规则链条的精简与明确，方能在复杂的公网网络波动中保持高稳定性，实现真正意义上的透明接入与无感分流。</p>
+
+            <hr style="margin:28px 0; border:0; border-top:1px dashed var(--border-color,#CBD5E1);">
+
+            <h3 id="recommendations">🔗 站长精选推荐与内部导航</h3>
+            <p>高品质分流离不开稳定的海外专线出口，订阅结账时可使用独家 7 折优惠码：</p>
+            <ul>
+                <li><strong>全专线稳定性首选</strong>：<a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold;">环球梯 (HuanQiuTi) 官方注册入口</a> —— IEPL 物理专线，晚高峰 8K 秒开，专属 7 折优惠码：<span class="coupon-tag">HQ66</span></li>
+                <li><strong>高性价比/不限设备数首选</strong>：<a href="https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa" target="_blank" rel="noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold;">大佬云 (DaLaoYun) 官方注册入口</a> —— IPLC 专线中转，2.5G 带宽不限设备数，专属 7 折优惠码：<span class="coupon-tag">dly88</span></li>
+                <li><strong>低延迟备用/按量随心包首选</strong>：<a href="https://yjxsub01.yunjiexianaff.com/#/?code=9M572s6Y" target="_blank" rel="noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold;">云界线 (YunJieXian) 官方注册入口</a> —— 专线低延迟，按量包流量不过期，专属 7 折优惠码：<span class="coupon-tag">yjx888</span></li>
+            </ul>
+
+            <p style="margin-top: 20px;">进一步了解与对比更多方案，欢迎查阅本站核心板块：</p>
+            <ul>
+                <li><a href="/index.html" style="color:var(--primary-cyan); font-weight:bold;">返回 机场 TOP1 首页导航</a></li>
+                <li><a href="/index.html#compare" style="color:var(--primary-cyan); font-weight:bold;">查看 2026 高性价比机场 7 折精算表</a></li>
+                <li><a href="/index.html#reviews" style="color:var(--primary-cyan); font-weight:bold;">浏览 站长晚高峰测速与选购笔记</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 30px; color: var(--text-muted, #64748B); font-size: 0.9rem; border-top: 1px solid var(--border-color, #E2E8F0); margin-top: 60px;">
+        <p>© 2026 机场 TOP1 (jichangtop1.com) - 专业的跨境网络节点与技术评测知识库</p>
+        <p style="margin-top: 6px;"><a href="/sitemap.xml" style="color: inherit; text-decoration: underline;">Sitemap</a> | <a href="/robots.txt" style="color: inherit; text-decoration: underline;">Robots.txt</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/data.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
