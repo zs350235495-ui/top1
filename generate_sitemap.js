@@ -12,14 +12,7 @@ const baseUrl = 'https://jichangtop1.com'; // Standard base URL for sitemap
 const now = new Date().toISOString().split('T')[0];
 
 let urls = [
-    { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'daily' },
-    { loc: `${baseUrl}/#recommend`, priority: '0.9', changefreq: 'daily' },
-    { loc: `${baseUrl}/#directory`, priority: '0.9', changefreq: 'weekly' },
-    { loc: `${baseUrl}/#reviews`, priority: '0.8', changefreq: 'daily' },
-    { loc: `${baseUrl}/#blog`, priority: '0.8', changefreq: 'daily' },
-    { loc: `${baseUrl}/#compare`, priority: '0.8', changefreq: 'weekly' },
-    { loc: `${baseUrl}/#protocols`, priority: '0.7', changefreq: 'monthly' },
-    { loc: `${baseUrl}/#blackholes`, priority: '0.7', changefreq: 'weekly' }
+    { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'daily' }
 ];
 
 // Add standalone HTML posts from posts/ directory

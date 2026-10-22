@@ -7,6 +7,47 @@
     <meta name="description" content="深度拆解 iKuai 主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构。全流程详解双机职责解耦、单/双网卡流量闭环、DHCP Option 3/6 动静分离、Fake-IP 原理、DNS 泄漏根治及流媒体精准判区实操方案，彻底杜绝路由回环与网络劣化。">
     <meta name="keywords" content="iKuai, 旁路由, 透明代理, Fake-IP, DNS泄漏, 流媒体分流, TProxy, 网络架构">
     <link rel="canonical" href="https://jichangtop1.com/posts/2026-ikuai-sidecar-gateway-transparent-proxy-dns-guide.html">
+
+    <!-- Open Graph / Telegram -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="机场 TOP1">
+    <meta property="og:title" content="家庭与工作室网络重构：iKuai 结合分流网关实现透明代理、防 DNS 泄漏与流媒体分流全解">
+    <meta property="og:description" content="深度拆解 iKuai 主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构，详解 Fake-IP 与 DNS 泄漏根治。">
+    <meta property="og:url" content="https://jichangtop1.com/posts/2026-ikuai-sidecar-gateway-transparent-proxy-dns-guide.html">
+    <meta property="og:image" content="https://jichangtop1.com/images/logo-horizontal.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="家庭与工作室网络重构：iKuai 结合分流网关实现透明代理、防 DNS 泄漏与流媒体分流全解">
+    <meta name="twitter:description" content="深度拆解 iKuai 主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构，详解 Fake-IP 与 DNS 泄漏根治。">
+    <meta name="twitter:image" content="https://jichangtop1.com/images/logo-horizontal.png">
+
+    <!-- Schema.org TechArticle -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "家庭与工作室网络重构：iKuai 结合分流网关实现透明代理、防 DNS 泄漏与流媒体分流全解",
+      "description": "深度拆解 iKuai 主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构。全流程详解双机职责解耦、单/双网卡流量闭环、DHCP Option 3/6 动静分离、Fake-IP 原理、DNS 泄漏根治及流媒体精准判区实操方案，彻底杜绝路由回环与网络劣化。",
+      "url": "https://jichangtop1.com/posts/2026-ikuai-sidecar-gateway-transparent-proxy-dns-guide.html",
+      "datePublished": "2026-10-16",
+      "dateModified": "2026-10-22",
+      "inLanguage": "zh-CN",
+      "author": {
+        "@type": "Organization",
+        "name": "机场 TOP1"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "机场 TOP1",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://jichangtop1.com/images/favicon.png"
+        }
+      }
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -322,6 +363,30 @@ iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --cla
             <p>通过 <strong>iKuai 主路由 + 旁路分流网关</strong> 的分层部署，不仅在单点硬件故障时保留了回退至纯净主路由的高可用能力，还在七层上实现了接近零延迟的 Fake-IP DNS 治理，彻底隔绝了运营商 DNS 劫持与流媒体判区漂移。</p>
 
             <hr style="margin:24px 0; border:0; border-top:1px dashed var(--border-color,#CBD5E1);">
+
+            <!-- 深度技术专题集群 (Topic Clusters) 网状互链 -->
+            <div style="background:var(--bg-hover,#F8FAFC); border:1px solid var(--border-color,#E2E8F0); border-radius:10px; padding:20px 24px; margin:24px 0;">
+                <h4 style="margin:0 0 12px 0; color:var(--text-main,#1E293B); font-size:1.1rem; display:flex; align-items:center; gap:8px;">
+                    <i class="fa-solid fa-diagram-project" style="color:var(--primary-cyan);"></i> 相关深度技术专题与架构推荐
+                </h4>
+                <ul style="margin:0; padding-left:20px; line-height:1.9;">
+                    <li>
+                        <a href="/posts/2026-routing-rules-fake-ip-dns-streaming-guide.html" style="color:var(--primary-cyan); font-weight:600;">
+                            跨平台网络分流规则与策略组调优实战：Fake-IP 机制、DNS 防污染与流媒体解锁完整方案
+                        </a> —— 深入理解 Fake-IP 与 Redir-Host 的七层转发机理。
+                    </li>
+                    <li>
+                        <a href="/posts/2026-cross-border-network-sla-reliability-specification.html" style="color:var(--primary-cyan); font-weight:600;">
+                            2026 跨境网络节点 SLA 可靠性与可用性评估规范：从多入口容灾到 99.99% 在线率
+                        </a> —— 企业级网关旁路节点的出口冗余与健康探测指南。
+                    </li>
+                    <li>
+                        <a href="/posts/2026-top1-high-speed-stable-nodes-evaluation.html" style="color:var(--primary-cyan); font-weight:600;">
+                            2026 年度高速稳定网络节点 TOP1 实测推荐：晚高峰真 4K/8K 流媒体横评
+                        </a> —— 查看顶级专线出口节点的晚高峰真实压测表现。
+                    </li>
+                </ul>
+            </div>
 
             <h3>🔗 站长精选推荐与内部导航</h3>
             <p>高品质分流离不开稳定的海外专线出口，订阅结账时可使用独家 7 折优惠码：</p>

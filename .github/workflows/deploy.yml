@@ -32,9 +32,10 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Generate Sitemap and Robots.txt
+      - name: Generate Sitemap, Robots.txt and Submit IndexNow
         run: |
           node generate_sitemap.js
+          node scripts/push_indexnow.js
           touch .nojekyll
 
       - name: Setup GitHub Pages

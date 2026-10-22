@@ -1,8 +1,8 @@
 # 机场 TOP1 // 2026 年度旗舰级代理服务性能基准与实测档案
 
-> **官方观测台直达**：[https://tizishequ.com](https://tizishequ.com) *(可替换为专属站点)*  
+> **官方观测台直达**：[https://jichangtop1.com](https://jichangtop1.com)  
 > **评测基准**：晚高峰 300 轮并发压力轮询 | 跨三大运营商（电信/联通/移动）实测 | 99.99% 在线 SLA  
-> **更新时间**：2026-10-11
+> **更新时间**：2026-10-22
 
 ---
 
@@ -34,14 +34,17 @@
 
 ## 📚 03. 实验室深度技术博文指引
 
-深入探究该服务背后的技术原理与进阶调优配置：
+深入探究网络架构背后的技术原理与进阶调优配置：
 
-- 📄 **[实操指南] iKuai + OpenWrt 双软路由环境如何跑满专线千兆？**  
-  *手把手教你配置旁路网关分流与 DNS 污染治理，消除家庭内网瓶颈。*  
-  👉 [阅读完整技术文档](https://tizishequ.com/posts/doc-26116.html)
-- 📄 **[行业内幕] 3 分钟拆解假 IPLC 与真专线的物理抓包特征**  
-  *利用 Traceroute 跳数与延迟抖动精准避坑。*  
-  👉 [阅读评测报告](https://tizishequ.com)
+- 📄 **[分流调优] 跨平台网络分流规则与策略组调优实战：Fake-IP、DoH 防污染与流媒体解锁**  
+  *深入解析客户端智能分流底层实现，详解 Fake-IP 与 Redir-Host 模式差异及双轨防污染 DNS。*  
+  👉 [阅读完整技术文档](https://jichangtop1.com/posts/2026-routing-rules-fake-ip-dns-streaming-guide.html)
+- 📄 **[网关架构] iKuai 结合旁路网关实现透明代理、防 DNS 泄漏与流媒体分流全解**  
+  *手把手教你配置主路由与旁路分流网关解耦，彻底杜绝路由回环与网络劣化。*  
+  👉 [阅读架构方案](https://jichangtop1.com/posts/2026-ikuai-sidecar-gateway-transparent-proxy-dns-guide.html)
+- 📄 **[深度横评] 2026 年度高速稳定网络节点 TOP1 实测推荐：晚高峰真 4K/8K 流媒体横评**  
+  *揭秘晚高峰骨干网 QoS 拥堵与虚标真相，横向对比公网直连与 IPLC 专线性能数据。*  
+  👉 [阅读横评长文](https://jichangtop1.com/posts/2026-top1-high-speed-stable-nodes-evaluation.html)
 
 ---
 
