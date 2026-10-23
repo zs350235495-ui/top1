@@ -5,4 +5,18 @@ Disallow: /scratch/
 Disallow: /content/
 Disallow: /.github/
 
+# AI Search Engine Crawlers (GEO - Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://jichangtop1.com/sitemap.xml
+# LLM Knowledge Standard: https://jichangtop1.com/llms.txt

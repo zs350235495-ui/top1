@@ -63,11 +63,25 @@ Disallow: /scratch/
 Disallow: /content/
 Disallow: /.github/
 
+# AI Search Engine Crawlers (GEO - Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: ${baseUrl}/sitemap.xml
+# LLM Knowledge Standard: ${baseUrl}/llms.txt
 `;
 
 fs.writeFileSync('./robots.txt', robotsTxt, 'utf8');
-console.log('[成功] 生成专业级 robots.txt，阻断内部目录抓取预算浪费！');
+console.log('[成功] 生成专业级 robots.txt，含 AI 爬虫友好放行与 llms.txt 规范！');
 
 // 3. 生成符合 RSS 2.0 规范的 feed.xml
 let articles = [];

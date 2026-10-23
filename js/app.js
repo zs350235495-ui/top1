@@ -23,6 +23,24 @@ document.addEventListener('DOMContentLoaded', () => {
     try { renderProtocols(); } catch (e) { console.error('Error rendering Protocols:', e); }
     try { renderBlackholes(); } catch (e) { console.error('Error rendering Blackholes:', e); }
     try { renderCompareTable(); } catch (e) { console.error('Error rendering CompareTable:', e); }
+
+    // Parse URL search params (Google SearchAction) or hash for deep linking
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('s') || urlParams.get('q');
+        if (query) {
+            const searchInput = document.getElementById('globalSearch');
+            if (searchInput) searchInput.value = query;
+            handleSearch(query);
+        } else if (window.location.hash) {
+            const hashTab = window.location.hash.replace('#', '');
+            if (['home', 'recommend', 'directory', 'reviews', 'blog', 'compare', 'protocols', 'blackholes'].includes(hashTab)) {
+                switchTab(hashTab);
+            }
+        }
+    } catch (e) {
+        console.warn('URL param parse error:', e);
+    }
 });
 
 // Navigation Switcher
