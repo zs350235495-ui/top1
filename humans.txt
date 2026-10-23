@@ -1,0 +1,14 @@
+/* TEAM */
+Site: 机场 TOP1·网络基准评测实验室
+Role: Network Infrastructure Evaluation & SLA Benchmarking
+Contact: huanqiuti1@gmail.com
+Telegram: https://t.me/huanqiuti8899
+GitHub: https://github.com/zs350235495-ui/top1
+Location: Global Network Probes (Hong Kong, Tokyo, Singapore, US, Frankfurt)
+
+/* SITE */
+Standards: HTML5, CSS3, ES6, Schema.org, RFC 9116
+Components: Vanilla JS, FontAwesome, Service Worker (PWA)
+Language: zh-CN, zh-TW, zh-HK
+Target URL: https://jichangtop1.com/
+Last update: 2026/10/23
