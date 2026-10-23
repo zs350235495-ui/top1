@@ -173,7 +173,7 @@ function renderDirectory() {
                 </td>
                 <td>
                     <div style="display: flex; gap: 6px;">
-                        <a href="${affUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration: none;">
+                        <a href="${affUrl}" target="_blank" rel="nofollow sponsored noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration: none;">
                             官网直达
                         </a>
                         <button class="btn btn-sm ${inCompare ? 'btn-secondary' : 'btn-glass'}" onclick="toggleCompare('${ap.id}')">
@@ -390,7 +390,7 @@ function createAirportCardHTML(ap) {
                     </div>
                 </div>
                 <div class="ap-actions">
-                    <a href="${affUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration: none;">
+                    <a href="${affUrl}" target="_blank" rel="nofollow sponsored noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration: none;">
                         官网直达
                     </a>
                     <a href="${ap.id === 'ap-huanqiuti' ? 'posts/huanqiuti.html' : 'posts/huanqiuti.html'}" class="btn btn-sm btn-glass" style="text-decoration: none;">
@@ -530,10 +530,10 @@ function renderCompareTable() {
                             <td><span style="font-size: 0.8rem; color: var(--text-muted);">${ap.streamingUnlock}</span></td>
                             <td>
                                 <div style="display: flex; gap: 6px;">
-                                    <a href="${affUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration: none;">
+                                    <a href="${affUrl}" target="_blank" rel="nofollow sponsored noopener noreferrer" class="btn btn-sm btn-primary" style="text-decoration: none;">
                                         直达官网
                                     </a>
-                                    <a href="${ap.id === 'ap-huanqiuti' ? 'posts/huanqiuti.html' : affUrl}" ${ap.id === 'ap-huanqiuti' ? '' : 'target="_blank" rel="noopener noreferrer"'} class="btn btn-sm btn-glass" style="text-decoration: none;">
+                                    <a href="${ap.id === 'ap-huanqiuti' ? 'posts/huanqiuti.html' : affUrl}" ${ap.id === 'ap-huanqiuti' ? '' : 'target="_blank" rel="nofollow sponsored noopener noreferrer"'} class="btn btn-sm btn-glass" style="text-decoration: none;">
                                         ${ap.id === 'ap-huanqiuti' ? '查看实测' : '套餐资费'}
                                     </a>
                                 </div>

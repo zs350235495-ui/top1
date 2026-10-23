@@ -1115,7 +1115,7 @@ const buildBlogArticleContent = (item) => {
             <h3>二、 线路传输架构实测：IEPL / IPLC 专线与中转线路对比</h3>
             <p>评价一个加速通道的线路质量与整体网络质量，底层物理架构起着决定性作用：</p>
             <ul>
-                <li><strong>IEPL 专线与 IPLC 专线：</strong> 依托内网光纤传输，数据传输无需经过公网节点，在黄金晚高峰表现中依然能保持极低丢包率与优异的低延迟体验。作为稳定性测试表现优异的代表，<a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页</a> 提供的节点即全量采用广深/沪日 IEPL 专线架构。</li>
+                <li><strong>IEPL 专线与 IPLC 专线：</strong> 依托内网光纤传输，数据传输无需经过公网节点，在黄金晚高峰表现中依然能保持极低丢包率与优异的低延迟体验。作为稳定性测试表现优异的代表，<a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="nofollow sponsored noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页</a> 提供的节点即全量采用广深/沪日 IEPL 专线架构。</li>
                 <li><strong>BGP 多入口中转：</strong> 经由国内高带宽节点中转后转发，平时能保持出色的节点速度与丰富的多地区节点覆盖，是高性价比方案的常见选择。</li>
                 <li><strong>流量倍率与套餐搭配：</strong> 挑选流量套餐或年付套餐时，除了关注带宽测速与不限速节点外，还应留意各节点的流量倍率与可用额度，确保资源合理利用。</li>
             </ul>
@@ -1138,7 +1138,7 @@ const buildBlogArticleContent = (item) => {
 
             <h3>五、 环球梯官网首页通道、独家优惠码与选购建议</h3>
             <p>综合实测跑分与综合对比，<strong>环球梯 (HuanQiuTi)</strong> 凭借扎实的专线品质与可靠的服务稳定性，在本站推荐列表中名列前茅。</p>
-            <p>博友们在订阅结账时，可输入 7 折独家优惠码 <strong style="color:var(--primary-cyan); font-size: 1.05rem;">HQ66</strong>（折后轻享包约 14.7 元/月）。欢迎访问 <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页注册通道</a> 了解详情。同时也可参考本站的 <a href="javascript:void(0)" onclick="switchTab('compare')" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">2026高性价比机场精算表</a> 进行多维比较。建议大家坚持理性消费，优先按月续费或准备一份不限时按量包应急。</p>
+            <p>博友们在订阅结账时，可输入 7 折独家优惠码 <strong style="color:var(--primary-cyan); font-size: 1.05rem;">HQ66</strong>（折后轻享包约 14.7 元/月）。欢迎访问 <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="nofollow sponsored noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页注册通道</a> 了解详情。同时也可参考本站的 <a href="javascript:void(0)" onclick="switchTab('compare')" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">2026高性价比机场精算表</a> 进行多维比较。建议大家坚持理性消费，优先按月续费或准备一份不限时按量包应急。</p>
         </div>
     `;
 };
