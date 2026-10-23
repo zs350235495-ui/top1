@@ -15,11 +15,11 @@ const rfc822Date = new Date().toUTCString();
 // 1. 生成 Sitemap URLs
 let urls = [
     { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'daily' },
-    { loc: `${baseUrl}/compare.html`, priority: '0.9', changefreq: 'daily' },
-    { loc: `${baseUrl}/reviews.html`, priority: '0.9', changefreq: 'daily' },
-    { loc: `${baseUrl}/blackholes.html`, priority: '0.8', changefreq: 'weekly' },
-    { loc: `${baseUrl}/protocols.html`, priority: '0.8', changefreq: 'monthly' },
-    { loc: `${baseUrl}/about.html`, priority: '0.7', changefreq: 'monthly' }
+    { loc: `${baseUrl}/compare`, priority: '0.9', changefreq: 'daily' },
+    { loc: `${baseUrl}/reviews`, priority: '0.9', changefreq: 'daily' },
+    { loc: `${baseUrl}/blackholes`, priority: '0.8', changefreq: 'weekly' },
+    { loc: `${baseUrl}/protocols`, priority: '0.8', changefreq: 'monthly' },
+    { loc: `${baseUrl}/about`, priority: '0.7', changefreq: 'monthly' }
 ];
 
 // Add standalone HTML posts from posts/ directory

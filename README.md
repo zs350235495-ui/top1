@@ -19,11 +19,11 @@
 | 核心专题 | 专题说明 | 权威直达链接 |
 | :--- | :--- | :--- |
 | 🚀 **旗舰主力专线实测** | 广深/沪日 IEPL 专线，晚高峰 8K 零缓冲，独家 7 折优惠码 `HQ66` | 👉 [环球梯 (HuanQiuTi) 深度长测报告](https://jichangtop1.com/posts/huanqiuti.html) |
-| 📊 **2026 性价比 7 折精算** | 包含月付与不限时按量随心包，独家折后单价对比与交互算费工具 | 👉 [2026 性价比机场推荐与精算表](https://jichangtop1.com/compare.html) |
-| 🔬 **晚高峰测速横评** | 21:00 骨干网峰值压力实测，包含 RTT 延迟、抖动率与 4K/8K 起播耗时 | 👉 [晚高峰节点实测与横评合集](https://jichangtop1.com/reviews.html) |
-| 🛡️ **跑路预警避坑档案** | 汇总跑路机场特征、虚假 IPLC 鉴别方法与跨境网络应急自救指南 | 👉 [跑路机场黑名单与避坑预警](https://jichangtop1.com/blackholes.html) |
-| ⚡ **次世代传输协议科普** | Shadowsocks vs VLESS-REALITY vs Hysteria 2 吞吐性能对比与配置 | 👉 [翻墙协议深度科普与选型建议](https://jichangtop1.com/protocols.html) |
-| 📑 **实验室评测标准规范** | 六维度严选准则、全球网络探针拓扑与独立中立性声明（E-E-A-T） | 👉 [关于实验室与测试方法论](https://jichangtop1.com/about.html) |
+| 📊 **2026 性价比 7 折精算** | 包含月付与不限时按量随心包，独家折后单价对比与交互算费工具 | 👉 [2026 性价比机场推荐与精算表](https://jichangtop1.com/compare) |
+| 🔬 **晚高峰测速横评** | 21:00 骨干网峰值压力实测，包含 RTT 延迟、抖动率与 4K/8K 起播耗时 | 👉 [晚高峰节点实测与横评合集](https://jichangtop1.com/reviews) |
+| 🛡️ **跑路预警避坑档案** | 汇总跑路机场特征、虚假 IPLC 鉴别方法与跨境网络应急自救指南 | 👉 [跑路机场黑名单与避坑预警](https://jichangtop1.com/blackholes) |
+| ⚡ **次世代传输协议科普** | Shadowsocks vs VLESS-REALITY vs Hysteria 2 吞吐性能对比与配置 | 👉 [翻墙协议深度科普与选型建议](https://jichangtop1.com/protocols) |
+| 📑 **实验室评测标准规范** | 六维度严选准则、全球网络探针拓扑与独立中立性声明（E-E-A-T） | 👉 [关于实验室与测试方法论](https://jichangtop1.com/about) |
 
 ---
 

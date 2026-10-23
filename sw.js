@@ -1,44 +1,38 @@
 /**
- * 机场 TOP1 - Service Worker 渐进式离线缓存与极速渲染引擎
- * 采用 Stale-While-Revalidate 与 Cache-First 复合策略
+ * 机场 TOP1 - Service Worker 核心静态资源缓存引擎 (v3)
+ * 纯静态资源缓存策略，严格放行 HTML 文档导航，杜绝 ERR_FAILED 错误
  */
-const CACHE_NAME = 'jichangtop1-core-v1';
+const CACHE_NAME = 'jichangtop1-assets-v3';
 
+// 仅缓存真正的静态资源文件（CSS、JS、图片、图标、清单）
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/compare.html',
-  '/reviews.html',
-  '/blackholes.html',
-  '/protocols.html',
-  '/about.html',
   '/css/styles.css',
   '/js/data.js',
   '/js/app.js',
   '/images/favicon.png',
   '/images/logo-horizontal.png',
+  '/images/huanqiuti-logo.jpg',
   '/manifest.json'
 ];
 
-// 安装阶段：预缓存核心静态骨架
+// 安装阶段：预缓存静态资源
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[SW] 正在预缓存全站核心资源...');
       return cache.addAll(STATIC_ASSETS);
     })
   );
   self.skipWaiting();
 });
 
-// 激活阶段：清理旧版本缓存
+// 激活阶段：强力清理所有历史旧版本缓存
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
           if (key !== CACHE_NAME) {
-            console.log('[SW] 清除过期缓存:', key);
+            console.log('[SW] 清理历史过期缓存:', key);
             return caches.delete(key);
           }
         })
@@ -48,33 +42,39 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// 拦截请求：Stale-While-Revalidate 机制，秒开渲染同时后台无感更新
+// 拦截请求：仅处理静态静态资源，HTML 导航一律放行给原生浏览器网络，防止重定向导致 ERR_FAILED
 self.addEventListener('fetch', (event) => {
-  // 只处理 GET 请求且属于同源或 CDN 资源
   if (event.request.method !== 'GET') return;
+
+  // 关键：页面导航跳转（mode === 'navigate'）完全不拦截，交给浏览器原生网络与 Cloudflare 重定向机制
+  if (event.request.mode === 'navigate') {
+    return;
+  }
 
   const url = new URL(event.request.url);
 
-  // 避免缓存跨域 API 或第三方推广外链
+  // 仅缓存同源资源与 cdnjs 静态库
   if (url.origin !== self.location.origin && !url.hostname.includes('cdnjs.cloudflare.com')) {
     return;
   }
 
+  // 静态资源采用 Stale-While-Revalidate
   event.respondWith(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.match(event.request).then((cachedResponse) => {
-        const fetchPromise = fetch(event.request)
-          .then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
-              cache.put(event.request, networkResponse.clone());
-            }
-            return networkResponse;
-          })
-          .catch(() => cachedResponse);
-
-        // 如果本地缓存命中则立即返回，并在后台更新；否则等待网络返回
-        return cachedResponse || fetchPromise;
+    caches.match(event.request).then((cachedResponse) => {
+      const fetchPromise = fetch(event.request).then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+        }
+        return networkResponse;
+      }).catch(() => {
+        // 网络失败时降级返回缓存，如果都没有则让浏览器处理
+        return cachedResponse;
       });
+
+      return cachedResponse || fetchPromise;
     })
   );
 });

@@ -14,11 +14,11 @@ const standardHeaderHtml = `    <!-- Standard Site Navigation Header -->
                 <ul class="nav-list">
                     <li class="nav-item"><a href="/">首页</a></li>
                     <li class="nav-item"><a href="/#recommend">实测推荐</a></li>
-                    <li class="nav-item"><a href="/compare.html">7折性价比精算</a></li>
-                    <li class="nav-item"><a href="/reviews.html">晚高峰测速横评</a></li>
-                    <li class="nav-item"><a href="/protocols.html">协议科普</a></li>
-                    <li class="nav-item text-danger"><a href="/blackholes.html" class="text-danger">跑路预警</a></li>
-                    <li class="nav-item"><a href="/about.html">关于实验室</a></li>
+                    <li class="nav-item"><a href="/compare">7折性价比精算</a></li>
+                    <li class="nav-item"><a href="/reviews">晚高峰测速横评</a></li>
+                    <li class="nav-item"><a href="/protocols">协议科普</a></li>
+                    <li class="nav-item text-danger"><a href="/blackholes" class="text-danger">跑路预警</a></li>
+                    <li class="nav-item"><a href="/about">关于实验室</a></li>
                 </ul>
             </nav>
         </div>

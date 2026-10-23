@@ -248,10 +248,10 @@ Object.keys(postMapping).forEach(filename => {
     }
 
     // 3. Fix obsolete internal links
-    content = content.replace(/href=["']\/index\.html#compare["']/g, 'href="/compare.html"');
-    content = content.replace(/href=["']\/index\.html#reviews["']/g, 'href="/reviews.html"');
-    content = content.replace(/href=["']\/index\.html#protocols["']/g, 'href="/protocols.html"');
-    content = content.replace(/href=["']\/index\.html#blackholes["']/g, 'href="/blackholes.html"');
+    content = content.replace(/href=["']\/index\.html#compare["']/g, 'href="/compare"');
+    content = content.replace(/href=["']\/index\.html#reviews["']/g, 'href="/reviews"');
+    content = content.replace(/href=["']\/index\.html#protocols["']/g, 'href="/protocols"');
+    content = content.replace(/href=["']\/index\.html#blackholes["']/g, 'href="/blackholes"');
     content = content.replace(/href=["']\/index\.html["']/g, 'href="/"');
 
     // 4. Inject Related Articles Mesh
