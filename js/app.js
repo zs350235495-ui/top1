@@ -35,16 +35,35 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (window.location.hash) {
             const hashTab = window.location.hash.replace('#', '');
             if (['home', 'recommend', 'directory', 'reviews', 'blog', 'compare', 'protocols', 'blackholes'].includes(hashTab)) {
-                switchTab(hashTab);
+                switchTab(hashTab, false);
             }
         }
     } catch (e) {
         console.warn('URL param parse error:', e);
     }
+
+    // Check topAlertBar state
+    try {
+        if (sessionStorage.getItem('topAlertClosed') === 'true') {
+            document.documentElement.classList.add('top-alert-closed');
+            const bar = document.getElementById('topAlertBar');
+            if (bar) bar.style.display = 'none';
+        }
+    } catch (e) {}
 });
 
+// Browser back/forward navigation support
+function handleUrlChange() {
+    const hashTab = window.location.hash.replace('#', '') || 'home';
+    if (['home', 'recommend', 'directory', 'reviews', 'blog', 'compare', 'protocols', 'blackholes'].includes(hashTab)) {
+        switchTab(hashTab, false);
+    }
+}
+window.addEventListener('hashchange', handleUrlChange);
+window.addEventListener('popstate', handleUrlChange);
+
 // Navigation Switcher
-function switchTab(tabId) {
+function switchTab(tabId, pushState = true) {
     state.currentTab = tabId;
 
     document.querySelectorAll('.nav-item').forEach(item => {
@@ -58,7 +77,14 @@ function switchTab(tabId) {
     const targetView = document.getElementById(`view-${tabId}`);
     if (targetView) {
         targetView.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    if (pushState && (window.location.pathname === '/' || window.location.pathname === '/index.html')) {
+        const hash = tabId === 'home' ? '' : '#' + tabId;
+        if (window.location.hash !== hash) {
+            history.pushState(null, '', hash || '/');
+        }
     }
 }
 
@@ -82,7 +108,11 @@ function toggleTheme() {
 // Top Alert Close
 function closeTopAlert() {
     const bar = document.getElementById('topAlertBar');
-    if (bar) bar.style.display = 'none';
+    if (bar) {
+        bar.style.display = 'none';
+        document.documentElement.classList.add('top-alert-closed');
+        try { sessionStorage.setItem('topAlertClosed', 'true'); } catch (e) {}
+    }
 }
 
 // Toast Notification System
@@ -617,3 +647,47 @@ window.openBlogModal = function(blogId) {
 };
 window.openProtoDetailModal = function(protoId) {};
 window.closeModal = function() {};
+
+/* ==========================================================================
+   Instant Page Prefetcher (毫秒级预加载加速全站点击与页面跳转)
+   ========================================================================== */
+(function initLinkPrefetcher() {
+    const prefetched = new Set();
+    function prefetch(url) {
+        if (!url || prefetched.has(url)) return;
+        try {
+            const u = new URL(url, location.origin);
+            if (u.origin !== location.origin) return;
+            if (u.pathname === location.pathname && !u.search) return;
+            prefetched.add(url);
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = url;
+            link.as = 'document';
+            document.head.appendChild(link);
+        } catch (e) {}
+    }
+
+    function checkAndPrefetch(e) {
+        const a = e.target.closest('a');
+        if (a && a.href && a.origin === location.origin && !a.hash) {
+            prefetch(a.href);
+        }
+    }
+
+    document.addEventListener('mouseover', checkAndPrefetch, { passive: true });
+    document.addEventListener('touchstart', checkAndPrefetch, { passive: true });
+    document.addEventListener('pointerdown', checkAndPrefetch, { passive: true });
+    document.addEventListener('mousedown', checkAndPrefetch, { passive: true });
+
+    // Idle prefetch core pillar navigation pages
+    if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => {
+            ['/reviews', '/compare', '/protocols', '/blackholes', '/about'].forEach(prefetch);
+        }, { timeout: 2000 });
+    } else {
+        setTimeout(() => {
+            ['/reviews', '/compare', '/protocols', '/blackholes', '/about'].forEach(prefetch);
+        }, 1500);
+    }
+})();

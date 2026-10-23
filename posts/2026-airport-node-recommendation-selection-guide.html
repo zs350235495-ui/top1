@@ -275,9 +275,30 @@
     }
     </script>
 
+    <!-- Instant Speculation Rules & Alert Bar State -->
+    <script>if(sessionStorage.getItem('topAlertClosed')==='true'){document.documentElement.classList.add('top-alert-closed');}</script>
+    <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": ["/", "/reviews", "/compare", "/protocols", "/blackholes", "/about"]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
-            <!-- Header & Navigation -->
+                <!-- Top Warning Marquee for Exit Scams -->
+    <div class="top-alert-bar" id="topAlertBar">
+        <div class="alert-content">
+            <span class="alert-badge"><i class="fa-solid fa-triangle-exclamation"></i> 避坑提醒</span>
+            <span class="alert-text">近期部分低价机场频现拔线跑路，建议博友们按月/季续费，备一份不限时按量包更稳妥。</span>
+            <button class="alert-close" onclick="closeTopAlert()">&times;</button>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">

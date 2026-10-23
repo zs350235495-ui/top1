@@ -71,24 +71,35 @@ body {
 }
 
 /* 顶部提醒条（朴素质感） */
+html.top-alert-closed #topAlertBar {
+    display: none !important;
+}
+
 .top-alert-bar {
     background: #F4F1EA;
     color: var(--text-main);
     border-bottom: 1px solid var(--border-color);
     font-size: 0.85rem;
     font-weight: 500;
-    padding: 8px 16px;
+    padding: 0 16px;
+    height: 38px;
+    box-sizing: border-box;
     position: relative;
     z-index: 1000;
+    display: flex;
+    align-items: center;
 }
 
 .alert-content {
     max-width: 1180px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+    box-sizing: border-box;
 }
 
 .alert-badge {
@@ -116,6 +127,7 @@ body {
     font-size: 1.1rem;
     cursor: pointer;
     line-height: 1;
+    padding: 0 4px;
 }
 
 .alert-close:hover {

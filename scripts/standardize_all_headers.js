@@ -4,7 +4,20 @@ const path = require('path');
 const rootDir = path.resolve(__dirname, '..');
 const postsDir = path.join(rootDir, 'posts');
 
-// Helper to generate the exact standard header matching index.html
+const headSpeedSnippet = `    <!-- Instant Speculation Rules & Alert Bar State -->
+    <script>if(sessionStorage.getItem('topAlertClosed')==='true'){document.documentElement.classList.add('top-alert-closed');}</script>
+    <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": ["/", "/reviews", "/compare", "/protocols", "/blackholes", "/about"]
+        }
+      ]
+    }
+    </script>`;
+
+// Helper to generate the exact standard header matching index.html 100%
 function buildStandardHeader(activeKey) {
     const navItems = [
         { key: 'home', href: '/', label: '首页' },
@@ -27,7 +40,16 @@ function buildStandardHeader(activeKey) {
         return `                    <li class="${classes.join(' ')}"><a href="${item.href}"${linkClass}>${item.label}</a></li>`;
     }).join('\n');
 
-    return `    <!-- Header & Navigation -->
+    return `    <!-- Top Warning Marquee for Exit Scams -->
+    <div class="top-alert-bar" id="topAlertBar">
+        <div class="alert-content">
+            <span class="alert-badge"><i class="fa-solid fa-triangle-exclamation"></i> 避坑提醒</span>
+            <span class="alert-text">近期部分低价机场频现拔线跑路，建议博友们按月/季续费，备一份不限时按量包更稳妥。</span>
+            <button class="alert-close" onclick="closeTopAlert()">&times;</button>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
@@ -71,6 +93,24 @@ ${navListHtml}
     </div>`;
 }
 
+function ensureHeadSpeedSnippet(content) {
+    if (content.includes('topAlertClosed')) {
+        return content;
+    }
+    return content.replace('</head>', `${headSpeedSnippet}\n</head>`);
+}
+
+const headerBlockRegex = /(?:<!--[^\n]*(?:Top Warning|Header)[^\n]*-->\s*)?(?:<div class="top-alert-bar"[^>]*>[\s\S]*?<\/div>\s*)?(?:<!--[^\n]*Header[^\n]*-->\s*)?<header class="(?:header|site-header)">[\s\S]*?<\/header>(?:\s*<!-- Mobile Nav Drawer -->\s*<div class="mobile-nav-drawer"[^>]*>[\s\S]*?<\/div>)?/;
+
+// 0. Update index.html head
+const indexFile = path.join(rootDir, 'index.html');
+if (fs.existsSync(indexFile)) {
+    let indexContent = fs.readFileSync(indexFile, 'utf8');
+    indexContent = ensureHeadSpeedSnippet(indexContent);
+    fs.writeFileSync(indexFile, indexContent, 'utf8');
+    console.log('[成功更新 index.html head 极速预渲染]');
+}
+
 // 1. Process Root Pillar Pages
 const pillarPages = [
     { file: 'compare.html', activeKey: 'compare' },
@@ -86,11 +126,15 @@ pillarPages.forEach(({ file, activeKey }) => {
     if (!fs.existsSync(filePath)) return;
     let content = fs.readFileSync(filePath, 'utf8');
 
-    const headerBlockRegex = /(?:<!--[^\n]*Header[^\n]*-->\s*)?<header class="(?:header|site-header)">[\s\S]*?<\/header>(?:\s*<!-- Mobile Nav Drawer -->\s*<div class="mobile-nav-drawer"[^>]*>[\s\S]*?<\/div>)?/;
+    content = ensureHeadSpeedSnippet(content);
+
+    // Standardize container width to align with 1180px header
+    content = content.replace(/<main class="container" style="max-width: 1200px; margin: 36px auto; padding: 0 20px;">/g, '<main class="container" style="max-width: 1180px; margin: 32px auto; padding: 0 24px;">');
+
     if (headerBlockRegex.test(content)) {
         content = content.replace(headerBlockRegex, buildStandardHeader(activeKey));
         fs.writeFileSync(filePath, content, 'utf8');
-        console.log(`[成功统一 Header] ${file} (Active: ${activeKey})`);
+        console.log(`[成功统一 Header & AlertBar] ${file} (Active: ${activeKey})`);
     } else {
         console.warn(`[未找到 Header] ${file}`);
     }
@@ -104,15 +148,15 @@ postFiles.forEach(file => {
 
     // Clean duplicate comments if present
     content = content.replace(/(?:<!-- Standard Site Navigation Header -->\s*)+/g, '');
+    content = ensureHeadSpeedSnippet(content);
 
-    const headerBlockRegex = /(?:<!--[^\n]*Header[^\n]*-->\s*)?<header class="(?:header|site-header)">[\s\S]*?<\/header>(?:\s*<!-- Mobile Nav Drawer -->\s*<div class="mobile-nav-drawer"[^>]*>[\s\S]*?<\/div>)?/;
     if (headerBlockRegex.test(content)) {
         content = content.replace(headerBlockRegex, buildStandardHeader(''));
         fs.writeFileSync(filePath, content, 'utf8');
-        console.log(`[成功统一 Post Header] posts/${file}`);
+        console.log(`[成功统一 Post Header & AlertBar] posts/${file}`);
     } else {
         console.warn(`[未找到 Post Header] posts/${file}`);
     }
 });
 
-console.log('全部页面导航栏已成功与首页 100% 同步！');
+console.log('全部页面导航栏与顶部避坑提醒条已成功 100% 统一对齐！');
