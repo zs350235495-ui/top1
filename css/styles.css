@@ -249,6 +249,13 @@ body {
     background: transparent;
 }
 
+.nav-item a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
 .nav-link-subtle {
     color: var(--text-muted);
     font-size: 0.88rem;
@@ -349,6 +356,13 @@ body {
 
 .mobile-nav-list li i {
     display: none;
+}
+
+.mobile-nav-list a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    width: 100%;
 }
 
 /* Main Content Layout (1180px 居中大面积留白) */
