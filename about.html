@@ -59,20 +59,22 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
 <body>
-    <header class="header">
-        <div class="nav-container">
-            <a href="/" class="logo">
-                <span class="logo-icon">🚀</span>
-                <span class="logo-text">机场 TOP1</span>
+        <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="brand-logo" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="/images/logo-horizontal.png" alt="机场 TOP1" style="height: 38px; width: auto; max-width: 220px; object-fit: contain; vertical-align: middle;">
             </a>
-            <nav class="nav-links">
-                <a href="/"><i class="fa-solid fa-home"></i> 首页</a>
-                <a href="/#recommend"><i class="fa-solid fa-fire"></i> 推荐榜</a>
-                <a href="/compare.html"><i class="fa-solid fa-scale-balanced"></i> 7折精算表</a>
-                <a href="/reviews.html"><i class="fa-solid fa-vial-virus"></i> 晚高峰测速</a>
-                <a href="/protocols.html"><i class="fa-solid fa-network-wired"></i> 协议科普</a>
-                <a href="/blackholes.html"><i class="fa-solid fa-triangle-exclamation"></i> 跑路预警</a>
-                <a href="/about.html" style="color: var(--primary-cyan); font-weight:700;"><i class="fa-solid fa-circle-info"></i> 评测标准</a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/">首页</a></li>
+                    <li class="nav-item"><a href="/#recommend">实测推荐</a></li>
+                    <li class="nav-item"><a href="/compare.html">7折性价比精算</a></li>
+                    <li class="nav-item"><a href="/reviews.html">晚高峰测速横评</a></li>
+                    <li class="nav-item"><a href="/protocols.html">协议科普</a></li>
+                    <li class="nav-item text-danger"><a href="/blackholes.html" class="text-danger">跑路预警</a></li>
+                    <li class="nav-item active"><a href="/about.html">关于实验室</a></li>
+                </ul>
             </nav>
         </div>
     </header>
