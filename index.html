@@ -22,6 +22,10 @@
     <meta name="twitter:description" content="跨境网络节点性能压测与架构解析，提供晚高峰测速、独家7折优惠码、性价比机场推荐与跑路避坑指南。">
     <meta name="twitter:image" content="https://jichangtop1.com/images/logo-horizontal.png">
 
+    <!-- Search Console Ownership Verifications (Ready for your tokens) -->
+    <meta name="google-site-verification" content="GSC_VERIFICATION_TOKEN_HERE">
+    <meta name="msvalidate.01" content="BING_VERIFICATION_TOKEN_HERE">
+
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -785,5 +789,16 @@
     <!-- Scripts -->
     <script src="js/data.js?v=20261012_v10"></script>
     <script src="js/app.js?v=20261012_v10"></script>
+    <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then((reg) => {
+          console.log('[PWA] Service Worker 激活成功');
+        }).catch((err) => {
+          console.warn('[PWA] Service Worker 注册失败:', err);
+        });
+      });
+    }
+    </script>
 </body>
 </html>
