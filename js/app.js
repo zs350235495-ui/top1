@@ -351,16 +351,20 @@ function scrollToProtoAnchor(anchorId, btn) {
 function renderBlackholes() {
     const grid = document.getElementById('blackholesGrid');
     if (!grid) return;
+    if (typeof BLACKHOLES_DATA === 'undefined' || !BLACKHOLES_DATA.length) return;
 
     grid.innerHTML = BLACKHOLES_DATA.map(bh => `
         <div class="blackhole-card">
             <div class="bh-header">
-                <span class="bh-title">${bh.name}</span>
+                <span class="bh-title"><i class="fa-solid fa-triangle-exclamation text-danger" style="margin-right: 6px;"></i>${bh.name}</span>
                 <span class="bh-status">${bh.status}</span>
             </div>
-            <div class="bh-meta"><i class="fa-solid fa-clock"></i> 确认时间：${bh.date}</div>
-            <p class="bh-reason">${bh.reason}</p>
-            <div class="bh-tips"><i class="fa-solid fa-lightbulb"></i> 防坑提醒：${bh.tips}</div>
+            <div class="bh-meta">
+                <span><i class="fa-regular fa-calendar-xmark"></i> 确认时间：${bh.date}</span>
+                <span style="margin-left: 8px; color: #DC2626; font-weight: 600;"><i class="fa-solid fa-radiation"></i> ${bh.severity}</span>
+            </div>
+            <p class="bh-reason"><strong>跑路原因分析：</strong>${bh.reason}</p>
+            <div class="bh-tips"><i class="fa-solid fa-lightbulb"></i> <strong>避坑提醒：</strong>${bh.tips}</div>
         </div>
     `).join('');
 }

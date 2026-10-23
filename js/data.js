@@ -1026,29 +1026,29 @@ const BLACKHOLES_DATA = [
         name: "速鹰 666 (SuYing666)",
         status: "官网关闭 / 长期失联",
         date: "2024 - 2025",
-        severity: "high",
+        severity: "高危跑路",
         lossEstimate: "涉及大量年付用户，工单无回复",
-        reason: "曾是运营多年的老牌机场，近年来出现大面积节点超时、官网关停与管理团队失联，已被社区列入长期跑路黑名单。",
+        reason: "曾是运营多年的老牌廉价中转机场，后出现大面积节点超时、官网打不开与管理员注销退群，已被社区列为已跑路黑名单。",
         tips: "切勿对异常机场抱有侥幸心理，一旦出现大面积超时且TG群禁言，请立即止损切换备用。"
     },
     {
         id: "bh-02",
         name: "喵帕斯 (MiaoPass)",
-        status: "不可抗力停运",
+        status: "不可抗力停运关闭",
         date: "2020",
-        severity: "medium",
+        severity: "已停运",
         lossEstimate: "邀请制高端老用户受影响",
-        reason: "曾经口碑极佳的邀请制高端机场，因受外部监管压力与调查被迫关停退场，属于行业早期典型的不可抗力关闭案例。",
-        tips: "即便是口碑再好的老牌/邀请制机场，也无法保证 100% 永久运营，尽量按月或按季付费。"
+        reason: "曾经口碑极佳的邀请制高端机场，因受外部监管调查与压力被迫关停退场，属于行业早期典型的不可抗力关闭案例。",
+        tips: "即便是口碑再好的老牌/邀请制机场，也无法保证 100% 永久运营，坚持按月或按季付费。"
     },
     {
         id: "bh-03",
         name: "极客云 (GeekCloud 跑路分支)",
-        status: "拔线跑路",
+        status: "大促后拔线跑路",
         date: "2024-11",
-        severity: "high",
-        lossEstimate: "大促后卷款，多用户被封群",
-        reason: "双十一促销吸金后突然关闭节点拔线，TG官方交流群开启全员禁言并注销管理员账号。",
+        severity: "高危跑路",
+        lossEstimate: "双十一充值被割，用户被拉黑",
+        reason: "双十一大促以“买一年送一年/充值返现翻倍”吸金后突然关闭节点拔线，TG官方交流群开启全员禁言并注销管理员账号。",
         tips: "凡是大促期间搞“买一年送一年/充值翻倍”的低价机场，大促结束后往往是跑路高发期。"
     },
     {
@@ -1056,9 +1056,9 @@ const BLACKHOLES_DATA = [
         name: "速云网络 (SuYun Net)",
         status: "域名失联 / 停止维护",
         date: "2025-02",
-        severity: "medium",
-        lossEstimate: "官网DNS污染，节点超时",
-        reason: "域名被污染后无力维护，站长失联退群，服务器到期后节点陆续挂掉无人处理。",
+        severity: "高危失联",
+        lossEstimate: "官网DNS污染，全节点超时红字",
+        reason: "域名被污染后无力维护，站长失联退群，服务器到期后节点陆续挂掉无人处理，沦为弃站。",
         tips: "如果机场长时间不上线备用域名且客服不处理工单，说明团队已放弃运营。"
     },
     {
@@ -1066,8 +1066,8 @@ const BLACKHOLES_DATA = [
         name: "云翼加速 (YunYi VIP)",
         status: "套路改名 / 二次收割",
         date: "2024-08",
-        severity: "high",
-        lossEstimate: "老用户套餐直接清零",
+        severity: "恶意套路",
+        lossEstimate: "老用户年付套餐直接清零",
         reason: "站长将数据库出售给新团队，新团队不承认老用户的年付套餐，要求重新付费购买新套餐才给迁移。",
         tips: "遇到要求老用户“强制二次付费”才给迁站的套路机场，请直接放弃止损。"
     },
@@ -1076,19 +1076,29 @@ const BLACKHOLES_DATA = [
         name: "微云加速 (WeiYun Speed)",
         status: "卷款潜逃",
         date: "2025-04",
-        severity: "high",
-        lossEstimate: "充值用户群集体被拉黑",
-        reason: "低价无限量套餐大肆宣传后，运营不到三个月即关站卷款潜逃。",
-        tips: "远离廉价无限流量套餐，带宽都是有真实成本的。"
+        severity: "高危跑路",
+        lossEstimate: "充值用户群集体被拉黑踢出",
+        reason: "以“5元/月无限量不限速”低价大肆宣传拉人，运营不到三个月即关站卷款潜逃。",
+        tips: "远离廉价无限流量套餐，专线与带宽都是有真实物理成本的。"
+    },
+    {
+        id: "bh-07",
+        name: "星河互联 (StarNet)",
+        status: "频繁更换域名 / 跑路预警",
+        date: "2025-09",
+        severity: "高危预警",
+        lossEstimate: "上游机房欠费断线，TG禁言",
+        reason: "未发生大规模网络管制的情况下一个月内连续更换 5 次主站域名，TG 群开启禁言，上游机房追讨带宽欠费导致大面积断网。",
+        tips: "一旦遇到 TG 频道全员禁言且断流超 48 小时，应立即做好迁移准备。"
     },
     {
         id: "bh-08",
         name: "云霄网络 (YunXiao Net)",
         status: "节点超时 / 无人维护",
         date: "2025-05",
-        severity: "medium",
-        lossEstimate: "节点瘫痪，工单无人处理",
-        reason: "入口服务器多次遭遇攻击封锁后无力修复，大部分节点长期处于超时红字状态，实际上已处于弃站状态。",
+        severity: "僵尸假活",
+        lossEstimate: "全节点瘫痪，工单无人处理",
+        reason: "入口服务器多次遭遇攻击封锁后无力修复，大部分节点长期处于超时红字状态，实际上已处于弃站假活状态。",
         tips: "准备一个异构线路的不限时按量包，主机场出现瘫痪时能应急联网。"
     }
 ];
@@ -1571,3 +1581,4 @@ const generateBlogArticles = () => {
 };
 
 const BLOG_ARTICLES_DATA = generateBlogArticles();
+
