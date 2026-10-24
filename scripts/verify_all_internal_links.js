@@ -3,12 +3,7 @@ const path = require('path');
 
 const rootDir = path.resolve(__dirname, '..');
 const files = [
-    'index.html',
-    'reviews.html',
-    'compare.html',
-    'protocols.html',
-    'blackholes.html',
-    'about.html',
+    ...fs.readdirSync(rootDir).filter(f => f.endsWith('.html')),
     ...fs.readdirSync(path.join(rootDir, 'posts')).filter(f => f.endsWith('.html')).map(f => 'posts/' + f)
 ];
 

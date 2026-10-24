@@ -6,9 +6,9 @@ const postsDir = path.join(rootDir, 'posts');
 
 // Helper to list all HTML files
 function getAllHtmlFiles() {
-    const rootFiles = ['index.html', 'reviews.html', 'compare.html', 'protocols.html', 'blackholes.html', 'about.html', '404.html']
-        .map(f => path.join(rootDir, f))
-        .filter(p => fs.existsSync(p));
+    const rootFiles = fs.readdirSync(rootDir)
+        .filter(f => f.endsWith('.html'))
+        .map(f => path.join(rootDir, f));
     const postFiles = fs.readdirSync(postsDir)
         .filter(f => f.endsWith('.html'))
         .map(f => path.join(postsDir, f));

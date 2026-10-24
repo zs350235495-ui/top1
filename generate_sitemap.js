@@ -15,6 +15,7 @@ const rfc822Date = new Date().toUTCString();
 // 1. 生成 Sitemap URLs
 let urls = [
     { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'daily' },
+    { loc: `${baseUrl}/flagship-network-sla-benchmark-2026`, priority: '0.9', changefreq: 'weekly' },
     { loc: `${baseUrl}/compare`, priority: '0.9', changefreq: 'daily' },
     { loc: `${baseUrl}/reviews`, priority: '0.9', changefreq: 'daily' },
     { loc: `${baseUrl}/blackholes`, priority: '0.8', changefreq: 'weekly' },
