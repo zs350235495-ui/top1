@@ -5,8 +5,16 @@
     <link>https://jichangtop1.com/</link>
     <description>专业的跨境网络节点性能压测、独家7折优惠码与客户端规则分流知识库</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Oct 2026 08:46:42 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 09:20:00 GMT</lastBuildDate>
     <atom:link href="https://jichangtop1.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[2026 全球跨境网络骨干专线天梯榜：晚高峰抗拥塞基准、SLA 可用性实测与旗舰服务商选型白皮书]]></title>
+      <link>https://jichangtop1.com/flagship-network-sla-benchmark-2026</link>
+      <guid>https://jichangtop1.com/flagship-network-sla-benchmark-2026</guid>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[基于真实网络物理层物理损耗、路由器队列拥塞模型与晚高峰 20:30~23:30 骨干网吞吐压测，全面解构公网中转与 IEPL/IPLC 纯内网专线的代际鸿沟。建立 2026 年度服务商抗抖动与高可用天梯矩阵，为高要求跨国研发、流媒体鉴赏与个人日常交互提供硬核选型基准。]]></description>
+      <author>机场 TOP1</author>
+    </item>
     <item>
       <title><![CDATA[跨平台网络分流规则与策略组调优实战：Fake-IP 机制、DNS 防污染与流媒体解锁完整方案]]></title>
       <link>https://jichangtop1.com/posts/2026-routing-rules-fake-ip-dns-streaming-guide.html</link>
@@ -117,14 +125,6 @@
       <guid>https://jichangtop1.com/posts/blog-04.html</guid>
       <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[全网最详尽的环球梯 (HuanQiuTi) 评测！包含广深/沪日 IEPL 专线晚高峰跑分、7折优惠码 HQ66 使用方法与环球梯官网首页快速入口。]]></description>
-      <author>机场 TOP1</author>
-    </item>
-    <item>
-      <title><![CDATA[科学上网与技术上网进阶：Shadowsocks, VLESS-REALITY 与 Hysteria 2 协议全解析]]></title>
-      <link>https://jichangtop1.com/posts/blog-05.html</link>
-      <guid>https://jichangtop1.com/posts/blog-05.html</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[从底层加密原理拆解 Shadowsocks、Trojan、VLESS-REALITY 及 Hysteria 2。了解不同协议在弱网抗封锁与提速方面的核心区别。]]></description>
       <author>机场 TOP1</author>
     </item>
   </channel>
