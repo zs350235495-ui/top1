@@ -4,6 +4,7 @@ Disallow: /scripts/
 Disallow: /scratch/
 Disallow: /content/
 Disallow: /.github/
+Disallow: /cdn-cgi/
 
 # AI Search Engine Crawlers (GEO - Generative Engine Optimization)
 User-agent: GPTBot
