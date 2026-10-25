@@ -1217,7 +1217,7 @@ const generateBlogArticles = () => {
         },
         {
             id: "2026-cross-border-network-sla-reliability-specification",
-            title: "机场TOP1 2026 跨境网络节点 SLA 可靠性与可用性评估规范：从多入口容灾、BGP 动态选路到 99.99% 在线率验证体系",
+            title: "2026 跨境网络节点 SLA 可靠性评估规范：多入口容灾与 99.99% 在线率",
             desc: "机场TOP1·网络可靠性与基准压测实验室发布 2026 跨境网络节点 SLA 可靠性白皮书，系统剖析 ICMP 测速误区与晚高峰链路假活成因，定义行业入门级、进阶级至 99.99% 标杆级量化指标，并提供自动化 Prometheus 探针与客户端双活容灾配置方案。",
             description: "机场TOP1·网络可靠性与基准压测实验室发布 2026 跨境网络节点 SLA 可靠性白皮书，系统剖析 ICMP 测速误区与晚高峰链路假活成因，定义行业入门级、进阶级至 99.99% 标杆级量化指标，并提供自动化 Prometheus 探针与客户端双活容灾配置方案。",
             summary: "白皮书编号 WHITEPAPER-26122，基于 MTBF 与 MTTR 量化打分体系与权重算法，深度拆解三网优化直连入口、BGP Anycast 边缘容灾、晚高峰盲测探针与 Clash/Sing-box 终端双活策略组。",
