@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (query) {
             const searchInput = document.getElementById('globalSearch');
             if (searchInput) searchInput.value = query;
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (clearBtn) clearBtn.style.display = 'block';
             handleSearch(query);
         } else if (window.location.hash) {
             const hashTab = window.location.hash.replace('#', '');
@@ -153,6 +155,18 @@ function renderHome() {
     reviewsGrid.innerHTML = REVIEWS_DATA.slice(0, 6).map(rev => createReviewCardHTML(rev)).join('');
 }
 
+// Helper to escape HTML in user inputs
+function escapeHTML(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+    }[tag] || tag));
+}
+
 // 2. Render Recommend View
 function renderRecommend() {
     const grid = document.getElementById('recommendGrid');
@@ -169,20 +183,87 @@ function renderRecommend() {
             const query = state.searchQuery.toLowerCase();
             return ap.name.toLowerCase().includes(query) ||
                    ap.tagline.toLowerCase().includes(query) ||
+                   (ap.desc && ap.desc.toLowerCase().includes(query)) ||
+                   (ap.recommendReason && ap.recommendReason.toLowerCase().includes(query)) ||
                    ap.protocols.some(p => p.toLowerCase().includes(query));
         }
         return true;
     });
 
+    // Check if user search query matches any blog articles
+    let matchingArticles = [];
+    if (state.searchQuery && typeof BLOG_ARTICLES_DATA !== 'undefined') {
+        const q = state.searchQuery.toLowerCase();
+        matchingArticles = BLOG_ARTICLES_DATA.filter(art => {
+            return (art.title && art.title.toLowerCase().includes(q)) ||
+                   (art.desc && art.desc.toLowerCase().includes(q)) ||
+                   (art.summary && art.summary.toLowerCase().includes(q)) ||
+                   (art.tag && art.tag.some(t => t.toLowerCase().includes(q))) ||
+                   (art.tags && art.tags.some(t => t.toLowerCase().includes(q)));
+        });
+    }
+
     if (filtered.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-dim);">
-            <i class="fa-solid fa-ban" style="font-size: 2rem; margin-bottom: 12px; display: block;"></i>
-            未找到匹配的机场，可以尝试重置筛选条件。
-        </div>`;
+        let emptyHtml = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 48px 24px; background: rgba(0,0,0,0.02); border: 1px dashed var(--border-color); border-radius: 12px; margin: 10px 0;">
+                <i class="fa-solid fa-magnifying-glass" style="font-size: 2.2rem; margin-bottom: 14px; display: block; color: var(--text-dim);"></i>
+                <h4 style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 8px;">
+                    未找到与 “<span style="color: var(--primary-cyan); font-weight: 600;">${escapeHTML(state.searchQuery || '')}</span>” 匹配的机场
+                </h4>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px;">
+                    当前搜索关键词或筛选条件限制了结果展示。点击下方按钮即可一键恢复所有推荐机场。
+                </p>
+                <button class="btn btn-primary" onclick="resetFiltersAndSearch()" style="padding: 10px 24px; font-size: 0.95rem; cursor: pointer; border-radius: 8px;">
+                    <i class="fa-solid fa-rotate-left"></i> 一键重置搜索 / 查看全部优质机场
+                </button>
+            </div>
+        `;
+
+        if (matchingArticles.length > 0) {
+            emptyHtml += `
+                <div style="grid-column: 1/-1; margin-top: 24px;">
+                    <h3 style="font-size: 1.12rem; margin-bottom: 16px; color: var(--text-main); display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-book-bookmark" style="color: var(--primary-cyan);"></i> 为您找到 ${matchingArticles.length} 篇相关的评测与知识库文章：
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+                        ${matchingArticles.map(art => `
+                            <a href="${art.url.startsWith('/') ? art.url : '/' + art.url}" style="display: block; padding: 18px; background: var(--bg-card, #FFFFFF); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; color: inherit; transition: var(--transition);">
+                                <span class="tag-chip" style="margin-bottom: 8px; display: inline-block;">${art.category || '评测研报'}</span>
+                                <h4 style="font-size: 0.98rem; font-weight: 600; color: var(--text-main); line-height: 1.4; margin-bottom: 8px;">${art.title}</h4>
+                                <p style="font-size: 0.82rem; color: var(--text-dim); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${art.desc || art.description || ''}</p>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        grid.innerHTML = emptyHtml;
         return;
     }
 
-    grid.innerHTML = filtered.map(ap => createAirportCardHTML(ap)).join('');
+    let cardsHtml = filtered.map(ap => createAirportCardHTML(ap)).join('');
+
+    if (matchingArticles.length > 0) {
+        cardsHtml += `
+            <div style="grid-column: 1/-1; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border-color);">
+                <h3 style="font-size: 1.12rem; margin-bottom: 16px; color: var(--text-main); display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-book-bookmark" style="color: var(--primary-cyan);"></i> 同时找到相关的技术评测与深度文章：
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+                    ${matchingArticles.map(art => `
+                        <a href="${art.url.startsWith('/') ? art.url : '/' + art.url}" style="display: block; padding: 18px; background: var(--bg-card, #FFFFFF); border: 1px solid var(--border-color); border-radius: 10px; text-decoration: none; color: inherit;">
+                            <span class="tag-chip" style="margin-bottom: 8px; display: inline-block;">${art.category || '评测研报'}</span>
+                            <h4 style="font-size: 0.98rem; font-weight: 600; color: var(--text-main); line-height: 1.4; margin-bottom: 8px;">${art.title}</h4>
+                            <p style="font-size: 0.82rem; color: var(--text-dim); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${art.desc || art.description || ''}</p>
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    grid.innerHTML = cardsHtml;
 }
 
 // 3. Render Directory View
@@ -607,6 +688,18 @@ function setFilter(category, val, btn) {
     btn.parentElement.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
     btn.classList.add('active');
 
+    // If user clicks "全部", also clear search query if it produced 0 results
+    if (category === 'type' && val === 'all' && state.searchQuery) {
+        const matching = AIRPORTS_DATA.filter(ap => ap.name.toLowerCase().includes(state.searchQuery.toLowerCase()));
+        if (matching.length === 0) {
+            state.searchQuery = '';
+            const searchInput = document.getElementById('globalSearch');
+            if (searchInput) searchInput.value = '';
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (clearBtn) clearBtn.style.display = 'none';
+        }
+    }
+
     renderRecommend();
 }
 
@@ -627,11 +720,54 @@ function filterCategory(catType) {
 
 // Global Search Input
 function handleSearch(query) {
-    state.searchQuery = query.trim();
+    state.searchQuery = (query || '').trim();
+    const clearBtn = document.getElementById('clearSearchBtn');
+    if (clearBtn) {
+        clearBtn.style.display = state.searchQuery ? 'block' : 'none';
+    }
     if (state.currentTab !== 'recommend' && state.searchQuery) {
         switchTab('recommend');
     }
     renderRecommend();
+}
+
+// Reset all search and filters back to default
+function resetFiltersAndSearch() {
+    state.searchQuery = '';
+    state.filters.type = 'all';
+    state.filters.feature = 'all';
+    const searchInput = document.getElementById('globalSearch');
+    if (searchInput) searchInput.value = '';
+    const clearBtn = document.getElementById('clearSearchBtn');
+    if (clearBtn) clearBtn.style.display = 'none';
+
+    // Reset filter chips UI
+    document.querySelectorAll('.filter-toolbar .filter-group').forEach(group => {
+        const chips = group.querySelectorAll('.filter-chip');
+        chips.forEach((c, idx) => {
+            if (idx === 0 && (c.textContent.trim() === '全部' || group.innerText.includes('线路类型'))) {
+                c.classList.add('active');
+            } else {
+                c.classList.remove('active');
+            }
+        });
+    });
+
+    renderRecommend();
+}
+
+// Nav Click Handler for 机场推荐
+function onNavRecommendClick() {
+    // If user clicks "机场推荐" in navigation while search produced 0 results, reset to show all airports
+    if (state.searchQuery) {
+        const filtered = AIRPORTS_DATA.filter(ap => ap.name.toLowerCase().includes(state.searchQuery.toLowerCase()));
+        if (filtered.length === 0) {
+            resetFiltersAndSearch();
+            switchTab('recommend');
+            return;
+        }
+    }
+    switchTab('recommend');
 }
 
 /* ==========================================================================

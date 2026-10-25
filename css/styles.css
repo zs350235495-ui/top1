@@ -357,9 +357,29 @@ html.top-alert-closed #topAlertBar {
     font-size: 0.8rem;
 }
 
+.search-clear-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-size: 0.82rem;
+    cursor: pointer;
+    display: none;
+    padding: 2px 4px;
+    line-height: 1;
+    transition: var(--transition);
+}
+
+.search-clear-btn:hover {
+    color: var(--text-main);
+}
+
 .search-box input {
     width: 100%;
-    padding: 5px 10px 5px 30px;
+    padding: 5px 26px 5px 30px;
     border-radius: 6px;
     border: 1px solid var(--border-color);
     background: #F4F1EA;

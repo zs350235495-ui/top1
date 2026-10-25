@@ -148,7 +148,7 @@
             <nav class="main-nav">
                 <ul class="nav-list">
                     <li class="nav-item active" data-tab="home" onclick="switchTab('home')"><a href="/" onclick="event.preventDefault(); switchTab('home');">首页</a></li>
-                    <li class="nav-item" data-tab="recommend" onclick="switchTab('recommend')"><a href="#recommend" onclick="event.preventDefault(); switchTab('recommend');">机场推荐</a></li>
+                    <li class="nav-item" data-tab="recommend" onclick="onNavRecommendClick()"><a href="#recommend" onclick="event.preventDefault(); onNavRecommendClick();">机场推荐</a></li>
                     <li class="nav-item" data-tab="directory" onclick="switchTab('directory')"><a href="#directory" onclick="event.preventDefault(); switchTab('directory');">机场导航</a></li>
                     <li class="nav-item" data-tab="reviews" onclick="switchTab('reviews')"><a href="/reviews" onclick="event.preventDefault(); switchTab('reviews');">机场评测</a></li>
                     <li class="nav-item" data-tab="blog" onclick="switchTab('blog')"><a href="#blog" onclick="event.preventDefault(); switchTab('blog');">博客</a></li>
@@ -162,7 +162,10 @@
             <div class="header-actions">
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="globalSearch" placeholder="搜索..." oninput="handleSearch(this.value)">
+                    <input type="text" id="globalSearch" placeholder="搜索机场或评测文章..." oninput="handleSearch(this.value)">
+                    <button type="button" id="clearSearchBtn" class="search-clear-btn" onclick="resetFiltersAndSearch()" title="清空搜索">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
                 </div>
                 <a href="https://t.me/huanqiuti8899" target="_blank" rel="noopener noreferrer" class="nav-link-subtle" title="TG 频道">
                     TG 频道
