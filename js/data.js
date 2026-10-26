@@ -14,9 +14,9 @@ const AIRPORTS_DATA = [
         rating: 4.95,
         speedScore: 99,
         stabilityScore: 100,
-        priceMin: "14.70",
-        priceOriginal: "21.00",
-        priceUnit: "月 (轻享包 140G 7折价)",
+        priceMin: "8.40",
+        priceOriginal: "12.00",
+        priceUnit: "月 (微享包 70G 7折价)",
         discountCode: "HQ66",
         discountPercent: "7折独家优惠",
         features: ["streaming", "chatgpt", "iepl", "paybydata"],
@@ -25,17 +25,22 @@ const AIRPORTS_DATA = [
         nodesCount: "120+",
         bandwidth: "广深/沪日 IEPL 专线 + BGP 多入口",
         streamingUnlock: "解锁 Netflix, Disney+, ChatGPT, Claude, TikTok",
-        desc: "本站个人一直在用的主力机场之一。全节点 IEPL 专线，晚高峰看 4K/8K 视频表现很稳定。套餐搭配比较丰富：学生党选年付，日常用选轻享或畅游很划算。结账使用优惠码 HQ66 可以打 7 折。",
+        desc: "本站个人一直在用的主力机场之一。全节点 IEPL 专线，晚高峰看 4K/8K 视频表现很稳定。全线不限制同时在线设备数，套餐搭配极其丰富：学生党选年付，日常用选微享、轻享或畅游很划算。结账使用优惠码 HQ66 可以打 7 折。",
         plans: [
-            { name: "环球学生套餐", badge: "热门", priceDiscount: "￥67.20", priceOriginal: "￥96.00", cycle: "每年计费 (7折后)", traffic: "每月 60GB 高速流量", devices: "最多 3 台设备", feature: "适合个人轻度使用，全节点不限速，重置包仅 ¥10/次，用码 HQ66 7折后仅 67.2 元/年" },
-            { name: "环球轻享", badge: "轻享", priceDiscount: "￥14.70", priceOriginal: "￥21.00", cycle: "每月计费 (7折后)", traffic: "每月 140GB 高速流量", devices: "最多 3 台设备", feature: "适合个人日常刷视频看网页，重置包 ¥21/次，用码 HQ66 7折后仅 14.7 元/月" },
-            { name: "环球畅游", badge: "🔥 热门推荐", priceDiscount: "￥27.30", priceOriginal: "￥39.00", cycle: "每月计费 (7折后)", traffic: "每月 280GB 高速流量", devices: "最多 5 台设备", feature: "适合日常高清视频与多设备办公，重置包 ¥36/次，晚高峰优化好，用码 HQ66 7折后仅 27.3 元/月" },
-            { name: "环球尊享", badge: "尊享", priceDiscount: "￥48.30", priceOriginal: "￥69.00", cycle: "每月计费 (7折后)", traffic: "每月 600GB 高速流量", devices: "最多 10 台设备", feature: "大流量需求或多人/家庭共享，重置包 ¥63/次，用码 HQ66 7折后仅 48.3 元/月" },
-            { name: "环球随行包", badge: "按量包", priceDiscount: "￥69.30", priceOriginal: "￥99.00", cycle: "365天有效 (7折后)", traffic: "80GB 不限时流量", devices: "最多 5 台设备", feature: "流量不过期，自购买之日起365天有效，用码 HQ66 7折后仅 69.3 元" },
-            { name: "环球灵活包", badge: "按量包", priceDiscount: "￥209.30", priceOriginal: "￥299.00", cycle: "365天有效 (7折后)", traffic: "400GB 不限时流量", devices: "最多 8 台设备", feature: "大容量备用，自购买之日起365天有效，用码 HQ66 7折后仅 209.3 元" }
+            { name: "环球学生套餐", badge: "热门", priceDiscount: "￥67.20", priceOriginal: "￥96.00", cycle: "每年计费 (7折后)", traffic: "每月 60GB 高速流量", devices: "不限设备数量", feature: "适合个人轻度使用，全节点不限速，重置包 ¥15/次，用码 HQ66 7折后仅 67.2 元/年" },
+            { name: "环球微享", badge: "低门槛", priceDiscount: "￥8.40", priceOriginal: "￥12.00", cycle: "每月计费 (7折后)", traffic: "每月 70GB 高速流量", devices: "不限设备数量", feature: "适合个人轻量网络科技与学术查询，重置包 ¥10/次，用码 HQ66 7折后仅 8.4 元/月" },
+            { name: "环球轻享", badge: "轻享", priceDiscount: "￥14.70", priceOriginal: "￥21.00", cycle: "每月计费 (7折后)", traffic: "每月 140GB 高速流量", devices: "不限设备数量", feature: "适合个人日常刷视频看网页，重置包 ¥21/次，用码 HQ66 7折后仅 14.7 元/月" },
+            { name: "环球畅游", badge: "🔥 热门推荐", priceDiscount: "￥27.30", priceOriginal: "￥39.00", cycle: "每月计费 (7折后)", traffic: "每月 280GB 高速流量", devices: "不限设备数量", feature: "适合日常高清视频与多设备办公，重置包 ¥36/次，晚高峰优化好，用码 HQ66 7折后仅 27.3 元/月" },
+            { name: "环球进阶", badge: "进阶优选", priceDiscount: "￥36.40", priceOriginal: "￥52.00", cycle: "每月计费 (7折后)", traffic: "每月 420GB 高速流量", devices: "不限设备数量", feature: "兼顾娱乐与多任务综合办公，流畅支持 4K/8K 与无损下载，用码 HQ66 7折后仅 36.4 元/月" },
+            { name: "环球尊享", badge: "尊享", priceDiscount: "￥48.30", priceOriginal: "￥69.00", cycle: "每月计费 (7折后)", traffic: "每月 600GB 高速流量", devices: "不限设备数量", feature: "大流量需求或多人/家庭共享，重置包 ¥63/次，用码 HQ66 7折后仅 48.3 元/月" },
+            { name: "环球极客", badge: "大户专享", priceDiscount: "￥89.60", priceOriginal: "￥128.00", cycle: "每月计费 (7折后)", traffic: "每月 1.2TB (1200GB) 极速流量", devices: "不限设备数量", feature: "极速网络玩家、家庭多端共享及团队小型工作室定制，全网顶级吞吐，用码 HQ66 7折后仅 89.6 元/月" },
+            { name: "环球备用包", badge: "永不过期", priceDiscount: "￥27.30", priceOriginal: "￥39.00", cycle: "永久有效 (7折后)", traffic: "60GB 永久有效流量", devices: "不限设备数量", feature: "永不过期应急包，不受自然月限制，突发应急快速切换，用码 HQ66 7折后仅 27.3 元" },
+            { name: "环球随行包", badge: "按量包", priceDiscount: "￥69.30", priceOriginal: "￥99.00", cycle: "365天有效 (7折后)", traffic: "80GB 不限时流量", devices: "不限设备数量", feature: "流量不过期，自购买之日起365天有效，用码 HQ66 7折后仅 69.3 元" },
+            { name: "环球灵活包", badge: "按量包", priceDiscount: "￥209.30", priceOriginal: "￥299.00", cycle: "365天有效 (7折后)", traffic: "400GB 不限时流量", devices: "不限设备数量", feature: "大容量备用，自购买之日起365天有效，用码 HQ66 7折后仅 209.3 元" },
+            { name: "环球海量包", badge: "长期储备", priceDiscount: "￥481.60", priceOriginal: "￥688.00", cycle: "长期有效 (7折后)", traffic: "1.0TB (1000GB) 充沛流量", devices: "不限设备数量", feature: "长效不限时大容量储备，彻底摆脱续费压力，特别适合高速跨国重载传输，用码 HQ66 7折后仅 481.6 元" }
         ],
         affUrl: "https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0",
-        recommendReason: "全专线稳定性好，套餐梯度实用，晚高峰看8K不卡，用码 HQ66 打 7 折。"
+        recommendReason: "全专线稳定性好，全线不限设备数，套餐梯度极丰富（8.4元/月起），晚高峰看8K不卡，用码 HQ66 打 7 折。"
     },
     {
         id: "ap-dalaoyun",
