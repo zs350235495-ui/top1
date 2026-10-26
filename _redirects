@@ -1,0 +1,66 @@
+# ==============================================================================
+# 机场 TOP1 - 推广链接 (AFF) 301 隔离与合规重定向配置
+# 适配平台: Cloudflare Pages / Netlify
+# 规则说明: 
+#   1. 301 状态码强制执行重定向，隔离外链权重并符合赞助商合规要求
+#   2. 对未显式声明的 /go/ 路径回落到客户端承接页 /go.html
+# ==============================================================================
+
+# 1. 环球梯 (HuanQiuTi)
+/go/huanqiuti           https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0    301!
+/go/ap-huanqiuti        https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0    301!
+
+# 2. 大佬云 (DaLaoYun)
+/go/dalaoyun            https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa     301!
+/go/ap-dalaoyun         https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa     301!
+
+# 3. 云界线 (YunJieXian)
+/go/yunjiexian          https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV       301!
+/go/ap-yunjiexian       https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV       301!
+
+# 4. 闪电鼠 (ShanDianShu)
+/go/shandianshu         https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB  301!
+/go/ap-shandianshu      https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB  301!
+
+# 5. 神行加速 (ShenXing VPN)
+/go/shenxing            https://pps123.shenxingaff.com/#/?code=6tQ7zHUc       301!
+/go/ap-shenxing         https://pps123.shenxingaff.com/#/?code=6tQ7zHUc       301!
+
+# 6. 榴莲云 (LiuLianYun)
+/go/liulianyun          https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G    301!
+/go/ap-liulianyun       https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G    301!
+
+# 7. 云图机场 (YunTu)
+/go/yuntu               https://super.ytjcok.org/#/register?code=poKwFVtv     301!
+/go/ap-yuntu            https://super.ytjcok.org/#/register?code=poKwFVtv     301!
+
+# 8. 瞬云 (ShunYun)
+/go/shunyun             https://ddd.jichang.best/#/register?code=nldUZaYc     301!
+/go/ap-shunyun          https://ddd.jichang.best/#/register?code=nldUZaYc     301!
+
+# 9. 可信云 (KeXinYun)
+/go/kexinyun            https://everett7623.kosingaff.com/#/?code=sFKKfEYs    301!
+/go/ap-kexinyun         https://everett7623.kosingaff.com/#/?code=sFKKfEYs    301!
+
+# 10. 速界 (SuJie)
+/go/sujie               https://pygllc.speedworldaff.cc/#/?code=kcoensXG      301!
+/go/ap-sujie            https://pygllc.speedworldaff.cc/#/?code=kcoensXG      301!
+
+# 11. 极连云 (JiLianYun)
+/go/jilianyun           https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO       301!
+/go/ap-jilianyun        https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO       301!
+
+# 12. 鲲鹏加速 (KunPeng)
+/go/kunpeng             https://kunpengjiasu.com/#/register?code=WPugVZUe     301!
+/go/ap-kunpeng          https://kunpengjiasu.com/#/register?code=WPugVZUe     301!
+
+# 13. 快狸快狸 (KuaiLi)
+/go/kuaili              https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F     301!
+/go/ap-kuaili           https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F     301!
+
+# 14. 边缘节点 (EdgeNode)
+/go/bianyuanjiedian     https://wep.edgenovaaff.com/#/?code=mLLL6h6F          301!
+/go/ap-bianyuanjiedian  https://wep.edgenovaaff.com/#/?code=mLLL6h6F          301!
+
+# 15. 兜底回退路由：未匹配的 /go/* 路由至 /go.html
+/go/*                   /go.html                                              200

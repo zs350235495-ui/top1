@@ -64,6 +64,11 @@ Disallow: /scripts/
 Disallow: /scratch/
 Disallow: /content/
 Disallow: /.github/
+Disallow: /cdn-cgi/
+# SEO Compliance Notice:
+# /go/ and /go.html are deliberately NOT blocked by robots.txt to ensure crawlers
+# can detect the <meta name="robots" content="noindex, nofollow"> tag and avoid
+# Bing Webmaster "Blocked by robots.txt" indexing errors.
 
 # AI Search Engine Crawlers (GEO - Generative Engine Optimization)
 User-agent: GPTBot

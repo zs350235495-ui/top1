@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 严格禁止搜索引擎索引与跟踪此跳转中转页 (SEO 合规与 Bing 避坑核心策略) -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="bingbot" content="noindex, nofollow">
+    
+    <title>安全跳转中... - 机场 TOP1</title>
+    
+    <!-- 网站图标 -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- 字体与图标库 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(17, 24, 39, 0.85);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-main: #f3f4f6;
+            --text-dim: #9ca3af;
+            --primary-cyan: #06b6d4;
+            --primary-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 动态背景光晕 */
+        .ambient-glow {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+
+        /* 中转卡片 */
+        .redirect-card {
+            position: relative;
+            z-index: 1;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px 32px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* 顶部品牌 */
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+        }
+
+        .brand-logo i {
+            color: var(--primary-cyan);
+            font-size: 1.35rem;
+        }
+
+        /* 动效雷达圈 */
+        .radar-box {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .radar-spinner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid rgba(6, 182, 212, 0.15);
+            border-top-color: var(--primary-cyan);
+            animation: spin 1s linear infinite;
+        }
+
+        .radar-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--primary-cyan);
+            opacity: 0;
+            animation: pulse 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+        }
+
+        .radar-box i {
+            font-size: 1.8rem;
+            color: var(--primary-cyan);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+
+        /* 标题与描述 */
+        h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .target-name {
+            color: var(--primary-cyan);
+            font-weight: 700;
+        }
+
+        .status-text {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* 倒计时与安全提示栏 */
+        .safety-badge-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 9999px;
+            padding: 6px 16px;
+            font-size: 0.82rem;
+            color: var(--accent-green);
+            margin: 0 auto 28px;
+            width: fit-content;
+        }
+
+        /* 跳转按钮 */
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 13px 20px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-cyan) 0%, var(--primary-blue) 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.45);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            margin-top: 12px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        /* 底部合规声明 */
+        .footer-note {
+            margin-top: 24px;
+            font-size: 0.78rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+        /* 错误状态展示 */
+        .error-box {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <div class="redirect-card">
+        <!-- 品牌标识 -->
+        <a href="/" class="brand-logo" title="返回 机场 TOP1 首页">
+            <i class="fa-solid fa-plane-departure"></i>
+            <span>机场 TOP1 · 安全中转</span>
+        </a>
+
+        <!-- 正常跳转状态容器 -->
+        <div id="loadingBox">
+            <div class="radar-box">
+                <div class="radar-pulse"></div>
+                <div class="radar-spinner"></div>
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <h1 id="jumpTitle">正在连接安全路由...</h1>
+            <p class="status-text" id="jumpStatus">
+                即将为您直达：<span class="target-name" id="targetName">官方服务节点</span><br>
+                正在完成安全链路校验与防钓鱼鉴权...
+            </p>
+
+            <div class="safety-badge-bar">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>SSL 端到端加密 · 官方直连链路</span>
+            </div>
+
+            <a id="directBtn" href="#" rel="nofollow sponsored noopener noreferrer" class="btn-action btn-primary">
+                <span>立即直达官网</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <div class="footer-note">
+                <span id="countdownText">正在自动跳转（1 秒）...</span> 如长时间未跳转请点击上方按钮
+            </div>
+        </div>
+
+        <!-- 目标不存在时的错误容器 -->
+        <div id="errorBox" class="error-box">
+            <div class="radar-box" style="margin-bottom: 20px;">
+                <i class="fa-solid fa-triangle-exclamation" style="color: var(--accent-red); font-size: 2.2rem;"></i>
+            </div>
+            <h1 style="color: var(--accent-red);">未找到目标服务节点</h1>
+            <p class="status-text" id="errorMsg" style="margin-bottom: 24px;">
+                指定的机场服务编号不存在或该线路已下架维护。
+            </p>
+            <a href="/" class="btn-action btn-primary">
+                <i class="fa-solid fa-house"></i>
+                <span>返回 机场 TOP1 首页</span>
+            </a>
+            <a href="/compare" class="btn-action btn-secondary">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <span>查看高性价比机场推荐榜</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // 核心跳转映射库（标准与别名映射，全站唯一数据源映射）
+        const AFF_MAP = {
+            'huanqiuti': {
+                name: '环球梯 (HuanQiuTi)',
+                url: 'https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0'
+            },
+            'dalaoyun': {
+                name: '大佬云 (DaLaoYun)',
+                url: 'https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa'
+            },
+            'yunjiexian': {
+                name: '云界线 (YunJieXian)',
+                url: 'https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV'
+            },
+            'shandianshu': {
+                name: '闪电鼠 (ShanDianShu)',
+                url: 'https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB'
+            },
+            'shenxing': {
+                name: '神行加速 (ShenXing VPN)',
+                url: 'https://pps123.shenxingaff.com/#/?code=6tQ7zHUc'
+            },
+            'liulianyun': {
+                name: '榴莲云 (LiuLianYun)',
+                url: 'https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G'
+            },
+            'yuntu': {
+                name: '云图机场 (YunTu)',
+                url: 'https://super.ytjcok.org/#/register?code=poKwFVtv'
+            },
+            'shunyun': {
+                name: '瞬云 (ShunYun)',
+                url: 'https://ddd.jichang.best/#/register?code=nldUZaYc'
+            },
+            'kexinyun': {
+                name: '可信云 (KeXinYun)',
+                url: 'https://everett7623.kosingaff.com/#/?code=sFKKfEYs'
+            },
+            'sujie': {
+                name: '速界 (SuJie)',
+                url: 'https://pygllc.speedworldaff.cc/#/?code=kcoensXG'
+            },
+            'jilianyun': {
+                name: '极连云 (JiLianYun)',
+                url: 'https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO'
+            },
+            'kunpeng': {
+                name: '鲲鹏加速 (KunPeng)',
+                url: 'https://kunpengjiasu.com/#/register?code=WPugVZUe'
+            },
+            'kuaili': {
+                name: '快狸快狸 (KuaiLi)',
+                url: 'https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F'
+            },
+            'bianyuanjiedian': {
+                name: '边缘节点 (EdgeNode)',
+                url: 'https://wep.edgenovaaff.com/#/?code=mLLL6h6F'
+            }
+        };
+
+        // 别名注册与规范化（支持 ap- 前缀等）
+        Object.keys(AFF_MAP).forEach(key => {
+            AFF_MAP['ap-' + key] = AFF_MAP[key];
+        });
+
+        // 获取参数逻辑：同时支持 ?id=xxx、?aff=xxx、?to=xxx 以及从 pathname 提取 /go/xxx
+        function getTargetKey() {
+            const params = new URLSearchParams(window.location.search);
+            const queryId = params.get('id') || params.get('aff') || params.get('to') || params.get('target');
+            if (queryId) return queryId.toLowerCase().trim();
+
+            const path = window.location.pathname;
+            const match = path.match(/\/go\/(?:html\/)?([^\/\?#]+)/i);
+            if (match && match[1]) {
+                return match[1].toLowerCase().trim();
+            }
+            return null;
+        }
+
+        (function initRedirect() {
+            const targetKey = getTargetKey();
+            const loadingBox = document.getElementById('loadingBox');
+            const errorBox = document.getElementById('errorBox');
+            const targetNameEl = document.getElementById('targetName');
+            const jumpTitleEl = document.getElementById('jumpTitle');
+            const directBtn = document.getElementById('directBtn');
+            const countdownEl = document.getElementById('countdownText');
+
+            if (!targetKey || !AFF_MAP[targetKey]) {
+                loadingBox.style.display = 'none';
+                errorBox.style.display = 'block';
+                document.title = '未找到目标服务 - 机场 TOP1';
+                if (targetKey) {
+                    document.getElementById('errorMsg').textContent = `指定的标识符 "${targetKey}" 未收录或已迁移。`;
+                }
+                return;
+            }
+
+            const target = AFF_MAP[targetKey];
+            targetNameEl.textContent = target.name;
+            jumpTitleEl.textContent = `正在连接 ${target.name}...`;
+            directBtn.href = target.url;
+            document.title = `正在跳转至 ${target.name} - 机场 TOP1`;
+
+            // 0.25秒平滑自动跳转（既有安全提示，又无缝直达，降低跳出率）
+            let remainingMs = 250;
+            const timer = setTimeout(() => {
+                window.location.replace(target.url);
+            }, remainingMs);
+
+            // 用户若手动点击则立即清除定时器并放行
+            directBtn.addEventListener('click', () => {
+                clearTimeout(timer);
+            });
+        })();
+    </script>
+</body>
+</html>
