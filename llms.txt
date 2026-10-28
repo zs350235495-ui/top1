@@ -34,6 +34,7 @@
 
 ## 实验室深度技术博文 (Technical Articles)
 
+- [为什么 Ping 值很低但网页加载却很慢？跨国路由跳数、MTU 分片与 TTFB 隐形损耗深度解构](https://jichangtop1.com/posts/2026-low-ping-slow-page-traceroute-mtu-ttfb-loss-guide.html): 深入剖析 ICMP 与 TCP/TLS 握手开销差异、跨国 BGP 绕路、MTU 超标与数据包静默分片，提供 MTR 诊断与 TTFB 优化方案。
 - [跨平台网络分流规则与策略组调优实战](https://jichangtop1.com/posts/2026-routing-rules-fake-ip-dns-streaming-guide.html): 深入解析 Fake-IP 机制、双轨防污染 DoH DNS 与流媒体分流策略组实战。
 - [iKuai 结合分流网关实现透明代理与防 DNS 泄漏全解](https://jichangtop1.com/posts/2026-ikuai-sidecar-gateway-transparent-proxy-dns-guide.html): 深度拆解家庭与工作室主路由与旁路网关解耦架构。
 - [2026 稳定机场与高速节点选购全景指南](https://jichangtop1.com/posts/2026-airport-node-recommendation-selection-guide.html): 全景分析传输协议演进、测速指标与多设备套餐匹配。

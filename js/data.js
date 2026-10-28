@@ -1161,6 +1161,21 @@ const buildBlogArticleContent = (item) => {
 const generateBlogArticles = () => {
     const list = [
         {
+            id: "2026-low-ping-slow-page-traceroute-mtu-ttfb-loss-guide",
+            title: "为什么 Ping 值很低但网页加载却很慢？深度解构跨国路由跳数、MTU 分片与 TTFB 隐形损耗",
+            desc: "深入解构Ping低但网页慢原因：从ICMP与真实TCP/TLS握手开销差异、跨国BGP路由跳数与非对称绕路、WireGuard/隧道MTU超标引发的数据包静默分片与PMTU黑洞，到TTFB首字节延迟优化与MTR路由追踪诊断实战指南。",
+            description: "深入解构Ping低但网页慢原因：从ICMP与真实TCP/TLS握手开销差异、跨国BGP路由跳数与非对称绕路、WireGuard/隧道MTU超标引发的数据包静默分片与PMTU黑洞，到TTFB首字节延迟优化与MTR路由追踪诊断实战指南。",
+            summary: "深入解构Ping低但网页慢原因：从ICMP与真实TCP/TLS握手开销差异、跨国BGP路由跳数与非对称绕路、WireGuard/隧道MTU超标引发的数据包静默分片与PMTU黑洞，到TTFB首字节延迟优化与MTR路由追踪诊断实战指南。",
+            category: "网络架构",
+            url: "posts/2026-low-ping-slow-page-traceroute-mtu-ttfb-loss-guide.html",
+            date: "2026-10-28",
+            author: "机场 TOP1·网络架构实验室",
+            tag: ["Ping低网页慢", "MTU分片", "TTFB优化", "MTR路由追踪", "TCP握手", "跨国网络抖动", "MSS"],
+            tags: ["Ping低网页慢", "MTU分片", "TTFB优化", "MTR路由追踪", "TCP握手", "跨国网络抖动", "MSS"],
+            views: 10420,
+            isHuanQiuFeatured: true
+        },
+        {
             id: "flagship-network-sla-benchmark-2026",
             title: "2026 全球跨境网络骨干专线天梯榜：晚高峰抗拥塞基准、SLA 可用性实测与旗舰服务商选型白皮书",
             desc: "基于真实网络物理层物理损耗、路由器队列拥塞模型与晚高峰 20:30~23:30 骨干网吞吐压测，全面解构公网中转与 IEPL/IPLC 纯内网专线的代际鸿沟。建立 2026 年度服务商抗抖动与高可用天梯矩阵，为高要求跨国研发、流媒体鉴赏与个人日常交互提供硬核选型基准。",

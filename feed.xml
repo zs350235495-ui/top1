@@ -5,8 +5,16 @@
     <link>https://jichangtop1.com/</link>
     <description>专业的跨境网络节点性能压测、独家7折优惠码与客户端规则分流知识库</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 26 Oct 2026 10:33:30 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 09:03:31 GMT</lastBuildDate>
     <atom:link href="https://jichangtop1.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[为什么 Ping 值很低但网页加载却很慢？深度解构跨国路由跳数、MTU 分片与 TTFB 隐形损耗]]></title>
+      <link>https://jichangtop1.com/posts/2026-low-ping-slow-page-traceroute-mtu-ttfb-loss-guide.html</link>
+      <guid>https://jichangtop1.com/posts/2026-low-ping-slow-page-traceroute-mtu-ttfb-loss-guide.html</guid>
+      <pubDate>Wed, 28 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[深入解构Ping低但网页慢原因：从ICMP与真实TCP/TLS握手开销差异、跨国BGP路由跳数与非对称绕路、WireGuard/隧道MTU超标引发的数据包静默分片与PMTU黑洞，到TTFB首字节延迟优化与MTR路由追踪诊断实战指南。]]></description>
+      <author>机场 TOP1</author>
+    </item>
     <item>
       <title><![CDATA[2026 全球跨境网络骨干专线天梯榜：晚高峰抗拥塞基准、SLA 可用性实测与旗舰服务商选型白皮书]]></title>
       <link>https://jichangtop1.com/flagship-network-sla-benchmark-2026</link>
@@ -117,14 +125,6 @@
       <guid>https://jichangtop1.com/posts/blog-03.html</guid>
       <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[针对 AI 开发者与大模型使用者打造的 AI 上网指南。绕过 Cloudflare 验证与封号风险，提供高质量原生 IP 高速梯子选购方案。]]></description>
-      <author>机场 TOP1</author>
-    </item>
-    <item>
-      <title><![CDATA[2026最强专线！环球梯 (HuanQiuTi) 深度评测与官网首页入口注册指引]]></title>
-      <link>https://jichangtop1.com/posts/blog-04.html</link>
-      <guid>https://jichangtop1.com/posts/blog-04.html</guid>
-      <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[全网最详尽的环球梯 (HuanQiuTi) 评测！包含广深/沪日 IEPL 专线晚高峰跑分、7折优惠码 HQ66 使用方法与环球梯官网首页快速入口。]]></description>
       <author>机场 TOP1</author>
     </item>
   </channel>
