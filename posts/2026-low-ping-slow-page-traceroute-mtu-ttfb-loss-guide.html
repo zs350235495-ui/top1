@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>为什么 Ping 值很低但网页加载却很慢？深度解构跨国路由跳数、MTU 分片与 TTFB 隐形损耗 - 机场 TOP1</title>
-    <meta name="description" content="深入解构Ping低但网页慢原因：从ICMP与真实TCP/TLS握手开销差异、跨国BGP路由跳数与非对称绕路、WireGuard/隧道MTU超标引发的数据包静默分片与PMTU黑洞，到TTFB首字节延迟优化与MTR路由追踪诊断实战指南。">
+    <meta name="description" content="深入解构网络 Ping 值低但网页打开缓慢的根本技术原因。系统剖析 ICMP 与真实 TCP/TLS 握手开销差异、跨国 BGP 路由跳数与非对称绕路、WireGuard/隧道 MTU 超标引发的数据包静默分片与 PMTU 黑洞，以及 TTFB 首字节延迟优化与 MTR 路由追踪诊断实战，助您彻底根治网络迟滞。">
     <meta name="keywords" content="Ping低但网页慢原因, MTR路由追踪诊断, MTU最佳值调整, TTFB首字节延迟优化, 跨国网络抖动排查, 数据包分片, TCP握手开销, Path MTU Discovery">
     <link rel="canonical" href="https://jichangtop1.com/posts/2026-low-ping-slow-page-traceroute-mtu-ttfb-loss-guide.html">
 
@@ -12,14 +12,14 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="机场 TOP1">
     <meta property="og:title" content="为什么 Ping 值很低但网页加载却很慢？深度解构跨国路由跳数、MTU 分片与 TTFB 隐形损耗">
-    <meta property="og:description" content="深入解构Ping低但网页慢原因：从ICMP与真实TCP/TLS握手开销差异、跨国BGP路由跳数与非对称绕路、WireGuard/隧道MTU超标引发的数据包静默分片与PMTU黑洞，到TTFB首字节延迟优化与MTR路由追踪诊断实战指南。">
+    <meta property="og:description" content="深入解构网络 Ping 值低但网页打开缓慢的根本技术原因。系统剖析 ICMP 与真实 TCP/TLS 握手开销差异、跨国 BGP 路由跳数与非对称绕路、WireGuard/隧道 MTU 超标引发的数据包静默分片与 PMTU 黑洞，以及 TTFB 首字节延迟优化与 MTR 路由追踪诊断实战，助您彻底根治网络迟滞。">
     <meta property="og:url" content="https://jichangtop1.com/posts/2026-low-ping-slow-page-traceroute-mtu-ttfb-loss-guide.html">
     <meta property="og:image" content="https://jichangtop1.com/images/logo-horizontal.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="为什么 Ping 值很低但网页加载却很慢？深度解构跨国路由跳数、MTU 分片与 TTFB 隐形损耗">
-    <meta name="twitter:description" content="深入解构Ping低但网页慢原因：从ICMP与真实TCP/TLS握手开销差异、跨国BGP路由跳数与非对称绕路、WireGuard/隧道MTU超标引发的数据包静默分片与PMTU黑洞，到TTFB首字节延迟优化与MTR路由追踪诊断实战指南。">
+    <meta name="twitter:description" content="深入解构网络 Ping 值低但网页打开缓慢的根本技术原因。系统剖析 ICMP 与真实 TCP/TLS 握手开销差异、跨国 BGP 路由跳数与非对称绕路、WireGuard/隧道 MTU 超标引发的数据包静默分片与 PMTU 黑洞，以及 TTFB 首字节延迟优化与 MTR 路由追踪诊断实战，助您彻底根治网络迟滞。">
     <meta name="twitter:image" content="https://jichangtop1.com/images/logo-horizontal.png">
 
     <!-- Schema.org TechArticle -->

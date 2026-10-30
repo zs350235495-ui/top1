@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>家庭与工作室网络重构：iKuai 结合分流网关实现透明代理、防 DNS 泄漏与流媒体分流全解 - 机场 TOP1</title>
-    <meta name="description" content="深度拆解 iKuai 主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构。全流程详解双机职责解耦、单/双网卡流量闭环、DHCP Option 3/6 动静分离、Fake-IP 原理、DNS 泄漏根治及流媒体精准判区实操方案，彻底杜绝路由回环与网络劣化。">
+    <meta name="description" content="深度拆解 iKuai 爱快主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构。全流程图解双机职责解耦、单/双网卡流量闭环机制、DHCP Option 3/6 动静分离、Fake-IP 原理、DNS 泄漏根治及流媒体精准判区实操方案，彻底杜绝路由回环与网络劣化，打造极速无感的家庭网络体验。">
     <meta name="keywords" content="iKuai, 旁路由, 透明代理, Fake-IP, DNS泄漏, 流媒体分流, TProxy, 网络架构">
     <link rel="canonical" href="https://jichangtop1.com/posts/2026-ikuai-sidecar-gateway-transparent-proxy-dns-guide.html">
 
@@ -12,14 +12,14 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="机场 TOP1">
     <meta property="og:title" content="家庭与工作室网络重构：iKuai 结合分流网关实现透明代理、防 DNS 泄漏与流媒体分流全解">
-    <meta property="og:description" content="深度拆解 iKuai 主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构，详解 Fake-IP 与 DNS 泄漏根治。">
+    <meta property="og:description" content="深度拆解 iKuai 爱快主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构。全流程图解双机职责解耦、单/双网卡流量闭环机制、DHCP Option 3/6 动静分离、Fake-IP 原理、DNS 泄漏根治及流媒体精准判区实操方案，彻底杜绝路由回环与网络劣化，打造极速无感的家庭网络体验。">
     <meta property="og:url" content="https://jichangtop1.com/posts/2026-ikuai-sidecar-gateway-transparent-proxy-dns-guide.html">
     <meta property="og:image" content="https://jichangtop1.com/images/logo-horizontal.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="家庭与工作室网络重构：iKuai 结合分流网关实现透明代理、防 DNS 泄漏与流媒体分流全解">
-    <meta name="twitter:description" content="深度拆解 iKuai 主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构，详解 Fake-IP 与 DNS 泄漏根治。">
+    <meta name="twitter:description" content="深度拆解 iKuai 爱快主路由与 Linux/OpenWrt 分流旁路网关的高性能协同架构。全流程图解双机职责解耦、单/双网卡流量闭环机制、DHCP Option 3/6 动静分离、Fake-IP 原理、DNS 泄漏根治及流媒体精准判区实操方案，彻底杜绝路由回环与网络劣化，打造极速无感的家庭网络体验。">
     <meta name="twitter:image" content="https://jichangtop1.com/images/logo-horizontal.png">
 
     <!-- Schema.org TechArticle -->
