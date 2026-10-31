@@ -5,8 +5,16 @@
     <link>https://jichangtop1.com/</link>
     <description>专业的跨境网络节点性能压测、独家7折优惠码与客户端规则分流知识库</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 28 Oct 2026 09:03:31 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 15:31:32 GMT</lastBuildDate>
     <atom:link href="https://jichangtop1.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[2026专线机场真假鉴别与三网晚高峰丢包压测报告]]></title>
+      <link>https://jichangtop1.com/articles/iplc-iepl-fake-tunnel-detection-guide.html</link>
+      <guid>https://jichangtop1.com/articles/iplc-iepl-fake-tunnel-detection-guide.html</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[机场TOP1实验室最新发布专线机场真假鉴别与晚高峰压测指南。实测对比真IPLC/IEPL内网专线与假专线隧道的抖动丢包差异，公布电信联通移动三网21点极限压测数据与避坑鉴别技巧。]]></description>
+      <author>机场 TOP1</author>
+    </item>
     <item>
       <title><![CDATA[为什么 Ping 值很低但网页加载却很慢？深度解构跨国路由跳数、MTU 分片与 TTFB 隐形损耗]]></title>
       <link>https://jichangtop1.com/posts/2026-low-ping-slow-page-traceroute-mtu-ttfb-loss-guide.html</link>
@@ -117,14 +125,6 @@
       <guid>https://jichangtop1.com/posts/blog-02.html</guid>
       <pubDate>Sat, 03 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[盘点适合千兆宽带的高速梯子推荐榜单。从单节点 2.5Gbps 带宽到 8K 影音缓冲测试，助你实现极速无感的技术上网体验。]]></description>
-      <author>机场 TOP1</author>
-    </item>
-    <item>
-      <title><![CDATA[AI上网必备高速梯子推荐：ChatGPT 4o 与 Claude 3.5 无障碍连通指南]]></title>
-      <link>https://jichangtop1.com/posts/blog-03.html</link>
-      <guid>https://jichangtop1.com/posts/blog-03.html</guid>
-      <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[针对 AI 开发者与大模型使用者打造的 AI 上网指南。绕过 Cloudflare 验证与封号风险，提供高质量原生 IP 高速梯子选购方案。]]></description>
       <author>机场 TOP1</author>
     </item>
   </channel>

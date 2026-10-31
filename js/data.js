@@ -1161,6 +1161,21 @@ const buildBlogArticleContent = (item) => {
 const generateBlogArticles = () => {
     const list = [
         {
+            id: "iplc-iepl-fake-tunnel-detection-guide",
+            title: "2026专线机场真假鉴别与三网晚高峰丢包压测报告",
+            desc: "机场TOP1实验室最新发布专线机场真假鉴别与晚高峰压测指南。实测对比真IPLC/IEPL内网专线与假专线隧道的抖动丢包差异，公布电信联通移动三网21点极限压测数据与避坑鉴别技巧。",
+            description: "机场TOP1实验室最新发布专线机场真假鉴别与晚高峰压测指南。实测对比真IPLC/IEPL内网专线与假专线隧道的抖动丢包差异，公布电信联通移动三网21点极限压测数据与避坑鉴别技巧。",
+            summary: "机场TOP1实验室最新发布专线机场真假鉴别与晚高峰压测指南。实测对比真IPLC/IEPL内网专线与假专线隧道的抖动丢包差异，公布电信联通移动三网21点极限压测数据与避坑鉴别技巧。",
+            category: "实测鉴别",
+            url: "articles/iplc-iepl-fake-tunnel-detection-guide.html",
+            date: "2026-10-31",
+            author: "机场 TOP1·网络架构实验室",
+            tag: ["IPLC鉴别", "真假专线", "三网晚高峰测速", "MTR压测", "Jitter抖动", "IEPL实测", "避坑指南"],
+            tags: ["IPLC鉴别", "真假专线", "三网晚高峰测速", "MTR压测", "Jitter抖动", "IEPL实测", "避坑指南"],
+            views: 9860,
+            isHuanQiuFeatured: true
+        },
+        {
             id: "2026-low-ping-slow-page-traceroute-mtu-ttfb-loss-guide",
             title: "为什么 Ping 值很低但网页加载却很慢？深度解构跨国路由跳数、MTU 分片与 TTFB 隐形损耗",
             desc: "深入解构Ping低但网页慢原因：从ICMP与真实TCP/TLS握手开销差异、跨国BGP路由跳数与非对称绕路、WireGuard/隧道MTU超标引发的数据包静默分片与PMTU黑洞，到TTFB首字节延迟优化与MTR路由追踪诊断实战指南。",

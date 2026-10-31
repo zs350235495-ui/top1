@@ -64,3 +64,6 @@
 
 # 15. 兜底回退路由：未匹配的 /go/* 路由至 /go.html
 /go/*                   /go.html                                              200
+
+# 16. 文章静态路由别名与兼容
+/posts/iplc-iepl-fake-tunnel-detection-guide.html    /articles/iplc-iepl-fake-tunnel-detection-guide.html    301!

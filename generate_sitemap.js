@@ -36,6 +36,18 @@ if (fs.existsSync('./posts')) {
     });
 }
 
+// Add standalone HTML articles from articles/ directory
+if (fs.existsSync('./articles')) {
+    const articleFiles = fs.readdirSync('./articles').filter(f => f.endsWith('.html'));
+    articleFiles.forEach(file => {
+        urls.push({
+            loc: `${baseUrl}/articles/${file}`,
+            priority: '0.8',
+            changefreq: 'weekly'
+        });
+    });
+}
+
 // Generate sitemap.xml content
 let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
