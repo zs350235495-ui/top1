@@ -1,6 +1,6 @@
 /**
- * IndexNow 自动批量提交脚本 (带容错与自动重试)
- * 在 GitHub Actions 构建与部署时自动将 sitemap.xml 中的所有有效 URL 提交给 Bing / IndexNow
+ * IndexNow 自动批量提交脚本 (带双端点推送与自动重试)
+ * 自动将 sitemap.xml 中的所有有效 URL 同步提交给 IndexNow 全球中心与 Bing 官方端点
  */
 const https = require('https');
 const fs = require('fs');
@@ -24,7 +24,7 @@ if (!locMatches || locMatches.length === 0) {
 
 const urlList = locMatches.map(tag => tag.replace(/<\/?loc>/g, '').trim());
 
-console.log(`准备向 IndexNow (api.indexnow.org) 提交 ${urlList.length} 个 URL...`);
+console.log(`[IndexNow] 准备向搜索引擎提交 ${urlList.length} 个最新收录 URL...`);
 
 const payload = JSON.stringify({
     host: host,
@@ -33,9 +33,14 @@ const payload = JSON.stringify({
     urlList: urlList
 });
 
-function sendRequest(retryCount = 0) {
+const endpoints = [
+    { name: 'IndexNow Global', hostname: 'api.indexnow.org' },
+    { name: 'Bing Direct', hostname: 'www.bing.com' }
+];
+
+function submitToEndpoint(endpoint, retryCount = 0) {
     const options = {
-        hostname: 'api.indexnow.org',
+        hostname: endpoint.hostname,
         port: 443,
         path: '/indexnow',
         method: 'POST',
@@ -51,33 +56,33 @@ function sendRequest(retryCount = 0) {
         res.on('data', chunk => responseBody += chunk);
         res.on('end', () => {
             if (res.statusCode === 200 || res.statusCode === 202) {
-                console.log(`[成功] IndexNow 接收成功！状态码: ${res.statusCode}`);
+                console.log(`[成功] ${endpoint.name} (${endpoint.hostname}) 接收成功！状态码: ${res.statusCode}`);
             } else {
-                console.log(`[通知] IndexNow 返回状态码: ${res.statusCode}, 响应: ${responseBody || 'None'}`);
+                console.log(`[通知] ${endpoint.name} (${endpoint.hostname}) 返回状态码: ${res.statusCode}, 响应: ${responseBody || 'None'}`);
             }
         });
     });
 
     req.on('timeout', () => {
         req.destroy();
-        handleRetry(retryCount, '请求超时');
+        handleRetry(endpoint, retryCount, '请求超时');
     });
 
     req.on('error', (err) => {
-        handleRetry(retryCount, err.message);
+        handleRetry(endpoint, retryCount, err.message);
     });
 
     req.write(payload);
     req.end();
 }
 
-function handleRetry(retryCount, reason) {
+function handleRetry(endpoint, retryCount, reason) {
     if (retryCount < 3) {
-        console.warn(`[重试 ${retryCount + 1}/3] 原因: ${reason}，将在 3 秒后重试...`);
-        setTimeout(() => sendRequest(retryCount + 1), 3000);
+        console.warn(`[重试 ${endpoint.name} ${retryCount + 1}/3] 原因: ${reason}，将在 3 秒后重试...`);
+        setTimeout(() => submitToEndpoint(endpoint, retryCount + 1), 3000);
     } else {
-        console.warn(`[跳过] IndexNow 在多次重试后未能连接 (${reason})，不阻断部署流程。`);
+        console.warn(`[跳过] ${endpoint.name} 在多次重试后未能连接 (${reason})，不阻断流程。`);
     }
 }
 
-sendRequest();
+endpoints.forEach(ep => submitToEndpoint(ep));
