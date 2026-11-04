@@ -3,13 +3,15 @@ const path = require('path');
 
 const rootDir = path.resolve(__dirname, '..');
 const postsDir = path.join(rootDir, 'posts');
+const articlesDir = path.join(rootDir, 'articles');
 
 const htmlFiles = [
     'index.html', 'compare.html', 'reviews.html', 'protocols.html', 'blackholes.html', 'about.html', '404.html'
 ].map(f => path.join(rootDir, f));
 
 const postFiles = fs.readdirSync(postsDir).filter(f => f.endsWith('.html')).map(f => path.join(postsDir, f));
-const allFiles = [...htmlFiles, ...postFiles];
+const articleFiles = fs.existsSync(articlesDir) ? fs.readdirSync(articlesDir).filter(f => f.endsWith('.html')).map(f => path.join(articlesDir, f)) : [];
+const allFiles = [...htmlFiles, ...postFiles, ...articleFiles];
 
 console.log('=== 全面 SEO 与技术架构增权审计 ===');
 console.log(`总扫描文件数: ${allFiles.length}`);
@@ -37,6 +39,9 @@ const existingRoutes = new Set([
 ]);
 postFiles.forEach(pf => {
     existingRoutes.add('/posts/' + path.basename(pf));
+});
+articleFiles.forEach(af => {
+    existingRoutes.add('/articles/' + path.basename(af));
 });
 
 allFiles.forEach(file => {

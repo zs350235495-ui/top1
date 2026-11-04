@@ -5,8 +5,16 @@
     <link>https://jichangtop1.com/</link>
     <description>专业的跨境网络节点性能压测、独家7折优惠码与客户端规则分流知识库</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 31 Oct 2026 15:31:32 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 07:19:35 GMT</lastBuildDate>
     <atom:link href="https://jichangtop1.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[2026三大运营商跨境骨干网出口与优质线路天梯横评]]></title>
+      <link>https://jichangtop1.com/articles/isp-cross-border-backbone-tier-ranking-2026.html</link>
+      <guid>https://jichangtop1.com/articles/isp-cross-border-backbone-tier-ranking-2026.html</guid>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[机场TOP1发布2026三大运营商跨境骨干网综合横评。深度剖析电信CN2 GIA与163、联通9929与4837、移动CMIN2优质出海网络架构，实测晚高峰丢包与抖动天梯榜，提供精准的宽带选型参考。]]></description>
+      <author>机场 TOP1</author>
+    </item>
     <item>
       <title><![CDATA[2026专线机场真假鉴别与三网晚高峰丢包压测报告]]></title>
       <link>https://jichangtop1.com/articles/iplc-iepl-fake-tunnel-detection-guide.html</link>
@@ -117,14 +125,6 @@
       <guid>https://jichangtop1.com/posts/blog-01.html</guid>
       <pubDate>Sat, 03 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[寻找2026年最稳定的科学上网加速服务？本文深入拆解IEPL专线架构，在黄金晚高峰实测各大高速梯子表现，附带环球梯独家 7 折优惠码 HQ66 与官网首页内链指南。]]></description>
-      <author>机场 TOP1</author>
-    </item>
-    <item>
-      <title><![CDATA[高速梯子推荐与技术上网配置指南：千兆宽带秒开8K与低延迟体验]]></title>
-      <link>https://jichangtop1.com/posts/blog-02.html</link>
-      <guid>https://jichangtop1.com/posts/blog-02.html</guid>
-      <pubDate>Sat, 03 Oct 2026 00:00:00 GMT</pubDate>
-      <description><![CDATA[盘点适合千兆宽带的高速梯子推荐榜单。从单节点 2.5Gbps 带宽到 8K 影音缓冲测试，助你实现极速无感的技术上网体验。]]></description>
       <author>机场 TOP1</author>
     </item>
   </channel>

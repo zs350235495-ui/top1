@@ -1161,6 +1161,21 @@ const buildBlogArticleContent = (item) => {
 const generateBlogArticles = () => {
     const list = [
         {
+            id: "isp-cross-border-backbone-tier-ranking-2026",
+            title: "2026三大运营商跨境骨干网出口与优质线路天梯横评",
+            desc: "机场TOP1发布2026三大运营商跨境骨干网综合横评。深度剖析电信CN2 GIA与163、联通9929与4837、移动CMIN2优质出海网络架构，实测晚高峰丢包与抖动天梯榜，提供精准的宽带选型参考。",
+            description: "机场TOP1发布2026三大运营商跨境骨干网综合横评。深度剖析电信CN2 GIA与163、联通9929与4837、移动CMIN2优质出海网络架构，实测晚高峰丢包与抖动天梯榜，提供精准的宽带选型参考。",
+            summary: "机场TOP1发布2026三大运营商跨境骨干网综合横评。深度剖析电信CN2 GIA与163、联通9929与4837、移动CMIN2优质出海网络架构，实测晚高峰丢包与抖动天梯榜，提供精准的宽带选型参考。",
+            category: "骨干网横评",
+            url: "articles/isp-cross-border-backbone-tier-ranking-2026.html",
+            date: "2026-11-04",
+            author: "机场TOP1测评实验室",
+            tag: ["骨干网天梯榜", "三大运营商骨干网", "CN2 GIA", "联通9929", "移动CMIN2", "晚高峰丢包", "宽带选型"],
+            tags: ["骨干网天梯榜", "三大运营商骨干网", "CN2 GIA", "联通9929", "移动CMIN2", "晚高峰丢包", "宽带选型"],
+            views: 8960,
+            isHuanQiuFeatured: true
+        },
+        {
             id: "iplc-iepl-fake-tunnel-detection-guide",
             title: "2026专线机场真假鉴别与三网晚高峰丢包压测报告",
             desc: "机场TOP1实验室最新发布专线机场真假鉴别与晚高峰压测指南。实测对比真IPLC/IEPL内网专线与假专线隧道的抖动丢包差异，公布电信联通移动三网21点极限压测数据与避坑鉴别技巧。",
