@@ -5,6 +5,7 @@ const path = require('path');
 const URL_TO_GO_MAP = {
     'https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0': { id: 'huanqiuti', go: '/go.html?id=huanqiuti' },
     'https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa': { id: 'dalaoyun', go: '/go.html?id=dalaoyun' },
+    'https://pp01.yunjiexianaff.com/#/?code=6Y9vSMcc': { id: 'yunjiexian', go: '/go.html?id=yunjiexian' },
     'https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV': { id: 'yunjiexian', go: '/go.html?id=yunjiexian' },
     'https://yjxsub01.yunjiexianaff.com/#/?code=9M572s6Y': { id: 'yunjiexian', go: '/go.html?id=yunjiexian' },
     'https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB': { id: 'shandianshu', go: '/go.html?id=shandianshu' },
