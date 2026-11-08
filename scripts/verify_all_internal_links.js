@@ -4,7 +4,8 @@ const path = require('path');
 const rootDir = path.resolve(__dirname, '..');
 const files = [
     ...fs.readdirSync(rootDir).filter(f => f.endsWith('.html')),
-    ...fs.readdirSync(path.join(rootDir, 'posts')).filter(f => f.endsWith('.html')).map(f => 'posts/' + f)
+    ...fs.readdirSync(path.join(rootDir, 'posts')).filter(f => f.endsWith('.html')).map(f => 'posts/' + f),
+    ...(fs.existsSync(path.join(rootDir, 'articles')) ? fs.readdirSync(path.join(rootDir, 'articles')).filter(f => f.endsWith('.html')).map(f => 'articles/' + f) : [])
 ];
 
 const broken = [];

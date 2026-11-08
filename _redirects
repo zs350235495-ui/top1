@@ -61,6 +61,8 @@
 # 14. 边缘节点 (EdgeNode)
 /go/bianyuanjiedian     https://wep.edgenovaaff.com/#/?code=mLLL6h6F          301!
 /go/ap-bianyuanjiedian  https://wep.edgenovaaff.com/#/?code=mLLL6h6F          301!
+/go/huanqiu             https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0     301!
+/go/pinghaolian         https://pinghaolian.com/                               301!
 
 # 15. 兜底回退路由：未匹配的 /go/* 路由至 /go.html
 /go/*                   /go.html                                              200
@@ -68,3 +70,4 @@
 # 16. 文章静态路由别名与兼容
 /posts/iplc-iepl-fake-tunnel-detection-guide.html    /articles/iplc-iepl-fake-tunnel-detection-guide.html    301!
 /posts/isp-cross-border-backbone-tier-ranking-2026.html    /articles/isp-cross-border-backbone-tier-ranking-2026.html    301!
+/posts/node-locations-speedtest-airport-ladder-recommendations-2026.html    /articles/node-locations-speedtest-airport-ladder-recommendations-2026.html    301!

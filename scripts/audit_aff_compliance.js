@@ -3,6 +3,8 @@ const path = require('path');
 
 const VALID_AFF_IDS = new Set([
     'huanqiuti', 'ap-huanqiuti',
+    'huanqiu', 'ap-huanqiu',
+    'pinghaolian', 'ap-pinghaolian',
     'dalaoyun', 'ap-dalaoyun',
     'yunjiexian', 'ap-yunjiexian',
     'shandianshu', 'ap-shandianshu',
@@ -60,7 +62,7 @@ allHtmlFiles.forEach(f => {
         if (!hrefMatch) continue;
 
         const href = hrefMatch[1];
-        if (href.startsWith('/go.html') || href.startsWith('/go/')) {
+        if (href.startsWith('/go.html') || href.startsWith('/go/') || href.includes('go.html')) {
             totalGoLinks++;
             goLinkPerFile[relPath] = (goLinkPerFile[relPath] || 0) + 1;
 
