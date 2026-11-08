@@ -39,7 +39,7 @@ const AIRPORTS_DATA = [
             { name: "环球灵活包", badge: "按量包", priceDiscount: "￥209.30", priceOriginal: "￥299.00", cycle: "365天有效 (7折后)", traffic: "400GB 不限时流量", devices: "不限设备数量", feature: "大容量备用，自购买之日起365天有效，用码 HQ66 7折后仅 209.3 元" },
             { name: "环球海量包", badge: "长期储备", priceDiscount: "￥481.60", priceOriginal: "￥688.00", cycle: "长期有效 (7折后)", traffic: "1.0TB (1000GB) 充沛流量", devices: "不限设备数量", feature: "长效不限时大容量储备，彻底摆脱续费压力，特别适合高速跨国重载传输，用码 HQ66 7折后仅 481.6 元" }
         ],
-        affUrl: "/go.html?id=huanqiuti", rawAffUrl: "https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0",
+        affUrl: "/go.html?id=huanqiuti",
         recommendReason: "全专线稳定性好，全线不限设备数，套餐梯度极丰富（8.4元/月起），晚高峰看8K不卡，用码 HQ66 打 7 折。"
     },
     {
@@ -72,7 +72,7 @@ const AIRPORTS_DATA = [
             { name: "闲云·随心包", badge: "按量包", priceDiscount: "￥69.30", priceOriginal: "￥99.00", cycle: "终身有效 (7折后)", traffic: "78GB 终身流量", devices: "不限设备数量", feature: "用码 dly88 7折后只需 69.3元，流量按需扣减，用完即止" },
             { name: "悠云·长享包", badge: "按量包", priceDiscount: "￥139.30", priceOriginal: "￥199.00", cycle: "终身有效 (7折后)", traffic: "160GB 终身流量", devices: "不限设备数量", feature: "用码 dly88 7折后只需 139.3元，适合当作长期备用节点" }
         ],
-        affUrl: "/go.html?id=dalaoyun", rawAffUrl: "https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa",
+        affUrl: "/go.html?id=dalaoyun",
         recommendReason: "IPLC专线，单节点2.5Gbps，不限制设备数，用码 dly88 打 7 折。"
     },
     {
@@ -105,7 +105,7 @@ const AIRPORTS_DATA = [
             { name: "闲云·随心包", badge: "按量包", priceDiscount: "￥69.30", priceOriginal: "￥99.00", cycle: "终身有效 (7折后)", traffic: "80GB 终身流量", devices: "不限设备数量", feature: "用码 yjx888 7折后只需 69.3元，流量用多少扣多少，备用省心" },
             { name: "悠云·长享包", badge: "按量包", priceDiscount: "￥139.30", priceOriginal: "￥199.00", cycle: "终身有效 (7折后)", traffic: "200GB 终身流量", devices: "不限设备数量", feature: "用码 yjx888 7折后只需 139.3元，大容量备用包，流量不按月清零" }
         ],
-        affUrl: "/go.html?id=yunjiexian", rawAffUrl: "https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV",
+        affUrl: "/go.html?id=yunjiexian",
         recommendReason: "IPLC专线，延迟较低，支持按量备用包，用码 yjx888 打 7 折。"
     },
     {
@@ -136,7 +136,7 @@ const AIRPORTS_DATA = [
             { name: "闪电鼠·疾速版", badge: "疾速", priceDiscount: "￥28.00", priceOriginal: "￥40.00", cycle: "每月计费 (7折后)", traffic: "每月 250GB 流量", devices: "不限设备数量", feature: "用码 sds88 7折后只需 28元/月，兼顾看剧、学习与办公多端使用" },
             { name: "闪电鼠·雷霆版", badge: "雷霆", priceDiscount: "￥49.00", priceOriginal: "￥70.00", cycle: "每月计费 (7折后)", traffic: "每月 500GB 流量", devices: "不限设备数量", feature: "用码 sds88 7折后只需 49元/月，大流量畅享，最高2.5Gbps带宽" }
         ],
-        affUrl: "/go.html?id=shandianshu", rawAffUrl: "https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB",
+        affUrl: "/go.html?id=shandianshu",
         recommendReason: "IEPL专线路由优化好，移动联通适配佳，用码 sds88 打 7 折。"
     },
     {
@@ -167,7 +167,7 @@ const AIRPORTS_DATA = [
             { name: "神行·尊享包", badge: "尊享", priceDiscount: "￥50.40", priceOriginal: "￥72.00", cycle: "每月计费 (7折后)", traffic: "每月 520GB 流量 (x1倍率)", devices: "不限设备数量", feature: "用码 sx0077 7折后只需 50.4元/月，适合重度下载、分流与游戏" },
             { name: "神行·年付特惠版", badge: "特惠", priceDiscount: "￥67.20", priceOriginal: "￥96.00", cycle: "每年计费 (7折后)", traffic: "每月 60GB 流量 (x1倍率)", devices: "不限设备数量", feature: "用码 sx0077 7折后只需 67.2元/年 (折算5.6元/月)，专线平稳" }
         ],
-        affUrl: "/go.html?id=shenxing", rawAffUrl: "https://pps123.shenxingaff.com/#/?code=6tQ7zHUc",
+        affUrl: "/go.html?id=shenxing",
         recommendReason: "IPLC专线分流好，多设备挂机平稳，用码 sx0077 打 7 折。"
     },
     {
@@ -199,7 +199,7 @@ const AIRPORTS_DATA = [
             { name: "尊享包", badge: "重度体验", priceDiscount: "￥42.00", priceOriginal: "￥60.00", cycle: "每月计费 (7折后)", traffic: "每月 420GB 高速流量", devices: "不限制客户端数量", feature: "用码 ll88 7折后只需 42元/月，高频使用更从容，享受 3 倍流量空间" },
             { name: "榴莲王", badge: "海量之选", priceDiscount: "￥70.00", priceOriginal: "￥100.00", cycle: "每月计费 (7折后)", traffic: "每月 750GB 大流量", devices: "不限制客户端数量", feature: "用码 ll88 7折后只需 70元/月，大流量更实惠，适合大文件下载与多端共享" }
         ],
-        affUrl: "/go.html?id=liulianyun", rawAffUrl: "https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G",
+        affUrl: "/go.html?id=liulianyun",
         recommendReason: "IPLC 2.5G专线，不限客户端在线数，用码 ll88 享 7 折。"
     },
     {
@@ -231,7 +231,7 @@ const AIRPORTS_DATA = [
             { name: "50G不限时流量包", badge: "按量包", priceDiscount: "￥78.00", priceOriginal: "￥98.00", cycle: "终身有效", traffic: "50GB 终身流量", devices: "最多 5 台设备", feature: "流量不过期，用完即止，备用省心" },
             { name: "100G不限时流量包", badge: "按量包", priceDiscount: "￥119.00", priceOriginal: "￥150.00", cycle: "终身有效", traffic: "100GB 终身流量", devices: "最多 5 台设备", feature: "流量不过期，大容量应急备用包" }
         ],
-        affUrl: "/go.html?id=yuntu", rawAffUrl: "https://super.ytjcok.org/#/register?code=poKwFVtv",
+        affUrl: "/go.html?id=yuntu",
         recommendReason: "金融级专线，全 1.0 倍率不抽水，支持不限时按量备用包。"
     },
     {
@@ -262,7 +262,7 @@ const AIRPORTS_DATA = [
             { name: "纵横套餐", badge: "进阶", priceDiscount: "￥36.00", priceOriginal: "￥50.00", cycle: "每月计费", traffic: "每月 300GB 流量", devices: "不限设备数量", feature: "适合高频追剧与在线 4K 影音" },
             { name: "凌霄套餐", badge: "尊享", priceDiscount: "￥68.00", priceOriginal: "￥90.00", cycle: "每月计费", traffic: "每月 600GB 流量", devices: "不限设备数量", feature: "重度影音大流量与多端共享" }
         ],
-        affUrl: "/go.html?id=shunyun", rawAffUrl: "https://ddd.jichang.best/#/register?code=nldUZaYc",
+        affUrl: "/go.html?id=shunyun",
         recommendReason: "Anycast 优化入口，IEPL 专线低延迟，秒开 8K 影音。"
     },
     {
@@ -292,7 +292,7 @@ const AIRPORTS_DATA = [
             { name: "可信云月付小包", badge: "热门", priceDiscount: "￥15.00", priceOriginal: "￥22.00", cycle: "每月计费", traffic: "每月 60GB 流量", devices: "不限设备数量", feature: "适合月付试用，覆盖60+顶级专线节点" },
             { name: "基础版 (Basic)", badge: "进阶", priceDiscount: "￥25.00", priceOriginal: "￥35.00", cycle: "每月计费", traffic: "每月 150GB 流量", devices: "不限设备数量", feature: "适合主力使用，看高清视频与多端办公" }
         ],
-        affUrl: "/go.html?id=kexinyun", rawAffUrl: "https://everett7623.kosingaff.com/#/?code=sFKKfEYs",
+        affUrl: "/go.html?id=kexinyun",
         recommendReason: "全节点 IEPL 专线，不限制设备，性价比与稳定性俱佳。"
     },
     {
@@ -322,7 +322,7 @@ const AIRPORTS_DATA = [
             { name: "极速版", badge: "🔥 热门推荐", priceDiscount: "￥25.00", priceOriginal: "￥35.00", cycle: "每月计费", traffic: "每月 120GB 流量", devices: "不限设备数量", feature: "日常主力首选，晚高峰不卡顿" },
             { name: "超速版", badge: "尊享", priceDiscount: "￥50.00", priceOriginal: "￥70.00", cycle: "每月计费", traffic: "每月 250GB 流量", devices: "不限设备数量", feature: "适合重度大流量与多设备高频共享" }
         ],
-        affUrl: "/go.html?id=sujie", rawAffUrl: "https://pygllc.speedworldaff.cc/#/?code=kcoensXG",
+        affUrl: "/go.html?id=sujie",
         recommendReason: "高速 IEPL 专线中转，单节点 2.5G 带宽，原生 IP 全解锁。"
     },
     {
@@ -353,7 +353,7 @@ const AIRPORTS_DATA = [
             { name: "进阶套餐", badge: "进阶", priceDiscount: "￥30.50", priceOriginal: "￥42.00", cycle: "每月计费", traffic: "每月 200GB 流量", devices: "不限设备数量", feature: "适合追剧、学习与高频在线办公" },
             { name: "一次性不限时包", badge: "按量包", priceDiscount: "￥399.00", priceOriginal: "￥500.00", cycle: "终身有效", traffic: "600GB 终身流量", devices: "不限设备数量", feature: "流量用完即止，长期防封锁备用" }
         ],
-        affUrl: "/go.html?id=jilianyun", rawAffUrl: "https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO",
+        affUrl: "/go.html?id=jilianyun",
         recommendReason: "IPLC/IEPL 专线，晚高峰不降频，支持按量包备用。"
     },
     {
@@ -383,7 +383,7 @@ const AIRPORTS_DATA = [
             { name: "【12元/99G】逍遥畅游", badge: "🔥 热门推荐", priceDiscount: "￥12.00", priceOriginal: "￥18.00", cycle: "每月计费", traffic: "每月 99GB 流量", devices: "不限设备数量", feature: "全网热销平价套餐，1.0倍率扣费" },
             { name: "【22元/199G】吞吐山海", badge: "尊享", priceDiscount: "￥22.00", priceOriginal: "￥30.00", cycle: "每月计费", traffic: "每月 199GB 流量", devices: "不限设备数量", feature: "重度追剧 4K 尊享，VIP 优先响应" }
         ],
-        affUrl: "/go.html?id=kunpeng", rawAffUrl: "https://kunpengjiasu.com/#/register?code=WPugVZUe",
+        affUrl: "/go.html?id=kunpeng",
         recommendReason: "1元门槛超低试用，12元/99G 性价比高，专线1.0倍率。"
     },
     {
@@ -413,7 +413,7 @@ const AIRPORTS_DATA = [
             { name: "月狸月付小套餐", badge: "热门", priceDiscount: "￥15.00", priceOriginal: "￥22.00", cycle: "每月计费", traffic: "每月 50GB 流量", devices: "不限设备数量", feature: "适合月度试用与网页打卡" },
             { name: "小狸基础版", badge: "进阶", priceDiscount: "￥22.00", priceOriginal: "￥30.00", cycle: "每月计费", traffic: "每月 100GB 流量", devices: "不限设备数量", feature: "日常主力首选，流畅观看 4K 视频" }
         ],
-        affUrl: "/go.html?id=kuaili", rawAffUrl: "https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F",
+        affUrl: "/go.html?id=kuaili",
         recommendReason: "智优专线路由，三网优化平稳，看剧与 AI 体验良好。"
     },
     {
@@ -443,7 +443,7 @@ const AIRPORTS_DATA = [
             { name: "极界·标准套餐", badge: "🔥 热门推荐", priceDiscount: "￥25.00", priceOriginal: "￥35.00", cycle: "每月计费", traffic: "每月 120GB 流量", devices: "不限设备数量", feature: "日常主力首选，晚高峰防封锁抗抖动" },
             { name: "极界·进阶套餐", badge: "尊享", priceDiscount: "￥50.00", priceOriginal: "￥70.00", cycle: "每月计费", traffic: "每月 250GB 流量", devices: "不限设备数量", feature: "适合重度影音下载与团队并发" }
         ],
-        affUrl: "/go.html?id=bianyuanjiedian", rawAffUrl: "https://wep.edgenovaaff.com/#/?code=mLLL6h6F",
+        affUrl: "/go.html?id=bianyuanjiedian",
         recommendReason: "企业级分布式专线，抗封锁强，不限客户端设备数量。"
     }
 ];
@@ -1130,7 +1130,7 @@ const buildBlogArticleContent = (item) => {
             <h3>二、 线路传输架构实测：IEPL / IPLC 专线与中转线路对比</h3>
             <p>评价一个加速通道的线路质量与整体网络质量，底层物理架构起着决定性作用：</p>
             <ul>
-                <li><strong>IEPL 专线与 IPLC 专线：</strong> 依托内网光纤传输，数据传输无需经过公网节点，在黄金晚高峰表现中依然能保持极低丢包率与优异的低延迟体验。作为稳定性测试表现优异的代表，<a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="nofollow sponsored noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页</a> 提供的节点即全量采用广深/沪日 IEPL 专线架构。</li>
+                <li><strong>IEPL 专线与 IPLC 专线：</strong> 依托内网光纤传输，数据传输无需经过公网节点，在黄金晚高峰表现中依然能保持极低丢包率与优异的低延迟体验。作为稳定性测试表现优异的代表，<a href="/go.html?id=huanqiuti" target="_blank" rel="nofollow sponsored noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页</a> 提供的节点即全量采用广深/沪日 IEPL 专线架构。</li>
                 <li><strong>BGP 多入口中转：</strong> 经由国内高带宽节点中转后转发，平时能保持出色的节点速度与丰富的多地区节点覆盖，是高性价比方案的常见选择。</li>
                 <li><strong>流量倍率与套餐搭配：</strong> 挑选流量套餐或年付套餐时，除了关注带宽测速与不限速节点外，还应留意各节点的流量倍率与可用额度，确保资源合理利用。</li>
             </ul>
@@ -1153,7 +1153,7 @@ const buildBlogArticleContent = (item) => {
 
             <h3>五、 环球梯官网首页通道、独家优惠码与选购建议</h3>
             <p>综合实测跑分与综合对比，<strong>环球梯 (HuanQiuTi)</strong> 凭借扎实的专线品质与可靠的服务稳定性，在本站推荐列表中名列前茅。</p>
-            <p>博友们在订阅结账时，可输入 7 折独家优惠码 <strong style="color:var(--primary-cyan); font-size: 1.05rem;">HQ66</strong>（折后轻享包约 14.7 元/月）。欢迎访问 <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="nofollow sponsored noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页注册通道</a> 了解详情。同时也可参考本站的 <a href="javascript:void(0)" onclick="switchTab('compare')" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">2026高性价比机场精算表</a> 进行多维比较。建议大家坚持理性消费，优先按月续费或准备一份不限时按量包应急。</p>
+            <p>博友们在订阅结账时，可输入 7 折独家优惠码 <strong style="color:var(--primary-cyan); font-size: 1.05rem;">HQ66</strong>（折后轻享包约 14.7 元/月）。欢迎访问 <a href="/go.html?id=huanqiuti" target="_blank" rel="nofollow sponsored noopener noreferrer" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">环球梯官方网站首页注册通道</a> 了解详情。同时也可参考本站的 <a href="javascript:void(0)" onclick="switchTab('compare')" style="color:var(--primary-cyan); font-weight:bold; text-decoration:underline;">2026高性价比机场精算表</a> 进行多维比较。建议大家坚持理性消费，优先按月续费或准备一份不限时按量包应急。</p>
         </div>
     `;
 };

@@ -32,16 +32,21 @@ const report = {
 };
 
 // Known valid routes & files
+const rootHtmlFiles = fs.readdirSync(rootDir).filter(f => f.endsWith('.html'));
 const existingRoutes = new Set([
-    '/', '/compare', '/reviews', '/protocols', '/blackholes', '/about',
-    '/index.html', '/compare.html', '/reviews.html', '/protocols.html', '/blackholes.html', '/about.html', '/404.html',
-    '/sitemap.xml', '/robots.txt', '/llms.txt', '/feed.xml'
+    '/', '/sitemap.xml', '/robots.txt', '/llms.txt', '/feed.xml'
 ]);
+rootHtmlFiles.forEach(f => {
+    existingRoutes.add('/' + f);
+    existingRoutes.add('/' + f.replace(/\.html$/, ''));
+});
 postFiles.forEach(pf => {
     existingRoutes.add('/posts/' + path.basename(pf));
+    existingRoutes.add('/posts/' + path.basename(pf).replace(/\.html$/, ''));
 });
 articleFiles.forEach(af => {
     existingRoutes.add('/articles/' + path.basename(af));
+    existingRoutes.add('/articles/' + path.basename(af).replace(/\.html$/, ''));
 });
 
 allFiles.forEach(file => {

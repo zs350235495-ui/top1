@@ -103,7 +103,7 @@ allHtmlFiles.forEach(f => {
 });
 
 console.log('====================================================');
-console.log('       AFF 301 隔离与合规改造全站审计报告           ');
+console.log('       AFF 302 隔离与合规改造全站审计报告           ');
 console.log('====================================================');
 console.log(`全站检测到的安全中转 /go.html 内链总数: ${totalGoLinks}`);
 console.log(`严格符合 rel="nofollow sponsored noopener noreferrer" 的链接数: ${compliantRelCount}`);
@@ -138,8 +138,9 @@ console.log('\n--- _redirects 文件核验 ---');
 const redirectsExists = fs.existsSync(path.join(__dirname, '../_redirects'));
 if (redirectsExists) {
     const redContent = fs.readFileSync(path.join(__dirname, '../_redirects'), 'utf8');
+    const count302 = (redContent.match(/302/g) || []).length;
     const count301 = (redContent.match(/301/g) || []).length;
-    console.log(`✅ 合规通过：_redirects 存在，包含 ${count301} 处 301 重定向规则与 /go/* 兜底。`);
+    console.log(`✅ 合规通过：_redirects 存在，包含 ${count302} 处 302 临时重定向规则、${count301} 处 301 静态路径迁移规则与 /go/* 兜底。`);
 } else {
     console.error('❌ 警告：未找到 _redirects 文件！');
 }
@@ -150,8 +151,8 @@ const nginxExists = fs.existsSync(path.join(__dirname, '../nginx-redirects.conf'
 if (nginxExists) {
     const confContent = fs.readFileSync(path.join(__dirname, '../nginx-redirects.conf'), 'utf8');
     const hasHeader = confContent.includes('X-Robots-Tag');
-    const count301Nginx = (confContent.match(/return 301/g) || []).length;
-    console.log(`✅ 合规通过：nginx-redirects.conf 存在，包含 X-Robots-Tag 标头与 ${count301Nginx} 处 301 规则。`);
+    const count302Nginx = (confContent.match(/return 302/g) || []).length;
+    console.log(`✅ 合规通过：nginx-redirects.conf 存在，包含 X-Robots-Tag 标头与 ${count302Nginx} 处 302 临时重定向规则。`);
 } else {
     console.error('❌ 警告：未找到 nginx-redirects.conf 文件！');
 }
