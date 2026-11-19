@@ -34,6 +34,8 @@
 
 ## 实验室深度技术博文 (Technical Articles)
 
+- [2026机场推荐与梯子推荐深度指南：三网宽带路由适配、路由器透明代理与主备容灾架构](https://jichangtop1.com/articles/2026-airport-ladder-isp-router-guide.html): 深度拆解中国电信、中国联通与中国移动三网宽带跨境路由特性，详解主路由与旁路由透明代理部署、DNS泄漏避坑与主备机场容灾架构，提供全屋多端高速科学上网方案。
+
 - [2026全球Anycast任播BGP智能路由翻墙梯子与机场推荐](https://jichangtop1.com/articles/anycast-bgp-intelligent-routing-airport-ladder-2026.html): 深度拆解边界网关协议 BGP 路由宣告、跨海缆海啸冗余切换、最近边缘 PoP 点接入与多线融合调度，提供企业级 BGP 专线技术天梯榜。
 
 - [2026翻墙梯子港台日美节点测速与高速机场推荐指南](https://jichangtop1.com/articles/node-locations-speedtest-airport-ladder-recommendations-2026.html): 深度实测香港、台湾、日本、新加坡及美国节点在物理海缆延迟、丢包率与流媒体版权差异，提供多国专线推荐天梯榜。

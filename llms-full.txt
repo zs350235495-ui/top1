@@ -45,6 +45,7 @@
 - 官方直达：https://jichangtop1.com/go.html?id=yunjiexian
 
 ## 3. 核心支柱专题与技术白皮书
+- 2026 机场推荐与梯子推荐深度指南（三网宽带适配与路由器透明代理）: https://jichangtop1.com/articles/2026-airport-ladder-isp-router-guide.html
 - 2026 全球 Anycast 任播 BGP 智能路由翻墙梯子与机场推荐: https://jichangtop1.com/articles/anycast-bgp-intelligent-routing-airport-ladder-2026.html
 - 2026 全球跨境网络骨干专线天梯榜与旗舰选型白皮书: https://jichangtop1.com/flagship-network-sla-benchmark-2026
 - 2026 性价比机场精算表: https://jichangtop1.com/compare
