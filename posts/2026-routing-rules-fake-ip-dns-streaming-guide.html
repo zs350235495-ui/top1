@@ -610,6 +610,15 @@ rules:
             <h3>UDP 回环与 403 Forbidden 快速排错</h3>
             <p>在 TUN 模式下，针对 STUN / WebRTC 端口需显式指定放行，防止音视频通话中断。而在访问境外网站报错 <code>403 Forbidden</code> 时，多半是由于本地 DNS 拿到了境内 CDN 节点 IP，随后通过境外代理发起请求触发了 CDN 证书与地域校验机制。在规则中添加 <code>no-resolve</code> 指令可有效杜绝该问题。</p>
 
+            <h3>主流客户端（Clash / Shadowrocket / sing-box / Surge）的分流适配与订阅推荐</h3>
+            <p>一套完善的分流策略必须依赖成熟的客户端内核与高质量节点订阅作为支撑：</p>
+            <ul>
+                <li><strong>Clash 体系选型（Clash 机场推荐 / Clash 订阅机场推荐）</strong>：在桌面端使用 <strong>Clash Verge 机场推荐</strong> 或跨平台 <strong>Clash Meta 机场推荐</strong> 时，优选支持自动分发 Rule-Provider 规则集的 <strong>Clash 科学上网机场</strong>。合理编排 <strong>Clash 节点推荐</strong> 策略组，能够自动根据延迟健康检查切换最优线路。</li>
+                <li><strong>iOS 移动端配置（Shadowrocket 机场推荐 / 小火箭订阅推荐）</strong>：小火箭用户在选择 <strong>小火箭机场推荐</strong> 与 <strong>Shadowrocket 节点推荐</strong> 时，建议勾选“配置分流”而非“全局路由”。配合原生流媒体解锁节点，在 iPhone 上即可实现国内外流量完全无感分轨。</li>
+                <li><strong>高阶专业工具（Quantumult X / 圈 X 机场推荐 / Surge / Stash）</strong>：在 macOS 与 iOS 上使用 <strong>圈 X 机场推荐</strong>、<strong>Surge 机场推荐</strong> 或 <strong>Stash 机场推荐</strong>，可充分发挥其强大的 MITM 重写与高级策略组嵌套优势，对 ChatGPT 与跨国银行等敏感域名实现精细化风控隔离。</li>
+                <li><strong>轻量级开源支持（v2rayN / v2rayNG / sing-box / Hiddify）</strong>：Windows 平台用户通过 <strong>v2rayN 机场推荐</strong> 导入标准 V2Ray/Xray 订阅，安卓用户借助 <strong>v2rayNG 机场推荐</strong> 实现低功耗常驻。追求极致协议支持的用户则可选用 <strong>sing-box 机场推荐</strong> 与 <strong>Hiddify 机场推荐</strong>，在保证 Fake-IP 零泄漏的同时获得极佳的吞吐表现。</li>
+            </ul>
+
             <h2 id="summary">结语：构建确定性与高韧性的分流体系准则</h2>
             <p>构建一套高效、确定且低延迟的分流体系，本质上是<strong>在安全信任边界、解析开销与物理链路传输极限之间寻求最优平衡</strong>。坚持最小暴露原则消灭 DNS 泄漏，坚持按业务形态严格分群，保持规则链条的精简与明确，方能在复杂的公网网络波动中保持高稳定性，实现真正意义上的透明接入与无感分流。</p>
 
