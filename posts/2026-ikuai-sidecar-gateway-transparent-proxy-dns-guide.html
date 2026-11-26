@@ -486,7 +486,7 @@ iptables -t mangle -A PREROUTING -j PROXY_ROUTE
 iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu</code></pre>
 
             <h2>五、 架构总结与落地推荐</h2>
-            <p>通过 <strong>iKuai 主路由 + 旁路分流网关</strong> 的分层部署，不仅在单点硬件故障时保留了回退至纯净主路由的高可用能力，还在七层上实现了接近零延迟的 Fake-IP DNS 治理，彻底隔绝了运营商 DNS 劫持与流媒体判区漂移。</p>
+            <p>通过 <strong>iKuai 主路由 + 旁路分流网关</strong> 的分层部署，不仅在单点硬件故障时保留了回退至纯净主路由的高可用能力，还在七层上实现了接近零延迟的 Fake-IP DNS 治理，彻底隔绝了运营商 DNS 劫持与流媒体判区漂移。在软路由与<strong>电脑梯子推荐</strong>场景中，建议搭配支持标准 <strong>Clash Meta 机场推荐</strong>（Mihomo 内核）、<strong>sing-box 机场推荐</strong> 与 <strong>Clash 节点推荐</strong> 下发的<strong>晚高峰稳定机场</strong>及<strong>低延迟机场推荐</strong>专线订阅，让家庭与工作室全终端都能获得稳健体验。</p>
 
             <hr style="margin:24px 0; border:0; border-top:1px dashed var(--border-color,#CBD5E1);">
 
